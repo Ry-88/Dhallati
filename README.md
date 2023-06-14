@@ -79,6 +79,6 @@ _________________________________________________________________________
 
 - Abdulaziz  Almaawy
 - Alaa Bin Othman
-- Khalid Ahimali
+- Khalid Alhimali
 - Rayan Hantoul
 
