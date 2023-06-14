@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-class Catagory(models.Model):
+"""class Catagory(models.Model):
     name=models.CharField(max_length=100)
 
 
@@ -42,3 +42,4 @@ class ConfirmItem(models.Model):
     found_item=models.OneToOneField(FoundItem,on_delete=models.CASCADE)
     request_Lost_Item=models.OneToOneField(RequestLostItem,on_delete=models.CASCADE)
     is_confirm=models.BooleanField(default=False)
+"""
