@@ -73,4 +73,12 @@ _________________________________________________________________________
 - Missing item filter page
 - Closed request page
 - Lost items page
-- 
+
+
+## Team members (coding wizards)
+
+- Abdulaziz  Almaawy
+- Alaa Bin Othman
+- Khalid Ahimali
+- Rayan Hantoul
+
