@@ -12,7 +12,7 @@ def log_in(request:HttpRequest):
     if request.method == 'POST':
         user : User = authenticate(request, username=request.POST['username'], password=request.POST["password"])
         login(request, user)
-        return redirect("main_app:home")
+        return redirect("accounts:no_permission")
     else:
         msg = 'username or password is incorrect'
 
@@ -24,7 +24,7 @@ def log_out(request:HttpRequest):
     logout(request)
 
 
-    return redirect('main_app:home')
+    return redirect('accounts:no_permission')
 
 
 def no_permission(request:HttpRequest):
