@@ -7,7 +7,7 @@
   <!-- Basic Page Needs
   ================================================== -->
   <meta charset="utf-8">
-  <title>Kross - Creative Portfolio Template</title>
+  <title>Dhallati</title>
 
   <!-- Mobile Specific Metas
   ================================================== -->
@@ -47,21 +47,24 @@
     </button>
 
     <div class="collapse navbar-collapse text-center" id="navigation">
-      <ul class="navbar-nav ml-auto my_text_color" style="color: #FFE194;">
+      <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link" style="color: #FFE194;" href="index.html">Home</a>
+          <a class="nav-link" style="color: #FFE194;" href="{% url 'main_app:home' %}">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" style="color: #FFE194;" href="about.html">about</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="color: #FFE194;" href="blog.html">Blog</a>
+          <a class="nav-link" style="color: #FFE194;" href="">Add request</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="color: #FFE194;" href="portfolio.html">Portfolio</a>
+          <a class="nav-link" style="color: #FFE194;" href="">My requests</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="color: #FFE194;" href="contact.html">Contact</a>
+          <a class="nav-link" style="color: #FFE194;" href="">Tracking</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color: #FFE194;" href="">Contact</a>
         </li>
       </ul>
     </div>
@@ -73,36 +76,37 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-11 mx-auto">
-        <h1 class="font-tertiary my_text_color">Hi! I’m <br> Christoher <br> UX designer</h1>
+        <h1 class="font-tertiary my_text_color">Hi! I'm <br> Christoher <br> UX designer</h1>
       </div>
     </div>
   </div>
   <div class="layer-bg w-100">
-    <img class="img-fluid w-100" src="images/illustrations/leaf-bg.png" alt="bg-shape">
+    <img class="img-fluid w-100" src="{% static 'images/leaf-bg.png' %}" alt="bg-shape">
+  
   </div>
   <div class="layer" id="l2">
-    <img src="images/illustrations/dots-cyan.png" alt="bg-shape">
+    <img src="{% static 'images/sunglasses.png' %}" alt="bg-shape">
   </div>
   <div class="layer" id="l3">
-    <img src="images/illustrations/leaf-orange.png" alt="bg-shape">
+    <img src="{% static 'images/sunglasses.png' %}" alt="bg-shape">
   </div>
   <div class="layer" id="l4">
-    <img src="images/illustrations/dots-orange.png" alt="bg-shape">
+    <img src="{% static 'images/phone.png' %}" alt="bg-shape">
   </div>
   <div class="layer" id="l5">
-    <img src="images/illustrations/leaf-yellow.png" alt="bg-shape">
+    <img src="{% static 'images/phone.png' %}" alt="bg-shape">
   </div>
   <div class="layer" id="l6">
-    <img src="images/illustrations/leaf-cyan.png" alt="bg-shape">
+    <img src="{% static 'images/sunglasses.png' %}" alt="bg-shape">
   </div>
   <div class="layer" id="l7">
-    <img src="images/illustrations/dots-group-orange.png" alt="bg-shape">
+    <img src="{% static 'images/sunglasses.png' %}" alt="bg-shape">
   </div>
   <div class="layer" id="l8">
-    <img src="images/illustrations/leaf-pink-round.png" alt="bg-shape">
+    <img src="{% static 'images/sunglasses.png' %}" alt="bg-shape">
   </div>
   <div class="layer" id="l9">
-    <img src="images/illustrations/leaf-cyan-2.png" alt="bg-shape">
+    <img src="{% static 'images/sunglasses.png' %}" alt="bg-shape">
   </div>
   <!-- social icon -->
   <ul class="list-unstyled ml-5 mt-3 position-relative zindex-1">
