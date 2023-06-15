@@ -1,0 +1,27 @@
+{% extends "manager_app/manager.html" %}
+{% block main %}
+  
+
+
+<form  action="{% url 'manager_app:add_subcategory' category.id %} " method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="exampleInputEmail1">name of subcategory</label>
+      <input type="text" class="form-control" name="categoryname" aria-describedby="emailHelp" placeholder="Enter category">
+      
+    </div>
+    <a href="{% url 'manager_app:add_subcategory' category.id %}" type="submit" ><button  class="btn btn-primary">Submit</button></a>
+
+  </form>
+
+  <div>
+    <h1 style="text-align: center;"> {{category.name}}</h1>
+    
+    {% for sub in sub_category %}
+      <h2 style="text-align: center;">{{sub.name}}</h2>
+   
+      {% endfor %}
+
+</div>
+
+{% endblock main %}

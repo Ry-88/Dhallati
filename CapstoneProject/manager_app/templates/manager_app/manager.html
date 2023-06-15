@@ -93,7 +93,7 @@
                 <div class="categorynav">
                     {% for Catagory in Catagorys %}
 
-                    <a href="">{{Catagory.name}}</a>
+                    <a href="{% url 'manager_app:add_subcategory' Catagory.id %}">{{Catagory.name}}</a>
 
                     {% endfor %}
 

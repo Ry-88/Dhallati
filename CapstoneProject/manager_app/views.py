@@ -15,7 +15,7 @@ def add_category(request:HttpRequest):
 
         new_category=Catagory(name=request.POST["categoryname"])
         new_category.save()
-        return redirect('manager_app:add_subcategory')
+        return redirect('manager_app:index_page')
     return render(request,"manager_app/add_category_page.html")
 
 
@@ -24,8 +24,11 @@ def add_category(request:HttpRequest):
 def add_subcategory(request:HttpRequest,category_id):
 
     category=Catagory.objects.get(id=category_id)
+    
     if request.method=="POST":
-        new_subCategory=Catagory(category=category,name=request.POST["categoryname"])
+        new_subCategory=SubCatagory(category=category,name=request.POST["categoryname"])
         new_subCategory.save()
-        return redirect('manager_app:add_subcategory')
-    return render(request,"manager_app/add_category_page.html")
+
+        return redirect('manager_app:add_subcategory',category_id)
+    sub_category=SubCatagory.objects.filter(category=category)
+    return render(request,"manager_app/add_subcategory_page.html" ,{"category":category, "sub_category":sub_category})

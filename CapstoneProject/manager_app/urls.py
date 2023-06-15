@@ -7,6 +7,6 @@ urlpatterns = [
     path('',views.index_page,name="index_page"),
 
     path('add/category/',views.add_category,name="add_category"),
-    path('add/subcategory/',views.add_subcategory,name="add_subcategory")
+    path('add/category/<category_id>/subcategory',views.add_subcategory,name="add_subcategory")
     
 ]
