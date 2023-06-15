@@ -91,13 +91,19 @@
 
             <div class="category">
                 <div class="categorynav">
+                    {% for Catagory in Catagorys %}
+
+                    <a href="">{{Catagory.name}}</a>
+
+                    {% endfor %}
+
                 <a href="">word</a>
                 <a href="">word</a>
                 <a href="">word</a>
                 <a href="">word</a>
             </div>
                 <div>
-                <a href="" class="addcategory" style="  text-decoration: none; ">+</a>
+                <a href="{% url 'manager_app:add_category' %}" class="addcategory" style="  text-decoration: none; ">+</a>
                 </div>
 
             </div>
