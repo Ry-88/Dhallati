@@ -23,9 +23,9 @@ class RequestLostItem(models.Model):
         ("W","White"),
     ]
     PLACE_CHOICES=[
-        ("F","FRISTFLOOR"),
-        ("S","SECOUNDFLOOR"),
-        ("T","THIRDFLOOR"),
+        ("F","Frist Floor"),
+        ("S","Secound Floor"),
+        ("T","Third Floor"),
     ]
     STATUS_CHICES=[
         ("T","TRAKING"),

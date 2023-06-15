@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpRequest,HttpResponse
-" from main_app.models import Catagory,SubCatagory "
+from main_app.models import Catagory,SubCatagory
 
 
 # Create your views here.
@@ -12,6 +12,7 @@ def  index_page(request:HttpRequest):
 
 def add_category(request:HttpRequest):
     if request.method=="POST":
+
         new_category=Catagory(name=request.POST["categoryname"])
         new_category.save()
         return redirect('manager_app:add_subcategory')
