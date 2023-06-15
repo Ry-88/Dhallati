@@ -1,14 +1,165 @@
+{% load static %}
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% block title %} base {% endblock %}
+
+  <!-- Basic Page Needs
+  ================================================== -->
+  <meta charset="utf-8">
+  <title>Dhallati</title>
+
+  <!-- Mobile Specific Metas
+  ================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Creative Portfolio Template">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="author" content="Themefisher">
+  <meta name="generator" content="Themefisher Kross Template v1.0">
+  
+  <!-- theme meta -->
+  <meta name="theme-name" content="kross" />
+  
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.png' %}" />
+  
+  <!-- ** Plugins Needed for the Project ** -->
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.3/css/bootstrap.min.css" integrity="sha512-oc9+XSs1H243/FRN9Rw62Fn8EtxjEYWHXRvjS43YtueEewbS6ObfXcJNyohjHqVKFPoXXUxwc+q1K7Dee6vv9g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- slick slider -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css" integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- themefy-icon -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+
+  <!-- Main Stylesheet -->
+  <link href="{% static 'style/style.css' %}" rel="stylesheet">
+
 </head>
 <body>
-    {% block content %}
+  
 
+<header class="navigation fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark" style="height: 60px;">
+    <a class="navbar-brand font-tertiary h3" href="index.html"><img src="{% static 'images/logo.png' %}" style="height: 60px; width: 330px;" alt="Myself"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+      aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-{% endblock %}
-</body>
-</html>
+    <div class="collapse navbar-collapse text-center" id="navigation">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" style="color: #FFE194;" href="{% url 'main_app:home' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color: #FFE194;" href="about.html">about</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color: #FFE194;" href="">Add request</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color: #FFE194;" href="">My requests</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color: #FFE194;" href="">Tracking</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color: #FFE194;" href="">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<!-- hero area -->
+<section class="hero-area bg-primary" id="parallax">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-11 mx-auto">
+        <h1 class="font-tertiary my_text_color">Hi! I'm <br> Christoher <br> UX designer</h1>
+      </div>
+    </div>
+  </div>
+  <div class="layer-bg w-100">
+    <img class="img-fluid w-100" src="{% static 'images/leaf-bg.png' %}" alt="bg-shape">
+  
+  </div>
+  <div class="layer" id="l2">
+    <img src="{% static 'images/sunglasses.png' %}" alt="bg-shape">
+  </div>
+  <div class="layer" id="l3">
+    <img src="{% static 'images/sunglasses.png' %}" alt="bg-shape">
+  </div>
+  <div class="layer" id="l4">
+    <img src="{% static 'images/phone.png' %}" alt="bg-shape">
+  </div>
+  <div class="layer" id="l5">
+    <img src="{% static 'images/phone.png' %}" alt="bg-shape">
+  </div>
+  <div class="layer" id="l6">
+    <img src="{% static 'images/sunglasses.png' %}" alt="bg-shape">
+  </div>
+  <div class="layer" id="l7">
+    <img src="{% static 'images/sunglasses.png' %}" alt="bg-shape">
+  </div>
+  <div class="layer" id="l8">
+    <img src="{% static 'images/sunglasses.png' %}" alt="bg-shape">
+  </div>
+  <div class="layer" id="l9">
+    <img src="{% static 'images/sunglasses.png' %}" alt="bg-shape">
+  </div>
+  <!-- social icon -->
+  <ul class="list-unstyled ml-5 mt-3 position-relative zindex-1">
+    <li class="mb-3"><a class="text-white" href="https://themefisher.com/"><i class="ti-facebook"></i></a></li>
+    <li class="mb-3"><a class="text-white" href="https://themefisher.com/"><i class="ti-instagram"></i></a></li>
+    <li class="mb-3"><a class="text-white" href="https://themefisher.com/"><i class="ti-dribbble"></i></a></li>
+    <li class="mb-3"><a class="text-white" href="https://themefisher.com/"><i class="ti-twitter"></i></a></li>
+  </ul>
+  <!-- /social icon -->
+</section>
+<!-- /hero area -->
+
+<!-- footer -->
+<footer class="bg-dark footer-section">
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <h5 class="text-light">Email</h5>
+            <p class="text-white paragraph-lg font-secondary">steve.fruits@email.com</p>
+          </div>
+          <div class="col-md-4">
+            <h5 class="text-light">Phone</h5>
+            <p class="text-white paragraph-lg font-secondary">+880 2544 658 256</p>
+          </div>
+          <div class="col-md-4">
+            <h5 class="text-light">Address</h5>
+            <p class="text-white paragraph-lg font-secondary">125/A, CA Commercial Area, California, USA</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border-top text-center border-dark py-5">
+      <p class="mb-0 text-light">Copyright &copy;<script>
+          var CurrentYear = new Date().getFullYear()
+          document.write(CurrentYear)
+        </script> Designed &amp; Developed by <a class="text-white-50" href="Themefisher">Themefisher</a></p>
+    </div>
+  </footer>
+  <!-- /footer -->
+  
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js" integrity="sha512-h9kKZlwV1xrIcr2LwAPZhjlkx+x62mNwuQK5PAu9d3D+JXMNlGx8akZbqpXvp0vA54rz+DrqYVrzUGDMhwKmwQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <!-- slick slider -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- filter -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Shuffle/6.1.0/shuffle.min.js" integrity="sha512-r8mIpk3ypCMwNxH6srRZGbjHQlOFt3Mq2vrZ/iymx6g9JUqTeVavofeX6gbrxAC74X5HmBy5gxyhCm6OiXrM0Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
+  <!-- Main Script -->
+  <script src="{%static 'js/script.js'%}"></script>
+  
+  </body>
+  </html>
+  
