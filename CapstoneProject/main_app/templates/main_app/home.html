@@ -1,1 +1,51 @@
 {% extends 'main_app/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div>
+
+    <h1>Welcome to Dhallati</h1>
+    <h3>Dhallati is website that can help you find your missing item<br>
+    if you lost an item please press <button>request</button>
+    </h3>
+
+    <div>
+        
+        <h1>Track your request</h1>
+        <form action="{% url 'main_app:home' %}" method="POST">
+            {% csrf_token %}
+            <label>Insert request number</label>
+            <input type="text" placeholder="Request number" name="request_number">
+            <button type="submit" name="track">Submit</button>
+        </form>
+    </div>
+
+
+    <div>
+        <h1>Do you need more help?</h1>
+        <form action="{% url 'main_app:home' %}" method="POST">
+            {% csrf_token %}
+            <label>First name</label>
+            <input type="text" placeholder="First name" name="first_name">
+
+
+            <label>Last name</label>
+            <input type="text" placeholder="Last name" name="last_name">
+
+
+            <label>Email</label>
+            <input type="email" placeholder="Email" name="email">
+
+
+            <label>Message</label>
+            <input type="text" placeholder="Message" name="message">
+
+            <button type="submit" name="help">Submit</button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
