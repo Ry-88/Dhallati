@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-"""
+
 class Catagory(models.Model):
     name=models.CharField(max_length=100)
 
@@ -40,15 +40,35 @@ class RequestLostItem(models.Model):
     created_at=models.DateTimeField(auto_now_add=True)
     status=models.CharField(max_length=100,choices=STATUS_CHICES,default="F")
     is_read=models.BooleanField(default=False)
-    
+""" 
 class FoundItem(models.Model):
     sub_category =models.ForeignKey(SubCatagory, on_delete=models.CASCADE)
-    color=models.TextChoices()
-    place=models.TextChoices()
+    COLOR_CHOICES=[
+        ("R","Red"),
+        ("G","Green"),
+        ("B","Blue"),
+        ("BLA","Black"),
+        ("Y","Yellow"),
+        ("W","White"),
+    ]
+    PLACE_CHOICES=[
+        ("F","Frist Floor"),
+        ("S","Secound Floor"),
+        ("T","Third Floor"),
+    ]
+    STATUS_CHICES=[
+        ("T","TRAKING"),
+        ("M","MATCHED"),
+        ("F","FOUND"),
+    ]
+
+
+    color=models.CharField(max_length=100,choices=COLOR_CHOICES,default="B")
+    place=models.CharField(max_length=100,choices=PLACE_CHOICES,default="T")
     discription=models.TextField()
-    image=models.ImageField(upload_to="images/",default="images/default.jpg")
+    image=models.ImageField(upload_to="image/",default="image/default.jpg")
     created_at=models.DateTimeField(auto_now_add=True)
-    status=models.TextChoices()
+    status=models.CharField(max_length=100,choices=STATUS_CHICES,default="F")
 
 
 class LostItemOwner(models.Model):
