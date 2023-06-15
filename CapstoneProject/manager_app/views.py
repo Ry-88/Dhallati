@@ -4,10 +4,10 @@ from main_app.models import Catagory,SubCatagory
 
 
 # Create your views here.
-'''
+
 def  index_page(request:HttpRequest):
     return render(request,"manager_app/manager.html")
-def add_category(request:HttpRequest):
+'''def add_category(request:HttpRequest):
     if request.method=="404":
         new_category=Catagory(name=request.POST["categoryname"])
         return redirect()
