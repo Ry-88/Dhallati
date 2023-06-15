@@ -4,6 +4,9 @@ from . import views
 app_name = "manager_app"
 
 urlpatterns = [
-    path('',views.index_page,name="index_page")
+    path('',views.index_page,name="index_page"),
+
+    path('add/category/',views.add_category,name="add_category"),
+    path('add/subcategory/',views.add_subcategory,name="add_subcategory")
     
 ]

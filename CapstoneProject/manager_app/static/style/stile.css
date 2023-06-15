@@ -51,3 +51,44 @@ min-height: 100vh;
 background-color:rgb(225, 74, 74);
 color: #E8F6EF;
 }
+
+
+
+.subcategory{
+    display: flex;
+    justify-content: space-between;
+
+    margin: 30px 0px 10px 0px;
+    padding: 15px 190px;
+    column-gap: 10px;
+}
+
+
+
+.subcategorynav a{
+    padding: 5px 10px;
+    background-color: #616186;
+    border-radius: 30px;
+    color: #E8F6EF;
+    text-decoration: none;
+}
+.subcategorynav a:hover{
+    background-color: #E8F6EF;
+    color: #616186;
+}
+.addsubcategory {
+    border-radius: 50%;
+    background-color: #E8F6EF ;
+    color: #7e7e9c;
+    font-weight: bolder;
+    font-size: large;
+    text-decoration: none;
+    padding: 10px 15px;
+    float: right;
+
+
+}
+.addsubcategory :hover{
+background-color:rgb(225, 74, 74);
+color: #E8F6EF;
+}
