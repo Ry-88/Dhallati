@@ -21,31 +21,43 @@
         </form>
     </div>
 
+    <section class="section section-on-footer" >
+        <div class="container">
+          <div class="row">
+            <div class="col-12 text-center">
+              <h2 class="section-title">Contact Info</h2>
+            </div>
+            <div class="col-lg-8 mx-auto">
+              <div class="bg-white rounded text-center p-5 shadow-down">
+                <h4 class="mb-80">Contact Form</h4>
+                <form action="{% url 'main_app:home' %}" class="row" method="POST">
+                    {% csrf_token %}
+                  <div class="col-md-6">
+                    
+                    <input type="text" placeholder="First name" name="first_name" class="form-control px-0 mb-4" style="background-color: #e8f6ef4d;">
+                  </div>
+                  <div class="col-md-6">
+                    
+                    <input type="text" placeholder="Last name" name="last_name" class="form-control px-0 mb-4" style="background-color: #e8f6ef4d;">
+                  </div>
+                  <div class="col-md-6">
+                   
+                    <input type="email" placeholder="Email" name="email" class="form-control px-0 mb-4" style="background-color: #e8f6ef4d;">
+                  </div>
+                  <div class="col-12">
+                    
+                    <textarea placeholder="Message" name="message" class="form-control px-0 mb-4" style="background-color: #e8f6ef4d;"></textarea>
+                  </div>
 
-    <div>
-        <h1>Do you need more help?</h1>
-        <form action="{% url 'main_app:home' %}" method="POST">
-            {% csrf_token %}
-            <label>First name</label>
-            <input type="text" placeholder="First name" name="first_name">
-
-
-            <label>Last name</label>
-            <input type="text" placeholder="Last name" name="last_name">
-
-
-            <label>Email</label>
-            <input type="email" placeholder="Email" name="email">
-
-
-            <label>Message</label>
-            <input type="text" placeholder="Message" name="message">
-
-            <button type="submit" name="help">Submit</button>
-
-        </form>
-
-    </div>
+                  <div class="col-lg-6 col-10 mx-auto">
+                    <button class="btn btn-primary w-100" type="submit" name="help">send</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 </div>
 
 {% endblock %}
