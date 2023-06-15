@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-"""
+
 class Catagory(models.Model):
     name=models.CharField(max_length=100)
 
@@ -40,7 +40,7 @@ class RequestLostItem(models.Model):
     created_at=models.DateTimeField(auto_now_add=True)
     status=models.CharField(max_length=100,choices=STATUS_CHICES,default="F")
     is_read=models.BooleanField(default=False)
-    
+"""   
 class FoundItem(models.Model):
     sub_category =models.ForeignKey(SubCatagory, on_delete=models.CASCADE)
     color=models.TextChoices()
