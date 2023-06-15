@@ -7,6 +7,20 @@ from .models import RequestLostItem, Catagory, SubCatagory
 
 def home(request: HttpRequest):
 
+
+    if request.method == 'POST':
+
+        if 'track' in request.POST:
+            all_track = Class.objects.all()
+            track_request= Class.objects.get(id=request.POST['request_number'])
+
+        if 'help' in request.POST:
+            new_help = Class(first_name=request.POST['first_name'],
+                             last_name=request.POST['last_name'],
+                             email=request.POST['email'],
+                             message=request.POST['message'])
+            new_help.save()
+
     return render(request, 'main_app/home.html')
 
 
@@ -32,8 +46,10 @@ def request_add(request: HttpRequest):
         new_request.save()
         return redirect("main_app:home")
 
-    return render(request, 'main_app/request_add.html', {"catagories": catagories})
+    return render(request, 'main_app/request_add.html')
 
+
+    
 
 def request_detail(request: HttpRequest):
 
