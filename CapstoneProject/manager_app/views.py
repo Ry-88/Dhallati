@@ -4,19 +4,27 @@ from main_app.models import Catagory,SubCatagory
 
 
 # Create your views here.
-'''
+
 def  index_page(request:HttpRequest):
-    return render(request,"manager_app/manager.html")
+    Catagorys=Catagory.objects.all()
+    return render(request,"manager_app/manager.html",{"Catagorys":Catagorys})
+
+
 def add_category(request:HttpRequest):
-    if request.method=="404":
+    if request.method=="POST":
         new_category=Catagory(name=request.POST["categoryname"])
-        return redirect()
-    return render(request,"")
+        new_category.save()
+        return redirect('manager_app:add_subcategory')
+    return render(request,"manager_app/add_category_page.html")
+
+
+
 
 def add_subcategory(request:HttpRequest,category_id):
 
     category=Catagory.objects.get(id=category_id)
-    if request.method=="404":
+    if request.method=="POST":
         new_subCategory=Catagory(category=category,name=request.POST["categoryname"])
-        return redirect()
-        '''
+        new_subCategory.save()
+        return redirect('manager_app:add_subcategory')
+    return render(request,"manager_app/add_category_page.html")
