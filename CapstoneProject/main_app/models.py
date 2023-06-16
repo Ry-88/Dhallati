@@ -34,12 +34,13 @@ class RequestLostItem(models.Model):
     ]
 
     color=models.CharField(max_length=100,choices=COLOR_CHOICES,default="B")
-    place=models.CharField(max_length=100,choices=PLACE_CHOICES,default="T")
+    place=models.CharField(max_length=100,choices=PLACE_CHOICES)
     discription=models.TextField()
     image=models.ImageField(upload_to="image/",default="image/default.jpg")
     created_at=models.DateTimeField(auto_now_add=True)
     status=models.CharField(max_length=100,choices=STATUS_CHICES,default="F")
     is_read=models.BooleanField(default=False)
+
 """ 
 class FoundItem(models.Model):
     sub_category =models.ForeignKey(SubCatagory, on_delete=models.CASCADE)
