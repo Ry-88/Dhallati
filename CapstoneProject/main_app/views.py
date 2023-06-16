@@ -42,12 +42,12 @@ def request_add(request: HttpRequest,category_id):
         
 
         if "image" in request.FILES:
-            new_request = RequestLostItem( color=request.POST["color"], 
+            new_request = RequestLostItem(catagory=category,Sub_catagory= SubCatagory.objects.get(id=request.POST["sub_category"]), color=request.POST["color"], 
                                           place=request.POST["place"], description=request.POST["description"], 
                                           image=request.FILES["image"],
                                           )
         else:
-            new_request = RequestLostItem( color=request.POST["color"], 
+            new_request = RequestLostItem(catagory=category,Sub_catagory= SubCatagory.objects.get(id=request.POST["sub_category"]), color=request.POST["color"], 
                                           place=request.POST["place"],description=request.POST["description"],
                                           )
         new_request.save()
