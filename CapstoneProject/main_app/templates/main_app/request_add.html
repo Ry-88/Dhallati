@@ -45,7 +45,7 @@
             <select class="form-select" name="place" id="inputGroupSelect01">
                     <option selected>Choose</option>
                 {% for reques in requests %}
-                    <option value="{{reques.place}}">{{reques.place}}</option>
+                    <option value="{{reques.id}}">{{reques.place}}</option>
                 {% endfor %}
             </select>
         </div>

@@ -35,6 +35,8 @@ def request_add(request: HttpRequest):
     sub_catagory = SubCatagory.objects.filter()
     requests = RequestLostItem.objects.all()
     if request.method == "POST":
+        requestItem = RequestLostItem.objects.get(id=request.POST["publisher"])
+
         if "image" in request.FILES:
             new_request = RequestLostItem(catagory=request.POST["catagory"], color=request.POST["color"], 
                                           place=request.POST["place"], description=request.POST["description"], 

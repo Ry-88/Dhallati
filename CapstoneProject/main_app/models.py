@@ -4,12 +4,15 @@ from django.db import models
 
 class Catagory(models.Model):
     name=models.CharField(max_length=100)
+    def __str__(self) -> str:
+        return f"{self.name}"
 
 
 class SubCatagory(models.Model):
     category = models.ForeignKey(Catagory,on_delete=models.CASCADE)
     name=models.CharField(max_length=100)
-
+    def __str__(self) -> str:
+        return f"{self.name}"
 
 
 class RequestLostItem(models.Model):
