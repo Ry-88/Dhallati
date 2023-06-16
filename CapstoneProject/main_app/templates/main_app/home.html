@@ -5,23 +5,46 @@
 
 <div id="description">
 
-    <h1>Welcome to Dhallati</h1>
-    <h3>Dhallati is website that can help you find your missing item<br>
-    if you lost an item please press <button>request</button>
-    </h3>
-
+    <section class="section" >
+        <div class="container">
+          <div class="row">
+            <div class="col-12 text-center">
+              <h2 class="section-title">Welcome to Dhallati</h2>
+            </div>
+            <div class="col-lg-8 mx-auto">
+              <div class="bg-white rounded text-center p-5 shadow-down">
+                <h4 class="mb-80">Dhallati is website that can help you find your missing item<br>
+                    if you lost an item please press <br><br><a href="{% url 'main_app:request_add' %}"><button class="btn btn-primary w-80">Request</button></h4></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     <div>
-        
-        <h1>Track your request</h1>
-        <form action="{% url 'main_app:home' %}" method="POST">
-            {% csrf_token %}
-            <label>Insert request number</label>
-            <input type="text" placeholder="Request number" name="request_number">
-            <button type="submit" name="track">Submit</button>
-        </form>
-    </div>
-
-
+        <section class="section" >
+            <div class="container">
+              <div class="row">
+                <div class="col-12 text-center">
+                  <h2 class="section-title">Track your request</h2>
+                </div>
+                <div class="col-lg-8 mx-auto">
+                  <div class="bg-white rounded text-center p-5 shadow-down">
+                    <h4 class="mb-80">Track Form</h4>
+                    <form action="{% url 'main_app:home' %}" class="row" method="POST">
+                        {% csrf_token %}
+                      <div class="col-md-6">
+                        <input type="text" placeholder="Request number" name="request_number" class="form-control px-0 mb-4" style="background-color: #e8f6ef4d;">
+                      </div>
+                      
+                      <div class="col-lg-6 col-10 mx-auto">
+                        <button class="btn btn-primary w-80" type="submit" name="track">send</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
     <section class="section section-on-footer" >
         <div class="container">
           <div class="row">
