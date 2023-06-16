@@ -39,9 +39,9 @@
 <body>
   
 
-<header class="navigation fixed-top">
+<header class="navigation fixed-top" id="home">
   <nav class="navbar navbar-expand-lg navbar-dark" style="height: 60px;">
-    <a class="navbar-brand font-tertiary h3" href="index.html"><img src="{% static 'images/logo.png' %}" style="height: 60px; width: 330px;" alt="Myself"></a>
+    <a class="navbar-brand font-tertiary h3" href="{% url 'main_app:home' %}"><img src="{% static 'images/logo.png' %}" style="height: 45px; width: 250px;" alt="Myself"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
       aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -62,10 +62,10 @@
           <a class="nav-link" style="color: #FFE194;" href="">My requests</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="color: #FFE194;" href="">Tracking</a>
+          <a class="nav-link" style="color: #FFE194;" href="#Tracking">Tracking</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="color: #FFE194;" href="">Contact</a>
+          <a class="nav-link" style="color: #FFE194;" href="#contact">Contact</a>
         </li>
       </ul>
     </div>
@@ -73,43 +73,45 @@
 </header>
 
 <!-- hero area -->
-<section class="hero-area bg-primary" id="parallax">
+<section class="hero-area bg-primary" id="parallax" style="height: 100vh;">
   <div class="container">
     <div class="row">
       <div class="col-lg-11 mx-auto">
-        <h1 class="font-tertiary my_text_color">Hi! I'm <br> Christoher <br> UX designer</h1>
+        <h1 class="font-tertiary my_text_color">Welcome <br><h3 class="font-tertiary my_text_color"> Find your  <br> lost items </h3> </h1>
       </div>
     </div>
   </div>
-  <div class="layer-bg w-100">
-    <img class="img-fluid w-100" src="{% static 'images/leaf-bg.png' %}" alt="bg-shape">
-  
-  </div>
+  <div class="custom-shape-divider-bottom-1686935527">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+        <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+        <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+    </svg>
+</div>
   <div class="layer" id="l2">
-    <img src="{% static 'images/sunglasses.png' %}" class="img_h" alt="bg-shape">
+    
   </div>
   <div class="layer" id="l3">
-    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-sunglasses" viewBox="0 0 16 16">
-      <path d="M3 5a2 2 0 0 0-2 2v.5H.5a.5.5 0 0 0 0 1H1V9a2 2 0 0 0 2 2h1a3 3 0 0 0 3-3 1 1 0 1 1 2 0 3 3 0 0 0 3 3h1a2 2 0 0 0 2-2v-.5h.5a.5.5 0 0 0 0-1H15V7a2 2 0 0 0-2-2h-2a2 2 0 0 0-1.888 1.338A1.99 1.99 0 0 0 8 6a1.99 1.99 0 0 0-1.112.338A2 2 0 0 0 5 5H3zm0 1h.941c.264 0 .348.356.112.474l-.457.228a2 2 0 0 0-.894.894l-.228.457C2.356 8.289 2 8.205 2 7.94V7a1 1 0 0 1 1-1z"/>
-    </svg>
-  </div>
-  <div class="layer" id="l4">
     <img src="{% static 'images/phone.png' %}" class="img_h"  alt="bg-shape">
   </div>
+  <div class="layer" id="l4">
+    <img src="{% static 'images/glasses1.png' %}" style="height: 30vh;"  alt="bg-shape">
+  </div>
+  
   <div class="layer" id="l5">
-    <img src="{% static 'images/glasses1.png' %}" style="rotate: 50deg;"  alt="bg-shape">
+    
   </div>
   <div class="layer" id="l6">
-    <img src="{% static 'images/bank-card.png' %}" class="img_h" style="rotate: 25deg;" alt="bg-shape">
+    <img src="{% static 'images/keys.png' %}" class="img_h" style="rotate: 0deg;" alt="bg-shape">
   </div>
   <div class="layer" id="l7">
-    <i class="bi bi-person-vcard"></i>
+    
   </div>
   <div class="layer" id="l8">
     <img src="{% static 'images/bank-card.png' %}" style="rotate: -25deg;" class="img_h" alt="bg-shape">
   </div>
   <div class="layer" id="l9">
-    <img src="{% static 'images/sunglasses.png' %}" class="img_h" alt="bg-shape">
+    <img src="{% static 'images/wallet1.png' %}" class="img_h" alt="bg-shape">
   </div>
   <!-- social icon -->
   <ul class="list-unstyled ml-5 mt-3 position-relative zindex-1">
@@ -121,7 +123,7 @@
   <!-- /social icon -->
 </section>
 <!-- /hero area -->
-<div style="background-color: #e8f6ef;" data-background="{% static 'images/bg-dots.png' %}">
+<div style="background-color: #e8f6ef;" >
   {%block content %}
   {% endblock %}
 </div>
@@ -132,15 +134,15 @@
         <div class="row">
           <div class="col-md-4">
             <h5 class="text-light">Email</h5>
-            <p class="text-white paragraph-lg font-secondary">steve.fruits@email.com</p>
+            <p class="text-white paragraph-lg font-secondary">my_email@gmail.com</p>
           </div>
           <div class="col-md-4">
             <h5 class="text-light">Phone</h5>
-            <p class="text-white paragraph-lg font-secondary">+880 2544 658 256</p>
+            <p class="text-white paragraph-lg font-secondary">+966 *** *** ***</p>
           </div>
           <div class="col-md-4">
             <h5 class="text-light">Address</h5>
-            <p class="text-white paragraph-lg font-secondary">125/A, CA Commercial Area, California, USA</p>
+            <p class="text-white paragraph-lg font-secondary"> TUWAIQ Students, Riyadh, KSA</p>
           </div>
         </div>
       </div>
@@ -149,7 +151,7 @@
       <p class="mb-0 text-light">Copyright &copy;<script>
           var CurrentYear = new Date().getFullYear()
           document.write(CurrentYear)
-        </script> Designed &amp; Developed by <a class="text-white-50" href="Themefisher">Themefisher</a></p>
+        </script> Created by Love in <a class="text-white-50" href="">TUWAIQ</a></p>
     </div>
   </footer>
   <!-- /footer -->
