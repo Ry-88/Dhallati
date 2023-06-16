@@ -33,7 +33,10 @@ def request_add(request: HttpRequest):
 
     catagories = Catagory.objects.all()
     sub_catagory = SubCatagory.objects.filter()
+    requests = RequestLostItem.objects.all()
     if request.method == "POST":
+        requestItem = RequestLostItem.objects.get(id=request.POST["publisher"])
+
         if "image" in request.FILES:
             new_request = RequestLostItem(catagory=request.POST["catagory"], color=request.POST["color"], 
                                           place=request.POST["place"], description=request.POST["description"], 
@@ -46,7 +49,7 @@ def request_add(request: HttpRequest):
         new_request.save()
         return redirect("main_app:home")
 
-    return render(request, 'main_app/request_add.html')
+    return render(request, 'main_app/request_add.html', {"requests":requests})
 
 
     
