@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpRequest,HttpResponse
-from main_app.models import Catagory,SubCatagory
+from main_app.models import Catagory,SubCatagory,FoundItem
 
 from django.core import serializers
 import json
@@ -9,7 +9,9 @@ import json
 
 #base-file-for-exdends---------------------------
 def  index_page(request:HttpRequest): 
-    return render(request,"manager_app/manager.html")
+    found_items =FoundItem.objects.all()
+    
+    return render(request,"manager_app/manager.html" ,{"found_items":found_items})
 #-------------------------------------
 
 
@@ -21,7 +23,6 @@ def category_page(request:HttpRequest):
         new_category=Catagory(name=request.POST["categoryname"])
         new_category.save()
         return redirect('manager_app:category_page')
-    
 
     return render(request,"manager_app/category.html",{"Catagorys":Catagorys})
 
@@ -69,7 +70,10 @@ def category_for_add_found(request:HttpRequest):
 def add_found_item_page(request:HttpRequest ,category_id):
     catagory=Catagory.objects.get(id=category_id)
     sub_category=SubCatagory.objects.filter(category=catagory)
-
+    if request.method=="POST":
+        new_found_item=FoundItem(catagory=catagory,Sub_catagory= SubCatagory.objects.get(id=request.POST["sub_category"]) ,color=request.POST["color"],place=request.POST["place"],discription=request.POST["discription"],image=request.FILES["image"])
+        new_found_item.save()
+        return redirect("manager_app:index_page")
     return render(request,"manager_app/add_found_item_page.html",{"catagory":catagory,"sub_category":sub_category})
     
 
