@@ -40,7 +40,7 @@ class RequestLostItem(models.Model):
     discription=models.TextField()
     image=models.ImageField(upload_to="image/",default="image/default.jpg")
     created_at=models.DateField(auto_now_add=True)
-    status=models.CharField(max_length=100,choices=STATUS_CHICES,default="F")
+    status=models.CharField(max_length=100,choices=STATUS_CHICES,default="T")
     is_read=models.BooleanField(default=False)
 
 
@@ -74,7 +74,7 @@ class FoundItem(models.Model):
     discription=models.TextField()
     image=models.ImageField(upload_to="images/",default="images/default.jpg")
     created_at=models.DateField(auto_now_add=True)
-    status=models.CharField(max_length=100,choices=STATUS_CHICES,default="F")
+    status=models.CharField(max_length=100,choices=STATUS_CHICES,default="T")
 
 """
 class LostItemOwner(models.Model):

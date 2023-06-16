@@ -10,11 +10,16 @@ import json
 #base-file-for-exdends---------------------------
 def  index_page(request:HttpRequest): 
     found_items =FoundItem.objects.all()
+
+
     
     return render(request,"manager_app/manager.html" ,{"found_items":found_items})
 #-------------------------------------
 
 
+
+
+#-----------------------------------------------------------------------------------------------------------
 def category_page(request:HttpRequest):
     Catagorys=Catagory.objects.all()
     #for add new category
@@ -51,12 +56,12 @@ def sub_category(request:HttpRequest,category_id):
 
 
 
-
 def delete_sub_category(request:HttpRequest,category_id,sub_category_id):
    
     sub_category=SubCatagory.objects.get(id=sub_category_id)
     sub_category.delete()
     return redirect('manager_app:sub_category',category_id)
+#------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -78,4 +83,8 @@ def add_found_item_page(request:HttpRequest ,category_id):
     
 
 
+
+def found_item_page(request:HttpRequest):
+    found_items =FoundItem.objects.all()
+    return render(request,"manager_app/found_items.html",{"found_items":found_items})
 

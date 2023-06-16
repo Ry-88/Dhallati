@@ -1,0 +1,92 @@
+{% extends "manager_app/manager.html" %}
+
+
+{% block main %}
+          
+        
+<div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; ">
+    <div>
+        <div class="homenav">
+            <a href="">Lost items request</a>
+            <a href="">found items </a>
+         
+            <a href=""> confirm items </a>
+        </div>
+        
+    </div>
+</div>
+
+        <div class="ag-format-container">
+            <div class="ag-courses_box">
+              {% for found_item in found_items %}
+              <div class="ag-courses_item">
+                <img src="{{found_item.image.url}}" height="200px" alt="">
+                <a href="#" class="ag-courses-item_link">
+                  <div class="ag-courses-item_bg" 
+                  {% if found_item.color == 'G' %}
+                    style=" background-color: rgb(58, 203, 58);"
+                    {% elif found_item.color == 'R' %}
+                    style="background-color: rgb(255, 73, 73);"
+                    {% elif found_item.color == 'B' %}
+                    style="background-color: rgb(73, 109, 255);"
+                    {% elif found_item.color == 'BLA' %}
+                    style="background-color: rgb(18, 15, 15);"
+                    {% elif found_item.color == 'Y' %}
+                    style="background-color: rgb(213, 245, 72);"
+                    {% elif found_item.color == 'W' %}
+                    style="background-color: rgb(144, 147, 130);"
+                    {% endif %}>
+                </div>
+                  <div class="ag-courses-item_title">
+                    <h3>description </h3><h4>{{found_item.discription}}</h4>
+             
+                  </div>
+                  <div class="ag-courses-item_date-box">
+                    found id :
+                    <span class="ag-courses-item_date">
+                        {{found_item.id}}
+                    </span>
+                  </div>
+                  <div class="ag-courses-item_date-box">
+                    category :
+                    <span class="ag-courses-item_date">
+                        {{found_item.catagory.name}}
+                    </span>
+                  </div>
+                  <div class="ag-courses-item_date-box">
+                    sub category:
+                    <span class="ag-courses-item_date">
+                        {{found_item.Sub_catagory.name}}
+                    </span>
+                  </div>
+            
+                  <div class="ag-courses-item_date-box">
+                    place:
+                    <span class="ag-courses-item_date">
+                        {{found_item.get_place_display}}
+                    </span>
+                  </div>
+                  <div class="ag-courses-item_date-box">
+                    status:
+                    <span class="ag-courses-item_date">
+                        {{found_item.get_status_display}}
+                    </span>
+                  </div>
+                  <div class="ag-courses-item_date-box">
+                    created at :
+                    <span class="ag-courses-item_date">
+                        {{found_item.created_at}}
+                    </span>
+                  </div>
+                </a>
+              </div>
+      
+              {% endfor %}
+          
+             
+          
+             
+         
+         
+
+          {% endblock main %}
