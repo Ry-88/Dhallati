@@ -1,0 +1,44 @@
+{% extends "manager_app/manager.html" %}
+{% block main %}
+              
+            
+<div class="container">
+
+    <div class="row height d-flex justify-content-center align-items-center" >
+
+      <div class="col-md-8">
+
+        <div class="search" style="display: flex;margin-top: 30px;">
+         
+          <form  action="{% url 'manager_app:category_page'  %} " style="width: 100%;" method="post">
+            {% csrf_token %}
+            <label for="exampleInputEmail1">name of category</label>
+            <div class="form-group" style="display: flex;" >
+             
+              <input type="text" class="form-control" name="categoryname" aria-describedby="emailHelp" placeholder="Enter category">
+            <button  type="submit" class="btn btn-primary">add</button>
+            </div>
+            
+        
+          </form>
+        </div>
+        
+      </div>
+      
+    </div>
+ 
+</div>
+<div class="body-category">
+        {% for Catagory in Catagorys %}
+        <div class="category-edit">
+        <a style=" text-align: center;" href="{% url 'manager_app:sub_category' Catagory.id %}">{{Catagory.name}}</a>
+        <a href="{% url 'manager_app:delete_category'  Catagory.id %}" style="background-color: rgb(186, 93, 93); float: right; padding: 10px; border-radius: 10px;">delete</a>
+        
+      </div>
+        {% endfor %}
+      </div>
+
+   
+</div>
+   
+{% endblock main %}
