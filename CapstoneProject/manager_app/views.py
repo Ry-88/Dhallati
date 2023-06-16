@@ -71,7 +71,7 @@ def add_found_item_page(request:HttpRequest ,category_id):
     catagory=Catagory.objects.get(id=category_id)
     sub_category=SubCatagory.objects.filter(category=catagory)
     if request.method=="POST":
-        new_found_item=FoundItem(catagory=catagory,Sub_catagory= SubCatagory.objects.get(id=request.POST["sub_category"]) ,color=request.POST["color"],place=request.POST["place"],discription=request.POST["discription"],image=request.FILES["image"])
+        new_found_item=FoundItem(catagory=catagory,Sub_catagory= SubCatagory.objects.get(id=request.POST["sub_category"]) ,color=request.POST["color"],place=request.POST["place"],description=request.POST["description"],image=request.FILES["image"])
         new_found_item.save()
         return redirect("manager_app:index_page")
     return render(request,"manager_app/add_found_item_page.html",{"catagory":catagory,"sub_category":sub_category})

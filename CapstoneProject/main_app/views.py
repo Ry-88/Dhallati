@@ -28,28 +28,32 @@ def not_found(request: HttpRequest):
 
     return render(request, 'main_app/not_found.html')
 
+def category(request: HttpRequest):
+    categories = Catagory.objects.all()
+    return render(request,'main_app/category_for_add_request_add.html',{"categories":categories})
 
-def request_add(request: HttpRequest):
 
-    catagories = Catagory.objects.all()
-    sub_catagory = SubCatagory.objects.filter()
-    requests = RequestLostItem.objects.all()
+def request_add(request: HttpRequest,category_id):
+
+    category=Catagory.objects.get(id=category_id)
+    sub_category=SubCatagory.objects.filter(category=category)
+    
     if request.method == "POST":
-        requestItem = RequestLostItem.objects.get(id=request.POST["publisher"])
+        
 
         if "image" in request.FILES:
-            new_request = RequestLostItem(catagory=request.POST["catagory"], color=request.POST["color"], 
+            new_request = RequestLostItem( color=request.POST["color"], 
                                           place=request.POST["place"], description=request.POST["description"], 
-                                          image=request.FILES["image"],status=request.POST["status"], 
-                                          is_read=request.POST["is_read"])
+                                          image=request.FILES["image"],
+                                          )
         else:
-            new_request = RequestLostItem(catagory=request.POST["catagory"], color=request.POST["color"], 
+            new_request = RequestLostItem( color=request.POST["color"], 
                                           place=request.POST["place"],description=request.POST["description"],
-                                          status=request.POST["status"], is_read=request.POST["is_read"])
+                                          )
         new_request.save()
         return redirect("main_app:home")
 
-    return render(request, 'main_app/request_add.html', {"requests":requests})
+    return render(request, 'main_app/request_add.html', {"category":category,"sub_category":sub_category})
 
 
     

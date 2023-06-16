@@ -40,7 +40,7 @@ class RequestLostItem(models.Model):
 
     color=models.CharField(max_length=100,choices=COLOR_CHOICES,default="B")
     place=models.CharField(max_length=100,choices=PLACE_CHOICES)
-    discription=models.TextField()
+    description=models.TextField()
     image=models.ImageField(upload_to="image/",default="image/default.jpg")
     created_at=models.DateField(auto_now_add=True)
     status=models.CharField(max_length=100,choices=STATUS_CHICES,default="F")
@@ -74,7 +74,7 @@ class FoundItem(models.Model):
     ]
     color=models.CharField(max_length=100,choices=COLOR_CHOICES,default="B")
     place=models.CharField(max_length=100,choices=PLACE_CHOICES,default="T")
-    discription=models.TextField()
+    description=models.TextField()
     image=models.ImageField(upload_to="images/",default="images/default.jpg")
     created_at=models.DateField(auto_now_add=True)
     status=models.CharField(max_length=100,choices=STATUS_CHICES,default="F")

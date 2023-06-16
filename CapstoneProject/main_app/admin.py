@@ -14,5 +14,5 @@ admin.site.register(SubCatagory, SubCatagoryAdmin)
 
 
 class RequestLostItemAdmin(admin.ModelAdmin):
-    list_display = ('catagory','Sub_catagory','color', 'place', 'discription', 'created_at')
+    list_display = ('catagory','Sub_catagory','color', 'place', 'description', 'created_at')
 admin.site.register(RequestLostItem, RequestLostItemAdmin)
