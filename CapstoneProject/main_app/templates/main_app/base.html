@@ -52,7 +52,7 @@
           <a class="nav-link" style="color: #FFE194;" href="{% url 'main_app:home' %}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="color: #FFE194;" href="about.html">about</a>
+          <a class="nav-link" style="color: #FFE194;" href="#description">Description</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" style="color: #FFE194;" href="">Add request</a>
@@ -85,28 +85,28 @@
   
   </div>
   <div class="layer" id="l2">
-    <img src="{% static 'images/sunglasses.png' %}" alt="bg-shape">
+    <img src="{% static 'images/sunglasses.png' %}" class="img_h" alt="bg-shape">
   </div>
   <div class="layer" id="l3">
-    <img src="{% static 'images/sunglasses.png' %}" alt="bg-shape">
+    <img src="{% static 'images/sunglasses.png' %}" class="img_h" alt="bg-shape">
   </div>
   <div class="layer" id="l4">
-    <img src="{% static 'images/phone.png' %}" alt="bg-shape">
+    <img src="{% static 'images/phone.png' %}" class="img_h"  alt="bg-shape">
   </div>
-  <div class="layer" id="l5">
-    <img src="{% static 'images/phone.png' %}" alt="bg-shape">
+  <div class="layer" id="l5" style="margin-left: -40vh;">
+    <img src="{% static 'images/phone.png' %}" class="img_h" style="height: 25vh;" alt="bg-shape">
   </div>
   <div class="layer" id="l6">
-    <img src="{% static 'images/sunglasses.png' %}" alt="bg-shape">
+    <img src="{% static 'images/sunglasses.png' %}" class="img_h" alt="bg-shape">
   </div>
   <div class="layer" id="l7">
-    <img src="{% static 'images/sunglasses.png' %}" alt="bg-shape">
+    <img src="{% static 'images/sunglasses.png' %}" class="img_h" alt="bg-shape">
   </div>
   <div class="layer" id="l8">
-    <img src="{% static 'images/sunglasses.png' %}" alt="bg-shape">
+    <img src="{% static 'images/sunglasses.png' %}" class="img_h" alt="bg-shape">
   </div>
   <div class="layer" id="l9">
-    <img src="{% static 'images/sunglasses.png' %}" alt="bg-shape">
+    <img src="{% static 'images/sunglasses.png' %}" class="img_h" alt="bg-shape">
   </div>
   <!-- social icon -->
   <ul class="list-unstyled ml-5 mt-3 position-relative zindex-1">
@@ -118,9 +118,9 @@
   <!-- /social icon -->
 </section>
 <!-- /hero area -->
-<div style="background-color: #e8f6ef;">
-    {%block content %}
-    {% endblock %}
+<div style="background-color: #e8f6ef;" data-background="{% static 'images/bg-dots.png' %}">
+  {%block content %}
+  {% endblock %}
 </div>
 <!-- footer -->
 <footer class="bg-dark footer-section">

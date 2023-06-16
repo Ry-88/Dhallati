@@ -837,3 +837,7 @@ blockquote {
 .my_text_color{
   color: #FFE194;
 }
+
+.img_h{
+  height: 11vh;
+}

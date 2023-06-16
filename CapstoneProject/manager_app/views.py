@@ -2,30 +2,76 @@ from django.shortcuts import render,redirect
 from django.http import HttpRequest,HttpResponse
 from main_app.models import Catagory,SubCatagory
 
+from django.core import serializers
+import json
 
 # Create your views here.
 
-def  index_page(request:HttpRequest):
+#base-file-for-exdends---------------------------
+def  index_page(request:HttpRequest): 
+    return render(request,"manager_app/manager.html")
+#-------------------------------------
+
+
+def category_page(request:HttpRequest):
     Catagorys=Catagory.objects.all()
-    return render(request,"manager_app/manager.html",{"Catagorys":Catagorys})
-
-
-def add_category(request:HttpRequest):
+    #for add new category
     if request.method=="POST":
 
         new_category=Catagory(name=request.POST["categoryname"])
         new_category.save()
-        return redirect('manager_app:add_subcategory')
-    return render(request,"manager_app/add_category_page.html")
+        return redirect('manager_app:category_page')
+    
+
+    return render(request,"manager_app/category.html",{"Catagorys":Catagorys})
 
 
 
 
-def add_subcategory(request:HttpRequest,category_id):
+def delete_category(request:HttpRequest,category_id):
+ 
+    category=Catagory.objects.get(id=category_id)
+    category.delete()
+    return redirect("manager_app:category_page")
+
+#add_subcategory
+
+def sub_category(request:HttpRequest,category_id):
 
     category=Catagory.objects.get(id=category_id)
+    
     if request.method=="POST":
-        new_subCategory=Catagory(category=category,name=request.POST["categoryname"])
+        new_subCategory=SubCatagory(category=category,name=request.POST["categoryname"])
         new_subCategory.save()
-        return redirect('manager_app:add_subcategory')
-    return render(request,"manager_app/add_category_page.html")
+
+        return redirect('manager_app:sub_category',category_id)
+    sub_category=SubCatagory.objects.filter(category=category)
+    return render(request,"manager_app/sub_category_page.html" ,{"category":category, "sub_category":sub_category})
+
+
+
+
+def delete_sub_category(request:HttpRequest,category_id,sub_category_id):
+   
+    sub_category=SubCatagory.objects.get(id=sub_category_id)
+    sub_category.delete()
+    return redirect('manager_app:sub_category',category_id)
+
+
+
+
+# if the the manager want to add found item , frist well choose category then will go to 'add_found_item_page'
+def category_for_add_found(request:HttpRequest):
+    catagorys = Catagory.objects.all()
+    return render(request,'manager_app/category_for_add_fuond.html',{"catagorys":catagorys})
+
+
+def add_found_item_page(request:HttpRequest ,category_id):
+    catagory=Catagory.objects.get(id=category_id)
+    sub_category=SubCatagory.objects.filter(category=catagory)
+
+    return render(request,"manager_app/add_found_item_page.html",{"catagory":catagory,"sub_category":sub_category})
+    
+
+
+
