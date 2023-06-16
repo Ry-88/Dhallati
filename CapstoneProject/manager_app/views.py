@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpRequest,HttpResponse
-from main_app.models import Catagory,SubCatagory,FoundItem
+from main_app.models import Catagory,SubCatagory,FoundItem,RequestLostItem
 
 from django.core import serializers
 import json
@@ -80,11 +80,26 @@ def add_found_item_page(request:HttpRequest ,category_id):
         new_found_item.save()
         return redirect("manager_app:index_page")
     return render(request,"manager_app/add_found_item_page.html",{"catagory":catagory,"sub_category":sub_category})
-    
 
 
 
 def found_item_page(request:HttpRequest):
     found_items =FoundItem.objects.all()
     return render(request,"manager_app/found_items.html",{"found_items":found_items})
+
+
+def found_detail_page(request:HttpRequest,found_item_id):
+    found_item=FoundItem.objects.get(id=found_item_id)
+    return render(request,'manager_app/founditem_detail.html' ,{"found_item":found_item})
+
+
+def delete_found_item(request:HttpRequest):
+    pass
+
+
+def lost_item_page(request:HttpRequest):
+    request_lost_Items=RequestLostItem.objects.all()
+
+    return render(request,'manager_app/lost_item_request_page.html' ,{"request_lost_Items":request_lost_Items})
+    pass
 

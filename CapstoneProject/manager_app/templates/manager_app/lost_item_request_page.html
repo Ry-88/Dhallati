@@ -10,7 +10,7 @@
             <a href="{% url 'manager_app:lost_item_page' %}">Lost items request</a>
             <a href="{% url 'manager_app:found_item_page' %}">found items </a>
          
-            <a href=""> confirm items </a>
+            <a href=> confirm items </a>
         </div>
         
     </div>
@@ -18,64 +18,64 @@
 
         <div class="ag-format-container">
             <div class="ag-courses_box">
-              {% for found_item in found_items %}
+              {% for request_lost_Item in request_lost_Items %}
               <div class="ag-courses_item">
-                <img src="{{found_item.image.url}}" height="200px" alt="">
+                <img src="{{request_lost_Item.image.url}}" height="200px" alt="">
                 <a href="#" class="ag-courses-item_link">
                   <div class="ag-courses-item_bg" 
-                  {% if found_item.color == 'G' %}
+                  {% if request_lost_Item.color == 'G' %}
                     style=" background-color: rgb(58, 203, 58);"
-                    {% elif found_item.color == 'R' %}
+                    {% elif request_lost_Item.color == 'R' %}
                     style="background-color: rgb(255, 73, 73);"
-                    {% elif found_item.color == 'B' %}
+                    {% elif request_lost_Item.color == 'B' %}
                     style="background-color: rgb(73, 109, 255);"
-                    {% elif found_item.color == 'BLA' %}
+                    {% elif request_lost_Item.color == 'BLA' %}
                     style="background-color: rgb(18, 15, 15);"
-                    {% elif found_item.color == 'Y' %}
+                    {% elif request_lost_Item.color == 'Y' %}
                     style="background-color: rgb(213, 245, 72);"
-                    {% elif found_item.color == 'W' %}
+                    {% elif request_lost_Item.color == 'W' %}
                     style="background-color: rgb(144, 147, 130);"
                     {% endif %}>
                 </div>
                   <div class="ag-courses-item_title">
-                    <h3>description </h3><h4>{{found_item.description}}</h4>
+                    <h3>description </h3><h4>{{request_lost_Item.description}}</h4>
              
                   </div>
                   <div class="ag-courses-item_date-box">
                     found id :
                     <span class="ag-courses-item_date">
-                        {{found_item.id}}
+                        {{request_lost_Item.id}}
                     </span>
                   </div>
                   <div class="ag-courses-item_date-box">
                     category :
                     <span class="ag-courses-item_date">
-                        {{found_item.catagory.name}}
+                        {{request_lost_Item.catagory.name}}
                     </span>
                   </div>
                   <div class="ag-courses-item_date-box">
                     sub category:
                     <span class="ag-courses-item_date">
-                        {{found_item.Sub_catagory.name}}
+                        {{request_lost_Item.Sub_catagory.name}}
                     </span>
                   </div>
             
                   <div class="ag-courses-item_date-box">
                     place:
                     <span class="ag-courses-item_date">
-                        {{found_item.get_place_display}}
+                        {{request_lost_Item.get_place_display}}
                     </span>
                   </div>
                   <div class="ag-courses-item_date-box">
                     status:
                     <span class="ag-courses-item_date">
-                        {{found_item.get_status_display}}
+                        {{request_lost_Item.get_status_display}}
                     </span>
                   </div>
                   <div class="ag-courses-item_date-box">
                     created at :
                     <span class="ag-courses-item_date">
-                        {{found_item.created_at}}
+                        {{request_lost_Item.created_at}}
                     </span>
                   </div>
                 </a>
