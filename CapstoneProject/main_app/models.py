@@ -4,12 +4,15 @@ from django.db import models
 
 class Catagory(models.Model):
     name=models.CharField(max_length=100)
+    def __str__(self) -> str:
+        return f"{self.name}"
 
 
 class SubCatagory(models.Model):
     category = models.ForeignKey(Catagory,on_delete=models.CASCADE)
     name=models.CharField(max_length=100)
-
+    def __str__(self) -> str:
+        return f"{self.name}"
 
 
 
@@ -36,7 +39,7 @@ class RequestLostItem(models.Model):
     ]
 
     color=models.CharField(max_length=100,choices=COLOR_CHOICES,default="B")
-    place=models.CharField(max_length=100,choices=PLACE_CHOICES,default="T")
+    place=models.CharField(max_length=100,choices=PLACE_CHOICES)
     discription=models.TextField()
     image=models.ImageField(upload_to="image/",default="image/default.jpg")
     created_at=models.DateField(auto_now_add=True)
