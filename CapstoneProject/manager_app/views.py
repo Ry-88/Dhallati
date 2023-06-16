@@ -57,12 +57,20 @@ def delete_sub_category(request:HttpRequest,category_id,sub_category_id):
     sub_category.delete()
     return redirect('manager_app:sub_category',category_id)
 
-def add_found_item_page(request:HttpRequest):
-    catagorys=Catagory.objects.all()
-    sub_category=SubCatagory.objects.all()
 
 
-    return render(request,"manager_app/add_found_item_page.html",{"catagorys":catagorys,"sub_category":sub_category})
+
+# if the the manager want to add found item , frist well choose category then will go to 'add_found_item_page'
+def category_for_add_found(request:HttpRequest):
+    catagorys = Catagory.objects.all()
+    return render(request,'manager_app/category_for_add_fuond.html',{"catagorys":catagorys})
+
+
+def add_found_item_page(request:HttpRequest ,category_id):
+    catagory=Catagory.objects.get(id=category_id)
+    sub_category=SubCatagory.objects.filter(category=catagory)
+
+    return render(request,"manager_app/add_found_item_page.html",{"catagory":catagory,"sub_category":sub_category})
     
 
 

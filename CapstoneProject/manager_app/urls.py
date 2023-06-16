@@ -10,8 +10,8 @@ urlpatterns = [
     path('category/subcategory/<category_id>/',views.sub_category,name="sub_category"),
     path('category/subcategory/<category_id>/delete/<sub_category_id>/',views.delete_sub_category,name="delete_sub_category"),
 
-
-    path("founditem/add/",views.add_found_item_page,name="add_found_item_page"),
+    path("founditem/category/",views.category_for_add_found,name="category_for_add_found"),
+    path("founditem/category/<category_id>/add/item",views.add_found_item_page,name="add_found_item_page"),
 
 
     

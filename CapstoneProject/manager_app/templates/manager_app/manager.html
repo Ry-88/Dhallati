@@ -6,8 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href='{% static "style/stile.css" %}'>
+    
+    {% block style %}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
+    {% endblock %}
     <title>Document</title>
     <style>
         body {
@@ -96,7 +99,7 @@
     </div>
         <a href="">home</a>
         <a href="{% url 'manager_app:category_page' %}">add new category</a>
-        <a href="{% url 'manager_app:add_found_item_page' %}">add found item</a>
+        <a href="{% url 'manager_app:category_for_add_found' %}">add found item</a>
         <a href="#">Contact</a>
       </div>
       

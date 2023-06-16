@@ -26,3 +26,19 @@
 color: #c2c2c2;
 text-decoration: none;
 }
+
+
+.choose-category{
+    
+    display: block;
+    margin-bottom: 20px ;
+    padding: 20px 60px;
+    background-color: #3d3d54;
+    text-decoration: none;
+    color: aliceblue;
+}
+.choose-category:hover{
+    background-color: #38386f;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
