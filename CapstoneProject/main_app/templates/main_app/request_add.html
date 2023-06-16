@@ -1,29 +1,40 @@
 {% extends 'main_app/base.html' %}
 {% block title %} New Request {% endblock%}
+{% load static %}
 
 
 {% block content%}
-<h1>Make Request</h1>
-<div class="container">
 
-    <form action="{% url 'main_app:request_add' %}" method="POST" enctype="multipart/form-data">
+<div class="container">
+    <h1>Make Request</h1>
+
+
+    <form action="{% url 'main_app:request_add' category.id %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
 
         <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">catagory</label>
-            <select class="form-select" aria-label="Default select example" name="catagory" required min-length="1">
-                <option value="">Select catagory</option>
-                {% for catagory in catagories %}
-                <option value="{{catagory.id}}">{{catagory.name}}</option>
-                {% endfor %}
-              </select>
+            <label for="exampleFormControlInput1" class="form-label">category</label>
+            <select disabled class="form-select" aria-label="Default select example" name="category" required min-length="1">
+                    <option value="">{{category.name}}</option>
+            </select>
         </div>
+
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Sub Category</label>
+        <select  name="sub_category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+         
+          {% for sub in sub_category %}
+          <option value="{{sub.id}}">{{sub.name}}</option>
+          {% endfor %}
+        </select>
+        </div>
+
 
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">color</label>
             <select class="form-select" name="color" id="inputGroupSelect01">
                 <option selected>Choose</option>
-                
+
                 <option value="R">Red</option>
                 <option value="G">Green</option>
                 <option value="B">Blue</option>
@@ -34,33 +45,36 @@
                
             </select>
         </div>
-
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">place</label>
             <select class="form-select" name="place" id="inputGroupSelect01">
                 <option selected>Choose</option>
-                
+
                 <option value="F">First Floor</option>
                 <option value="S">Second Floor</option>
                 <option value="T">Third Floor</option>
+ 
             </select>
         </div>
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">status</label>
-            <select class="form-select" name="status" id="inputGroupSelect01">
-                <option selected>Choose</option>
-                
-                <option value="T">Tracking</option>
-                <option value="M">Matched</option>
-                <option value="F">Found</option>
-            </select>
 
+
+
+<!--      <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect01">place</label>
+            <select class="form-select" name="place" id="inputGroupSelect01">
+                    
+                    <option value="F">First Floor</option>
+                    <option value="S">Second Floor</option>
+                    <option value="T">Third Floor</option>
+            </select>
+        </div>
+        --> 
 
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Description</label>
-            <textarea class="form-control" id="exampleFormControlInput1" placeholder="Discripe the Item" name="description"></textarea>
+            <textarea class="form-control" id="exampleFormControlInput1" placeholder="Discripe the Item"
+                name="description"></textarea>
         </div>
-
 
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Choose Image</label>
@@ -72,8 +86,8 @@
             <input type="submit" value="Create Request" class="btn btn-primary" />
         </div>
 
-
     </form>
 
 </div>
+
 {% endblock %}

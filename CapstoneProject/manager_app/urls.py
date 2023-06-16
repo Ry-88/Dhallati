@@ -12,6 +12,8 @@ urlpatterns = [
 
     path("founditem/category/",views.category_for_add_found,name="category_for_add_found"),
     path("founditem/category/<category_id>/add/item",views.add_found_item_page,name="add_found_item_page"),
+    path("founditem",views.found_item_page,name="found_item_page"),
+    path("lostitem/request/",views.lost_item_page,name="lost_item_page")
 
 
     

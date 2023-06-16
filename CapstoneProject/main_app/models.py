@@ -4,11 +4,15 @@ from django.db import models
 
 class Catagory(models.Model):
     name=models.CharField(max_length=100)
+    def __str__(self) -> str:
+        return f"{self.name}"
 
 
 class SubCatagory(models.Model):
     category = models.ForeignKey(Catagory,on_delete=models.CASCADE)
     name=models.CharField(max_length=100)
+    def __str__(self) -> str:
+        return f"{self.name}"
 
 
 
@@ -35,11 +39,11 @@ class RequestLostItem(models.Model):
     ]
 
     color=models.CharField(max_length=100,choices=COLOR_CHOICES,default="B")
-    place=models.CharField(max_length=100,choices=PLACE_CHOICES,default="T")
-    discription=models.TextField()
+    place=models.CharField(max_length=100,choices=PLACE_CHOICES)
+    description=models.TextField()
     image=models.ImageField(upload_to="image/",default="image/default.jpg")
     created_at=models.DateField(auto_now_add=True)
-    status=models.CharField(max_length=100,choices=STATUS_CHICES,default="F")
+    status=models.CharField(max_length=100,choices=STATUS_CHICES,default="T")
     is_read=models.BooleanField(default=False)
 
 
@@ -66,13 +70,14 @@ class FoundItem(models.Model):
         ("T","TRAKING"),
         ("M","MATCHED"),
         ("F","FOUND"),
+        ("N","NOMATCH")
     ]
     color=models.CharField(max_length=100,choices=COLOR_CHOICES,default="B")
     place=models.CharField(max_length=100,choices=PLACE_CHOICES,default="T")
-    discription=models.TextField()
+    description=models.TextField()
     image=models.ImageField(upload_to="images/",default="images/default.jpg")
     created_at=models.DateField(auto_now_add=True)
-    status=models.CharField(max_length=100,choices=STATUS_CHICES,default="F")
+    status=models.CharField(max_length=100,choices=STATUS_CHICES,default="T")
 
 """
 class LostItemOwner(models.Model):

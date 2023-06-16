@@ -4,7 +4,6 @@
 {% block content %}
 
 
-
 <div >
 
     <!-- about -->
@@ -16,7 +15,7 @@
           <p class="font-secondary paragraph-lg text-dark">Dhallati is website that can help you find your missing item<br>
             if you lost an item please press</p>
           <div class="request_div"  >
-          <a href="{% url 'main_app:request_add' %}" class="request_btn" >request</a>
+          <a href="{% url 'main_app:category_for_add_request_add' %}" class="request_btn" >request</a>
 
           </div>
         </div>
@@ -60,6 +59,7 @@
 
 
     <section class="section section-on-footer" data-background="{% static 'images/bg-dots.png' %}" id="contact" >
+
         <div class="container">
           <div class="row">
             <div class="col-12 text-center">
