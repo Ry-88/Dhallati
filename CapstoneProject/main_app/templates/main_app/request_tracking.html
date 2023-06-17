@@ -1,1 +1,10 @@
 {% extends 'main_app/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="container">
+    <h2>your request status</h2>
+    <h4>Checked: {{tracking.is_read}}</h4>
+</div>
+{% endblock %}

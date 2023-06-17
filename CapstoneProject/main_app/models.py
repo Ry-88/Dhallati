@@ -84,9 +84,8 @@ class FoundItem(models.Model):
 
 
 
-"""
+
 class ConfirmItem(models.Model):
     found_item=models.OneToOneField(FoundItem,on_delete=models.CASCADE)
     request_Lost_Item=models.OneToOneField(RequestLostItem,on_delete=models.CASCADE)
     is_confirm=models.BooleanField(default=False)
-"""

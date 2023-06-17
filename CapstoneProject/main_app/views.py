@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpRequest
-from .models import RequestLostItem, Catagory, SubCatagory,LostItemOwner
+from .models import RequestLostItem, Catagory, SubCatagory
 # Create your views here.
 
 
@@ -69,11 +69,15 @@ def request_add(request: HttpRequest,category_id):
 
     
 
-def request_detail(request: HttpRequest):
+def request_detail(request: HttpRequest,lost_id):
 
-    return render(request, 'main_app/request_detail.html')
+    requests = RequestLostItem.objects.get(id=lost_id)
+
+    return render(request, 'main_app/request_detail.html', {'requests' : requests})
 
 
-def request_tracking(request: HttpRequest):
+def request_tracking(request: HttpRequest, track_id):
 
-    return render(request, 'main_app/request_tracking.html')
+    tracking = RequestLostItem.objects.get(id=track_id)
+
+    return render(request, 'main_app/request_tracking.html', {'tracking' : tracking})
