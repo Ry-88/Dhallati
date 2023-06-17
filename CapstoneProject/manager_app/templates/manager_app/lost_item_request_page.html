@@ -17,10 +17,10 @@
 </div>
 
         <div class="ag-format-container">
-            <div class="ag-courses_box">
+            <div class="ag-courses_box"  style="display: block;">
               {% for request_lost_Item in request_lost_Items %}
               <div class="ag-courses_item">
-                <img src="{{request_lost_Item.image.url}}" height="200px" alt="">
+             
                 <a href="#" class="ag-courses-item_link">
                   <div class="ag-courses-item_bg" 
                   {% if request_lost_Item.color == 'G' %}
@@ -37,7 +37,8 @@
                     style="background-color: rgb(144, 147, 130);"
                     {% endif %}>
                 </div>
-                  <div class="ag-courses-item_title">
+                 
+                <div class="ag-courses-item_title">
                     <h3>description </h3><h4>{{request_lost_Item.description}}</h4>
              
                   </div>
@@ -78,10 +79,35 @@
                         {{request_lost_Item.created_at}}
                     </span>
                   </div>
+                  
+                  <div style="display: flex; column-gap: 20px;">
+                    <div class="ag-courses-item_date-box">
+                        name of this request :
+                        <span class="ag-courses-item_date">
+                            {{request_lost_Item.name}}
+                        </span>
+                      </div>
+                      <div class="ag-courses-item_date-box">
+                        phone number :
+                        <span class="ag-courses-item_date">
+                            {{request_lost_Item.phone_number}}
+                        </span>
+                      </div>
+                      <div class="ag-courses-item_date-box">
+                        email of this user :
+                        <span class="ag-courses-item_date">
+                            {{request_lost_Item.email}}
+                        </span>
+                      </div>
+
+                  </div>
+
                 </a>
               </div>
-      
               {% endfor %}
+            </div>
+        </div>
+        
           
              
           

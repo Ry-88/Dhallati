@@ -21,7 +21,7 @@
               {% for found_item in found_items %}
               <div class="ag-courses_item">
                 <img src="{{found_item.image.url}}" height="200px" alt="">
-                <a href="#" class="ag-courses-item_link">
+                <a href="{% url 'manager_app:found_detail_page' found_item.id %}" class="ag-courses-item_link">
                   <div class="ag-courses-item_bg" 
                   {% if found_item.color == 'G' %}
                     style=" background-color: rgb(58, 203, 58);"
