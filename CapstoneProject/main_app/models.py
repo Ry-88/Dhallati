@@ -79,13 +79,14 @@ class FoundItem(models.Model):
     created_at=models.DateField(auto_now_add=True)
     status=models.CharField(max_length=100,choices=STATUS_CHICES,default="T")
 
-"""
+
 class LostItemOwner(models.Model):
     request_Lost_Item=models.OneToOneField(RequestLostItem,on_delete=models.CASCADE)
     email=models.EmailField()
     name=models.CharField(max_length=200)
     phone_number=models.CharField(max_length=13)
-
+    
+"""
 class ConfirmItem(models.Model):
     found_item=models.OneToOneField(FoundItem,on_delete=models.CASCADE)
     request_Lost_Item=models.OneToOneField(RequestLostItem,on_delete=models.CASCADE)

@@ -19,7 +19,7 @@ def  index_page(request:HttpRequest):
 
 
 
-#-----------------------------------------------------------------------------------------------------------
+#--------------category -- views-------------------------------------------------------------------------------------------
 def category_page(request:HttpRequest):
     Catagorys=Catagory.objects.all()
     #for add new category
@@ -61,7 +61,8 @@ def delete_sub_category(request:HttpRequest,category_id,sub_category_id):
     sub_category=SubCatagory.objects.get(id=sub_category_id)
     sub_category.delete()
     return redirect('manager_app:sub_category',category_id)
-#------------------------------------------------------------------------------------------------------------------------------
+
+#---------------end-category--------------------------------------------------------------------------------------------------------------
 
 
 
@@ -90,7 +91,9 @@ def found_item_page(request:HttpRequest):
 
 def found_detail_page(request:HttpRequest,found_item_id):
     found_item=FoundItem.objects.get(id=found_item_id)
-    return render(request,'manager_app/founditem_detail.html' ,{"found_item":found_item})
+    lost_item=RequestLostItem.objects.filter(catagory=found_item.catagory,Sub_catagory=found_item.Sub_catagory)
+    return render(request,'manager_app/founditem_detail.html' ,{"found_item":found_item,"request_lost_Items":lost_item })
+
 
 
 def delete_found_item(request:HttpRequest):
@@ -101,5 +104,4 @@ def lost_item_page(request:HttpRequest):
     request_lost_Items=RequestLostItem.objects.all()
 
     return render(request,'manager_app/lost_item_request_page.html' ,{"request_lost_Items":request_lost_Items})
-    pass
 

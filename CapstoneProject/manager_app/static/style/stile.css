@@ -80,6 +80,16 @@ text-decoration: none;
 }
 
 
+.three-columns-grid {
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* columns */
+.three-columns-grid > * {
+  padding:1rem 1rem 2rem 0rem;
+}
 
 
 .ag-format-container {
