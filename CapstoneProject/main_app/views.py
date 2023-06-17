@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpRequest
-from .models import RequestLostItem, Catagory, SubCatagory
+from .models import RequestLostItem, Catagory, SubCatagory,LostItemOwner
 # Create your views here.
 
 
@@ -30,6 +30,8 @@ def not_found(request: HttpRequest):
 
     return render(request, 'main_app/not_found.html')
 
+
+
 def category(request: HttpRequest):
     categories = Catagory.objects.all()
     return render(request,'main_app/category_for_add_request_add.html',{"categories":categories})
@@ -42,18 +44,23 @@ def request_add(request: HttpRequest,category_id):
     
     if request.method == "POST":
         
-
         if "image" in request.FILES:
             new_request = RequestLostItem(catagory=category,Sub_catagory= SubCatagory.objects.get(id=request.POST["sub_category"]), color=request.POST["color"], 
                                           place=request.POST["place"], description=request.POST["description"], 
                                           image=request.FILES["image"],
-                                          )
+                                          email=request.POST["email"],
+                                          name=request.POST["name"],
+                                          phone_number=request.POST["phone_number"])
 
         
         new_request = RequestLostItem(catagory=category,Sub_catagory= SubCatagory.objects.get(id=request.POST["sub_category"]) ,color=request.POST["color"], 
 
-                                          place=request.POST["place"],description=request.POST["description"],
-                                          )
+                                          place=request.POST["place"], description=request.POST["description"],
+                                          email=request.POST["email"],
+                                          name=request.POST["name"],
+                                          phone_number=request.POST["phone_number"])
+        
+
         new_request.save()
         return redirect("main_app:home")
 
