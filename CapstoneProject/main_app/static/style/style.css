@@ -7,6 +7,11 @@
 
 /*  typography */
 @import url("https://fonts.googleapis.com/css?family=Playfair+Display:700|Roboto:400");
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   line-height: 1.2;
   font-family: "Roboto", sans-serif;
@@ -96,27 +101,27 @@ h6, .h6 {
 }
 
 .btn-primary {
-  background: #41228e;
+  background: #4C4C6D;
   color: #fff;
 }
 .btn-primary:active {
-  background: #542cb7 !important;
+  background: #4C4C6D !important;
 }
 .btn-primary:hover {
-  background: #542cb7;
+  background: #4C4C6D;
 }
 .btn-primary.focus, .btn-primary.active {
-  background: #542cb7 !important;
+  background: #4C4C6D !important;
   box-shadow: none !important;
 }
 
 .btn-transparent {
   background: transparent;
-  color: #41228e;
+  color: #4C4C6D;
   font-weight: bold;
 }
 .btn-transparent:active, .btn-transparent:hover {
-  color: #41228e;
+  color: #4C4C6D;
 }
 
 body {
@@ -125,12 +130,12 @@ body {
 }
 
 ::-moz-selection {
-  background: #542cb7;
+  background: #4C4C6D;
   color: #fff;
 }
 
 ::selection {
-  background: #542cb7;
+  background: #4C4C6D;
   color: #fff;
 }
 
@@ -178,11 +183,11 @@ select:focus {
 }
 
 a.text-dark:hover {
-  color: #41228e !important;
+  color: #4C4C6D !important;
 }
 
 a:hover {
-  color: #41228e;
+  color: #4C4C6D;
 }
 
 .slick-slide {
@@ -236,7 +241,7 @@ a:hover {
 }
 
 .text-primary {
-  color: #41228e !important;
+  color: #4C4C6D !important;
 }
 
 .text-color {
@@ -369,7 +374,7 @@ a:hover {
   height: 60px;
 }
 .form-control:focus {
-  border-color: #41228e;
+  border-color: #4C4C6D;
   outline: 0;
   box-shadow: none !important;
 }
@@ -407,7 +412,7 @@ textarea.form-control {
 @media (max-width: 991px) {
   .navigation {
     padding: 20px;
-    background: #41228e;
+    background: #4C4C6D;
   }
 }
 
@@ -561,7 +566,7 @@ textarea.form-control {
   transition: 0.3s ease;
 }
 .hover-bg-primary:hover {
-  background: #41228e;
+  background: #4C4C6D;
 }
 .hover-bg-primary:hover * {
   color: #fff;
@@ -569,7 +574,7 @@ textarea.form-control {
 
 .active-bg-primary {
   transition: 0.3s ease;
-  background: #41228e;
+  background: #4C4C6D;
 }
 .active-bg-primary * {
   color: #fff;
@@ -703,7 +708,7 @@ blockquote {
   display: inline-block;
   padding: 20px 25px;
   background: #eaeaea;
-  border-left: 3px solid #41228e;
+  border-left: 3px solid #4C4C6D;
   font-style: italic;
   font-size: 22px;
   line-height: 1.7;
@@ -839,5 +844,75 @@ blockquote {
 }
 
 .img_h{
-  height: 11vh;
+  height: 20vh;
+}
+
+.img_t{
+  height: 15vh;
+}
+
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+
+.custom-shape-divider-bottom-1686935527 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1686935527 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 70vh;
+  transform: rotateY(180deg);
+}
+
+.custom-shape-divider-bottom-1686935527 .shape-fill {
+  fill: #525273;
+}
+
+.request_div{
+  font-size: 30px;
+  background-color: #525273;
+  display: inline-block;
+  padding: 5px 30px;
+  min-width: 15vh;
+  min-height: 4vh;
+  border-radius: 1vh;
+}
+
+.request_btn{
+  color: #E8F6EF;
+}
+
+.request_btn:hover{
+  cursor: pointer;
+  color: #E8F6EF;
+  font-size: 35px;
+}
+
+.track_div{
+  font-size: 30px;
+  background-color: #E8F6EF;
+  display: inline-block;
+  padding: 5px 30px;
+  min-width: 15vh;
+  min-height: 4vh;
+  border-radius: 1vh;
+
+}
+
+.track_btn{
+  color: #525273;
+}
+
+.track_btn:hover{
+  cursor: pointer;
+  color: #525273;
+  font-size: 37px;
+
 }

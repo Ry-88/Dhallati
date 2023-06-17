@@ -3,49 +3,64 @@
 
 {% block content %}
 
-<div id="description">
 
-    <section class="section" >
-        <div class="container">
-          <div class="row">
-            <div class="col-12 text-center">
-              <h2 class="section-title">Welcome to Dhallati</h2>
-            </div>
-            <div class="col-lg-8 mx-auto">
-              <div class="bg-white rounded text-center p-5 shadow-down">
-                <h4 class="mb-80">Dhallati is website that can help you find your missing item<br>
-                    if you lost an item please press <br><br><a href="{% url 'main_app:category_for_add_request_add' %}"><button class="btn btn-primary w-80">Request</button></h4></a>
-              </div>
-            </div>
+<div >
+
+    <!-- about -->
+<section class="section" style="background-color: #e8f6ef; height: 50vh;" id="description">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 mx-auto text-center">
+          <p class="font-secondary paragraph-lg text-dark"><h1> Welcome to Dhallati </h1></p>
+          <p class="font-secondary paragraph-lg text-dark">Dhallati is website that can help you find your missing item<br>
+            if you lost an item please press</p>
+          <div class="request_div"  >
+          <a href="{% url 'main_app:category_for_add_request_add' %}" class="request_btn" >request</a>
+
           </div>
         </div>
-      </section>
-    <div>
-        <section id="tracking" class="section" >
-            <div class="container">
-              <div class="row">
-                <div class="col-12 text-center">
-                  <h2 class="section-title">Track your request</h2>
+
+      </div>
+    </div>
+  </section>
+  <!-- /about -->
+
+   
+  
+    <!-- tracking -->
+<section class="section bg-primary position-relative testimonial-bg-shapes" style="min-height: 55vh;" id="Tracking">
+    <div class="container " style="color: #FFE194;">
+        <div class="row">
+        <div class="col-lg-10 mx-auto text-center">
+        <div class="text-center">
+          <h2 class="section-title mb-5" style="color: #FFE194;">Track your request</h2>
+        </div>
+        
+            <form action="{% url 'main_app:home' %}" method="POST">
+                {% csrf_token %}
+                <label style="font-size: 25px;" >Insert request number</label> <br>
+                <input class="form-control px-0 mb-4 rounded-pill text-center" style="background-color: #e8f6ef; font-size: 25px" type="text" placeholder="Request number" name="request_number">
+                <div class="track_div">
+                    <a class="track_btn" type="submit" name="track">Track</a>
                 </div>
-                <div class="col-lg-8 mx-auto">
-                  <div class="bg-white rounded text-center p-5 shadow-down">
-                    <h4 class="mb-80">Track Form</h4>
-                    <form action="{% url 'main_app:home' %}" class="row" method="POST">
-                        {% csrf_token %}
-                      <div class="col-md-6">
-                        <input type="text" placeholder="Request number" name="request_number" class="form-control px-0 mb-4" style="background-color: #e8f6ef4d;">
-                      </div>
-                      
-                      <div class="col-lg-6 col-10 mx-auto">
-                        <button class="btn btn-primary w-80" type="submit" name="track">send</button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-    <section id="contact" class="section section-on-footer" >
+                
+            </form>
+        </div>
+        </div>
+    </div>
+    <!-- bg  -->
+    <img src="images/backgrounds/map.png" alt="map" class="img-fluid bg-map">
+    <img src="{% static 'images/glasses1.png' %}" alt="bg-shape" class="img-fluid bg-shape-1" style="height: 25vh;">
+    <img src="{% static 'images/phone.png' %}" alt="bg-shape" class="img-fluid bg-shape-2 img_t">
+    <img src="{% static 'images/keys.png' %}" alt="bg-shape" class="img-fluid bg-shape-3 img_t">
+    <img src="{% static 'images/bank-card.png' %}" alt="bg-shape" class="img-fluid bg-shape-4 img_t" style="rotate: 20deg;">
+    <img src="{% static 'images/wallet1.png' %}" alt="bg-shape" class="img-fluid bg-shape-5 img_t" style="rotate: -20deg;">
+  </section>
+  <!-- /tracking -->
+
+
+    <section class="section section-on-footer" data-background="{% static 'images/bg-dots.png' %}" id="contact" >
+
         <div class="container">
           <div class="row">
             <div class="col-12 text-center">
@@ -74,7 +89,7 @@
                   </div>
 
                   <div class="col-lg-6 col-10 mx-auto">
-                    <button class="btn btn-primary w-100" type="submit" name="help">send</button>
+                    <button class="btn btn-primary w-100" type="submit" name="help" style="padding: 5px;">send</button>
                   </div>
                 </form>
               </div>
@@ -82,6 +97,8 @@
           </div>
         </div>
       </section>
+
+      
 
 </div>
 
