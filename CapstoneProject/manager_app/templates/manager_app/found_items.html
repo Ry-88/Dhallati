@@ -8,7 +8,7 @@
     <div>
         <div class="homenav">
             <a href="{% url 'manager_app:lost_item_page' %}">Lost items request</a>
-            <a href="{% url 'manager_app:found_item_page' %}">found items </a>
+            <a href="{% url 'manager_app:found_item_page' %}" style=" background: linear-gradient(0deg, #474bff 0%, #bc48ff 100%); color: aliceblue;">found items </a>
          
             <a href=""> confirm items </a>
         </div>
@@ -60,18 +60,8 @@
                     </span>
                   </div>
             
-                  <div class="ag-courses-item_date-box">
-                    place:
-                    <span class="ag-courses-item_date">
-                        {{found_item.get_place_display}}
-                    </span>
-                  </div>
-                  <div class="ag-courses-item_date-box">
-                    status:
-                    <span class="ag-courses-item_date">
-                        {{found_item.get_status_display}}
-                    </span>
-                  </div>
+               
+      
                   <div class="ag-courses-item_date-box">
                     created at :
                     <span class="ag-courses-item_date">
