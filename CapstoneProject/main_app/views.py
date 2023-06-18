@@ -8,12 +8,13 @@ from .models import RequestLostItem, Catagory, SubCatagory
 
 def home(request: HttpRequest):
 
-
+    track = RequestLostItem.objects.all()
 #    if request.method == 'POST':
 #
 #        if 'track' in request.POST:
-#            all_track = Class.objects.all()
-#            track_request= Class.objects.get(id=request.POST['request_number'])
+#            all_track = RequestLostItem.objects.all()
+#            track_request= RequestLostItem.objects.get(id=request.POST['request_number'])
+#            
 #
 #        if 'help' in request.POST:
 #            new_help = Class(first_name=request.POST['first_name'],
@@ -22,7 +23,7 @@ def home(request: HttpRequest):
 #                             message=request.POST['message'])
 #            new_help.save()
 #
-    return render(request, 'main_app/home.html')
+    return render(request, 'main_app/home.html', {'track' : track})
 
 
 

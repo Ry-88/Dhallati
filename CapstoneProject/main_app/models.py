@@ -36,6 +36,7 @@ class RequestLostItem(models.Model):
         ("T","TRAKING"),
         ("M","MATCHED"),
         ("F","FOUND"),
+        ("N","NOMATCH")
     ]
 
     color=models.CharField(max_length=100,choices=COLOR_CHOICES,default="B")
