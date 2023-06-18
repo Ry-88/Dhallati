@@ -3,17 +3,21 @@
 
 {% block content %}
 
-<div>
+<div class="container">
 
-    {% for request in requests %}
-    {{request.}}
-    {{request.}}
-    {{request.}}
-    {{request.}}
-    {{request.}}
-    {{request.}}
-
-    {% endfor %}
+    <h2>details</h2>
+    {{requests.catagory}}<br>
+    {{requests.Sub_catagory}}<br>
+    {{requests.color}}<br>
+    {{requests.place}}<br>
+    {{requests.description}}<br>
+    {{requests.status}}<br>
+    {{requests.is_read}}<br>
+    {{requests.email}}<br>
+    {{requests.name}}<br>
+    {{requests.phone_number}}<br>
+    {{requests.}}
+    
 </div>
 
 {% endblock %}

@@ -1,1 +1,66 @@
 {% extends 'main_app/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="container">
+    <h2>your request status</h2>
+    <h4>Checked: {{tracking.is_read}}</h4>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-10 hh-grayBox pt45 pb20">
+            <div class="row justify-content-between">
+                {% if tracking.status == 'T' %}
+                <div class="order-tracking completed">
+                    <span class="is-complete"></span>
+                    <p>request is under process</p>
+                </div>
+                <div class="order-tracking ">
+                    <span class="is-complete"></span>
+                    <p>item found</p>
+                </div>
+                <div class="order-tracking">
+                    <span class="is-complete"></span>
+                    <p>item is ready to be handed</p>
+                </div>
+
+
+
+                {% elif tracking.status == 'M' %}
+                <div class="order-tracking completed">
+                    <span class="is-complete"></span>
+                    <p>request is under process</p>
+                </div>
+                <div class="order-tracking completed">
+                    <span class="is-complete"></span>
+                    <p>item found</p>
+                </div>
+                <div class="order-tracking">
+                    <span class="is-complete"></span>
+                    <p>item is ready to be handed</p>
+                </div>
+
+
+
+                {% elif tracking.status == 'F' %}
+                <div class="order-tracking completed">
+                    <span class="is-complete"></span>
+                    <p>request is under process</p>
+                </div>
+                <div class="order-tracking completed">
+                    <span class="is-complete"></span>
+                    <p>item found</p>
+                </div>
+                <div class="order-tracking completed">
+                    <span class="is-complete"></span>
+                    <p>item is ready to be handed</p>
+                </div>
+                {% endif %}
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+{% endblock %}

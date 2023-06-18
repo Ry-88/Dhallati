@@ -3,15 +3,19 @@
 
 
 {% block content %}
-<div class="container">
+<div class="section">
 
     <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; ">
         <div>
             <h1>choose category </h1>
             <br>
             {% for category in categories %}
+            <div class="container">
             <a class="choose-category" style="text-align: center;"
-                href="{% url 'main_app:request_add' category.id %}">{{category.name}}</a>
+                href="{% url 'main_app:request_add' category.id %}"><button class="btn btn-primary w-80">{{category.name}}</button></a>
+                
+            </div>
+            <br>
             {% endfor %}
         </div>
 
