@@ -18,7 +18,7 @@ urlpatterns = [
     
     path("founditem",views.found_item_page,name="found_item_page"),
     path("founditem/detail/<found_item_id>",views.found_detail_page,name="found_detail_page"),
-
+    path("founditem/detail/<found_item_id>/confirm/<request_lost_item_id>",views.confirm_item_for_found_detail,name="confirm_item_for_found_detail"),
 
 
     path("lostitem/request/",views.lost_item_page,name="lost_item_page"),

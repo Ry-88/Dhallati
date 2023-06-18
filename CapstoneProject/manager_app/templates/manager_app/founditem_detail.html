@@ -2,15 +2,16 @@
 
 
 {% block main %}
+<a href=""><button class="openbtn" style="" >↩ </button></a> 
 <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; ">
-    <div style="width: 90%;"> 
+    <div style=" "> 
+        <h1 style="text-align: center;">found item</h1>
 <div class="three-columns-grid" style="background-color: #E8F6EF; color: #444; border-radius: 4px;" >
-    <div style="padding: 10px;">
+    <div style="padding: 10px; ">
     
           
 
-        
-       <br>
+  
        
 
         <div class="ag-courses_item" style="width: 95%; border-radius: 10px;">
@@ -82,30 +83,115 @@
 
       
     </div>
-    <div style="margin:20px 0px;" >
-        <div style="background-color: #1A5D84; margin-bottom: 10px; min-height: 245px; color: #EFEAEA;  border-radius: 5px; padding: 13px;">
+    <div style="" >
+
+        <div style=" margin-bottom: 10px; min-height: 200px; color: #302C2C;  border-radius: 5px; padding: 13px;">
             <h2 style="text-align: center;">description </h2>
           
             <h5>found at {{found_item.description}}</h5>
     
     </div>
+    <div style="    border-radius: 5px; padding-top: 13px;">
+        <h2 style="text-align: center;">match lost items </h2>
 
-        <div style="background-color: #65279C; height: 305px; overflow-y: scroll;  color: #EFEAEA;  border-radius: 5px; padding: 13px;">
-            <h2 style="text-align: center;">possible onwer</h2>
-          
-            <h5>found at {{found_item.description}}</h5>
-    
-    </div>
-    </div>
-    <div style="margin:20px 0px;">
-        <div style="background-color: #1A5D84;  height: 560px; color: #EFEAEA;  border-radius: 5px; padding-top: 13px;">
-            <h2 style="text-align: center;">match lost items </h2>
+        <div style=" padding: 0px 10px ; ">
+           
+              
+            
+        <div class="ag-courses-item_link" style=" border-radius: 10px; height: 280px;   ">
 
-            <div style="overflow-y: scroll; padding-left: 10px; height: 500.7px;">
+          {% if confirm_items %}
+            {% for confirm_item in confirm_items %}
+              
+            
+            
+          <div class="ag-courses-item_date-box">
+                <h5>description of lost: </h5><h6>{{confirm_item.request_Lost_Item.description}}</h6>
+            </div>
+                
+         
+             
+             
+              <div class="ag-courses-item_date-box">
+                category :<span class="ag-courses-item_date"> {{confirm_item.request_Lost_Item.catagory.name}} </span> sub category: <span class="ag-courses-item_date"> {{confirm_items.request_Lost_Item.Sub_catagory.name}} </span>
+               
+              </div>
+            
+         
+              
+              
+              <div style="display: flex; flex-wrap: wrap; column-gap: 9px; ">
+                <div class="ag-courses-item_date-box">
+                    nameOwner:
+                    <span class="ag-courses-item_date">
+                        {{confirm_item.request_Lost_Item.name}}
+                    </span>
+                  </div>
+                  <div class="ag-courses-item_date-box">
+                    phoneNumber:
+                    <span class="ag-courses-item_date">
+                        {{confirm_item.request_Lost_Item.phone_number}}
+                    </span>
+                  </div>
+                  <div class="ag-courses-item_date-box">
+                    email:
+                    <span class="ag-courses-item_date">
+                        {{confirm_item.request_Lost_Item.email}}
+                    </span>
+                  </div>
+
+            
+
+        </div>
+        <div style="display: flex; flex-wrap: wrap; column-gap: 9px; padding-top: 20px; ">
+            <div class="ag-courses-item_date-box">
+                <a href="" style=" margin: 10px; padding: 10px; border-radius: 8px; text-decoration: none; color:#E8F6EF ;    background-color:  #474bff  ">
+                    send email
+                </a>
+                <a href="" style=" margin: 10px; padding: 10px; border-radius: 8px; text-decoration: none; color:#E8F6EF ;    background-color:  #474bff  ">
+                    confirm
+                </a>
+                <a href="" style=" margin: 10px; padding: 10px; border-radius: 8px; text-decoration: none; color:#E8F6EF ;    background-color:  #474bff  ">
+                    discard
+                </a>
+                
+              </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="ag-courses-item_date-box">
+            <h1 style="text-align: center;"> notheng selected  <h1>
+        </div>
+        {% endif %}
+
+    </div>
+
+
+</div>
+</div>
+
+
+    </div>
+
+
+ 
+
+
+
+
+
+
+
+
+    <div style="">
+        <div style="background: linear-gradient(0deg, #070b34 0%, #141852 50%, #2b2f77 100%);  height: 550px; color: #EFEAEA;  border-radius: 5px; padding-top: 13px;">
+            <h2 style="text-align: center;">lost requests </h2>
+
+            <div style="overflow-y: scroll; padding: 0px 10px ; height: 490.7px;">
                 {% for request_lost_Item in request_lost_Items %}
                   
                 
-            <div class="ag-courses-item_link" style="width: 95%; border-radius: 10px;  ">
+            <div class="ag-courses-item_link" style=" border-radius: 10px;   margin-bottom: 12px;">
                 <div class="ag-courses-item_bg" 
                 {% if request_lost_Item.color == 'G' %}
                   style=" background-color: rgb(58, 203, 58);"
@@ -121,9 +207,9 @@
                   style="background-color: rgb(144, 147, 130);"
                   {% endif %}>
               </div>
-                <span class="ag-courses-item_date">
+              <div class="ag-courses-item_date-box">
                     <h5>description: </h5><h6>{{request_lost_Item.description}}</h6>
-                    </span>
+                </div>
                     
              
                  
@@ -136,11 +222,11 @@
                   </div>
                 
                   <div class="ag-courses-item_date-box">
-                    lost in {{request_lost_Item.get_place_display}}
+                    lost in {{request_lost_Item.get_place_display}}   in <span class="ag-courses-item_date"> {{request_lost_Item.get_status_display}} </span> status
                    
                   </div>
                   <div class="ag-courses-item_date-box">
-                     in <span class="ag-courses-item_date"> {{request_lost_Item.get_status_display}} </span> status
+                   
                     
                   </div>
                   <div class="ag-courses-item_date-box">
@@ -150,7 +236,7 @@
                     </span>
                   </div>
                   
-                  <div style="display: flex; column-gap: 20px; ">
+                  <div style="display: flex; flex-wrap: wrap; column-gap: 9px; ">
                     <div class="ag-courses-item_date-box">
                         nameOwner:
                         <span class="ag-courses-item_date">
@@ -170,11 +256,18 @@
                         </span>
                       </div>
 
-                <div >
-                    
-                </div>
+                
 
             </div>
+            <div style="display: flex; flex-wrap: wrap; column-gap: 9px; padding-top: 20px; ">
+                <div class="ag-courses-item_date-box">
+                    <a href=" {% url 'manager_app:confirm_item_for_found_detail' found_item_id=found_item.id request_lost_item_id=request_lost_Item.id %}" style=" margin: 10px; padding: 10px; border-radius: 8px; text-decoration: none; color:#E8F6EF ;    background-color:  #474bff  ">
+                        match
+                    </a>
+                    
+                  </div>
+            </div>
+
         </div>
         {% endfor %}
     

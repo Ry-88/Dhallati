@@ -74,7 +74,9 @@ text-decoration: none;
     text-align: center;
 }
 .homenav a:hover{
-    background-color: #1B9C85;
+  background: #474bff;
+  background: -webkit-linear-gradient(0deg, #474bff 0%, #bc48ff 100%);
+  background: linear-gradient(0deg, #474bff 0%, #bc48ff 100%);
     color: #E8F6EF;
     text-decoration: none;
 }
@@ -123,7 +125,9 @@ text-decoration: none;
   .ag-courses-item_link {
     display: block;
     padding: 30px 20px;
-    background-color: #3b3b53;
+    background: #47275a;
+    background: -webkit-linear-gradient(0deg, #3c224b 0%, #3636a3 100%);
+    background: linear-gradient(0deg, #57306e 0%, #3636a3 100%);
   
     overflow: hidden;
   
@@ -198,6 +202,7 @@ text-decoration: none;
   .ag-courses_item:nth-child(6n) .ag-courses-item_bg {
     background-color: #4c49ea;
   }
+  
   
   
   
