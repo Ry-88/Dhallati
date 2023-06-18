@@ -36,7 +36,9 @@ class RequestLostItem(models.Model):
         ("T","TRAKING"),
         ("M","MATCHED"),
         ("F","FOUND"),
+        ("N","NOMATCH")
     ]
+
 
     color=models.CharField(max_length=100,choices=COLOR_CHOICES,default="B")
     place=models.CharField(max_length=100,choices=PLACE_CHOICES)
@@ -84,9 +86,8 @@ class FoundItem(models.Model):
 
 
 
-"""
+
 class ConfirmItem(models.Model):
     found_item=models.OneToOneField(FoundItem,on_delete=models.CASCADE)
     request_Lost_Item=models.OneToOneField(RequestLostItem,on_delete=models.CASCADE)
     is_confirm=models.BooleanField(default=False)
-"""

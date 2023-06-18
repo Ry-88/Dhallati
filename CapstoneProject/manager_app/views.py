@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpRequest,HttpResponse
-from main_app.models import Catagory,SubCatagory,FoundItem,RequestLostItem
+from main_app.models import Catagory,SubCatagory,FoundItem,RequestLostItem,ConfirmItem
 
 from django.core import serializers
 import json
@@ -90,14 +90,32 @@ def found_item_page(request:HttpRequest):
 
 
 def found_detail_page(request:HttpRequest,found_item_id):
+    
     found_item=FoundItem.objects.get(id=found_item_id)
     lost_item=RequestLostItem.objects.filter(catagory=found_item.catagory,Sub_catagory=found_item.Sub_catagory)
-    return render(request,'manager_app/founditem_detail.html' ,{"found_item":found_item,"request_lost_Items":lost_item })
+    confirm_items=ConfirmItem.objects.get(found_item=found_item)
+    
+
+    return render(request,'manager_app/founditem_detail.html' ,{"found_item":found_item,"request_lost_Items":lost_item,"confirm_items":confirm_items })
 
 
+def confirm_item_for_found_detail(request:HttpRequest,found_item_id,request_lost_item_id):
+   
+    
+    found_item=FoundItem.objects.get(id=found_item_id)
+    lost_item=RequestLostItem.objects.get(id=request_lost_item_id)
+    found_item.status="M"
+    lost_item.status="M"
+    found_item.save()
+    lost_item.save()
 
-def delete_found_item(request:HttpRequest):
-    pass
+    new_confirm =ConfirmItem(found_item=found_item,request_Lost_Item=lost_item)
+    new_confirm.save()
+    
+        
+
+    return redirect("manager_app:found_detail_page",found_item_id)
+
 
 
 def lost_item_page(request:HttpRequest):
