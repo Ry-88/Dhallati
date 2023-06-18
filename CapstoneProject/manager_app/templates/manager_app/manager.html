@@ -143,10 +143,14 @@ background: linear-gradient(0deg, #070b34 0%, #141852 50%, #2b2f77 100%);
           document.getElementById("main").style.marginLeft = "250px";
         }
         
-        function closeNav() {
+        function closeNav() {setTimeout(function() {
           document.getElementById("mySidebar").style.width = "0";
           document.getElementById("main").style.marginLeft= "0";
+        }, 3000);
         }
+        setTimeout(function() {
+ //your code here
+}, 1000);
         </script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
 </body>
