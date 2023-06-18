@@ -430,7 +430,8 @@ textarea.form-control {
 }
 
 .hero-area {
-  padding: 300px 0 200px;
+  height: 100vh;
+  padding: 250px 10px 200px;
   position: relative;
 }
 @media (max-width: 767px) {
@@ -883,17 +884,40 @@ blockquote {
   min-width: 15vh;
   min-height: 4vh;
   border-radius: 1vh;
-}
-
-.request_btn{
-  color: #E8F6EF;
-}
-
-.request_btn:hover{
+  text-align: center;
+  transition: all 0.5s;
   cursor: pointer;
-  color: #E8F6EF;
-  font-size: 35px;
+  position: relative;
 }
+
+.request_div span{
+  color: #E8F6EF;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.request_div span:after{
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+  
+}
+
+.request_div:hover span{
+  padding-right: 25px;
+}
+
+
+.request_div:hover span:after{
+  opacity: 1;
+  right: 0;
+}
+
 
 .track_div{
   font-size: 30px;
@@ -903,16 +927,41 @@ blockquote {
   min-width: 15vh;
   min-height: 4vh;
   border-radius: 1vh;
-
-}
-
-.track_btn{
-  color: #525273;
-}
-
-.track_btn:hover{
+  text-align: center;
+  transition: all 0.5s;
   cursor: pointer;
-  color: #525273;
-  font-size: 37px;
+  position: relative;
 
+}
+
+.track_div span{
+  color: #525273;
+  font-size: 30px;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.track_div span:after{
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+  
+}
+
+.track_div:hover span{
+  padding-right: 25px;
+}
+
+.track_div:hover span:after{
+  opacity: 1;
+  right: 0;
+}
+
+.category h1{
+  color: white;
 }
