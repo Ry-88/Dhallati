@@ -3,106 +3,122 @@
 {% load static %}
 
 
-{% block content%}
+{% block hero %}
 
-<div class="container" style="background-color: white;">
-    <h2>Make Request</h2>
+<section class="bg-primary" id="parallax" style="min-height: 100vh; padding-top: 200px; padding-bottom: 40px;">
+
+    <div class="category d-flex justify-content-center mb-1" style="margin-top: -50px;">
+        <h1>Make Request</h1>
+    </div>
+    
+    <div class="container  " style="background-color: #E8F6EF; border-radius: 1vh; padding: 20px 10px; ">
+       
 
 
-    <form action="{% url 'main_app:request_add' category.id %}" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
+        <form action="{% url 'main_app:request_add' category.id %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
 
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">category</label>
-            <select disabled class="form-select" aria-label="Default select example" name="category" required min-length="1">
-                    <option value="">{{category.name}}</option>
+            <div class="mb-3">  
+                <label for="exampleFormControlInput1" class="form-label">category</label> <br>
+                <select disabled class="form-select" aria-label="Default select example" name="category" required min-length="1">
+                        <option value="">{{category.name}}</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Sub Category</label> <br>
+            <select  name="sub_category" class="form-select">
+            
+            {% for sub in sub_category %}
+            <option value="{{sub.id}}">{{sub.name}}</option>
+            {% endfor %}
             </select>
-        </div>
-
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Sub Category</label>
-        <select  name="sub_category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-         
-          {% for sub in sub_category %}
-          <option value="{{sub.id}}">{{sub.name}}</option>
-          {% endfor %}
-        </select>
-        </div>
-
-
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">color</label>
-            <select class="form-select" name="color" id="inputGroupSelect01">
-                <option selected>Choose</option>
-
-                <option value="R">Red</option>
-                <option value="G">Green</option>
-                <option value="B">Blue</option>
-                <option value="Bla">Black</option>
-                <option value="Y">Yellow</option>
-                <option value="W">White</option>
-
-               
-            </select>
-        </div>
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">place</label>
-            <select class="form-select" name="place" id="inputGroupSelect01">
-                <option selected>Choose</option>
-
-                <option value="F">First Floor</option>
-                <option value="S">Second Floor</option>
-                <option value="T">Third Floor</option>
- 
-            </select>
-        </div>
+            </div>
 
 
 
-<!--      <div class="input-group mb-3">
-            <label class="input-group-text" for="inputGroupSelect01">place</label>
-            <select class="form-select" name="place" id="inputGroupSelect01">
-                    
+
+
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">color</label> <br>
+                <select class="form-select" name="color" id="inputGroupSelect01">
+                    <option selected>Choose</option>
+
+                    <option value="R">Red</option>
+                    <option value="G">Green</option>
+                    <option value="B">Blue</option>
+                    <option value="Bla">Black</option>
+                    <option value="Y">Yellow</option>
+                    <option value="W">White</option>
+
+                
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">place</label> <br>
+                <select class="form-select" name="place" id="inputGroupSelect01">
+                    <option selected>Choose</option>
+
                     <option value="F">First Floor</option>
                     <option value="S">Second Floor</option>
                     <option value="T">Third Floor</option>
-            </select>
-        </div>
-        --> 
-
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Description</label>
-            <textarea class="form-control" id="exampleFormControlInput1" placeholder="Discripe the Item"
-                name="description"></textarea>
-        </div>
-
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Choose Image</label>
-            <input type="file" name="image" class="form-control" />
-        </div>
+    
+                </select>
+            </div>
 
 
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Your email</label>
-            <input type="email" name="email" class="form-control" />
-        </div>
 
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Your name</label>
-            <input type="text" name="name" class="form-control" />
-        </div>
+    <!--      <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupSelect01">place</label>
+                <select class="form-select" name="place" id="inputGroupSelect01">
+                        
+                        <option value="F">First Floor</option>
+                        <option value="S">Second Floor</option>
+                        <option value="T">Third Floor</option>
+                </select>
+            </div>
+            --> 
 
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Your phone</label>
-            <input type="text" name="phone_number" class="form-control" />
-        </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Description</label>
+                <textarea class="form-control" id="exampleFormControlInput1" placeholder="Discripe the Item"
+                    name="description"></textarea>
+            </div>
 
-        <div class="mb-3">
-            <input type="submit" value="Create Request" class="btn btn-primary" />
-        </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Choose Image</label>
+                <input type="file" name="image" class="form-control" />
+            </div>
 
-    </form>
 
-</div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Your email</label>
+                <input type="email" name="email" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Your name</label>
+                <input type="text" name="name" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Your phone</label>
+                <input type="text" name="phone_number" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <input type="submit" value="Create Request" class="btn btn-primary" />
+            </div>
+
+        </form>
+
+    </div>
+</section>
+
+{% endblock %}
+
+{% block content%}
+
+
 
 {% endblock %}
