@@ -116,6 +116,20 @@ def confirm_item_for_found_detail(request:HttpRequest,found_item_id,request_lost
     return redirect("manager_app:found_detail_page",found_item_id)
 
 
+def discard_confirm_item_for_found_detail(request:HttpRequest,found_item_id,request_lost_item_id):
+    found_item=FoundItem.objects.get(id=found_item_id)
+    lost_item=RequestLostItem.objects.get(id=request_lost_item_id)
+    found_item.status="T"
+    lost_item.status="T"
+    found_item.save()
+    lost_item.save()
+    confirm_item=ConfirmItem.objects.get(found_item=found_item)
+    confirm_item.is_confirm=True
+    confirm_item.delete()
+
+    return redirect("manager_app:found_detail_page",found_item_id)
+
+
 
 def lost_item_page(request:HttpRequest):
     request_lost_Items=RequestLostItem.objects.all()

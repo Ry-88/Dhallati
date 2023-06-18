@@ -85,12 +85,7 @@
     </div>
     <div style="" >
 
-        <div style=" margin-bottom: 10px; min-height: 200px; color: #302C2C;  border-radius: 5px; padding: 13px;">
-            <h2 style="text-align: center;">description </h2>
-          
-            <h5>found at {{found_item.description}}</h5>
-    
-    </div>
+
     <div style="    border-radius: 5px; padding-top: 13px;">
         <h2 style="text-align: center;">match lost items </h2>
 
@@ -151,7 +146,7 @@
                 <a href="" style=" margin: 10px; padding: 10px; border-radius: 8px; text-decoration: none; color:#E8F6EF ;    background-color:  #474bff  ">
                     confirm
                 </a>
-                <a href="" style=" margin: 10px; padding: 10px; border-radius: 8px; text-decoration: none; color:#E8F6EF ;    background-color:  #474bff  ">
+                <a href="{% url 'manager_app:discard_confirm_item_for_found_detail' found_item_id=confirm_item.found_item.id  request_lost_item_id=confirm_item.request_Lost_Item.id %}" style=" margin: 10px; padding: 10px; border-radius: 8px; text-decoration: none; color:#E8F6EF ;    background-color:  #474bff  ">
                     discard
                 </a>
                 
@@ -163,9 +158,14 @@
             <h1 style="text-align: center;"> notheng selected  <h1>
         </div>
         {% endif %}
-
+        
     </div>
+    <div style=" margin-bottom: 10px; min-height: 200px; color: #302C2C;  border-radius: 5px; padding: 13px;">
+      <h2 style="text-align: center;">description </h2>
+    
+      <h5>{{found_item.description}}</h5>
 
+  </div>
 
 </div>
 </div>
