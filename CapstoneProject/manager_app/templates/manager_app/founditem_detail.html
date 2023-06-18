@@ -99,18 +99,21 @@
               
             
         <div class="ag-courses-item_link" style=" border-radius: 10px; height: 280px;   ">
+
           {% if confirm_items %}
+            {% for confirm_item in confirm_items %}
+              
             
             
           <div class="ag-courses-item_date-box">
-                <h5>description of lost: </h5><h6>{{confirm_items.request_Lost_Item.description}}</h6>
+                <h5>description of lost: </h5><h6>{{confirm_item.request_Lost_Item.description}}</h6>
             </div>
                 
          
              
              
               <div class="ag-courses-item_date-box">
-                category :<span class="ag-courses-item_date"> {{confirm_items.request_Lost_Item.catagory.name}} </span> sub category: <span class="ag-courses-item_date"> {{confirm_items.request_Lost_Item.Sub_catagory.name}} </span>
+                category :<span class="ag-courses-item_date"> {{confirm_item.request_Lost_Item.catagory.name}} </span> sub category: <span class="ag-courses-item_date"> {{confirm_items.request_Lost_Item.Sub_catagory.name}} </span>
                
               </div>
             
@@ -121,19 +124,19 @@
                 <div class="ag-courses-item_date-box">
                     nameOwner:
                     <span class="ag-courses-item_date">
-                        {{confirm_items.request_Lost_Item.name}}
+                        {{confirm_item.request_Lost_Item.name}}
                     </span>
                   </div>
                   <div class="ag-courses-item_date-box">
                     phoneNumber:
                     <span class="ag-courses-item_date">
-                        {{confirm_items.request_Lost_Item.phone_number}}
+                        {{confirm_item.request_Lost_Item.phone_number}}
                     </span>
                   </div>
                   <div class="ag-courses-item_date-box">
                     email:
                     <span class="ag-courses-item_date">
-                        {{confirm_items.request_Lost_Item.email}}
+                        {{confirm_item.request_Lost_Item.email}}
                     </span>
                   </div>
 
@@ -154,6 +157,7 @@
                 
               </div>
         </div>
+        {% endfor %}
         {% else %}
         <div class="ag-courses-item_date-box">
             <h1 style="text-align: center;"> notheng selected  <h1>

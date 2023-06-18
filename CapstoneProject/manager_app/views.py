@@ -93,8 +93,8 @@ def found_detail_page(request:HttpRequest,found_item_id):
     
     found_item=FoundItem.objects.get(id=found_item_id)
     lost_item=RequestLostItem.objects.filter(catagory=found_item.catagory,Sub_catagory=found_item.Sub_catagory)
-    confirm_items=ConfirmItem.objects.get(found_item=found_item)
-    
+    confirm_items=ConfirmItem.objects.filter(found_item=found_item)
+  
 
     return render(request,'manager_app/founditem_detail.html' ,{"found_item":found_item,"request_lost_Items":lost_item,"confirm_items":confirm_items })
 
@@ -112,7 +112,6 @@ def confirm_item_for_found_detail(request:HttpRequest,found_item_id,request_lost
     new_confirm =ConfirmItem(found_item=found_item,request_Lost_Item=lost_item)
     new_confirm.save()
     
-        
 
     return redirect("manager_app:found_detail_page",found_item_id)
 
