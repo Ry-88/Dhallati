@@ -30,6 +30,6 @@ urlpatterns = [
     path("lostitem/request/detail/<lost_item_id>/confirm/<found_item_id>/discard/", views.discard_confirm_item_for_lost_detail, name="discard_confirm_item_for_lost_detail"),
     path("lostitem/request/detail/<lost_item_id>/confirm/<found_item_id>/confrirm/", views.confirm_item_true_for_lost_detail, name="confirm_item_true_for_lost_detail"),
 
-
+    path("confirm_item", views.confirm_item_page, name="confirm_item_page")
     
 ]
