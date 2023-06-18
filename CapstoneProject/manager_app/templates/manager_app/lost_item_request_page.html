@@ -21,7 +21,7 @@
               {% for request_lost_Item in request_lost_Items %}
               <div class="ag-courses_item">
              
-                <a href="#" class="ag-courses-item_link">
+                <a href="{% url 'manager_app:lost_item_detail_page' request_lost_Item.id %}" class="ag-courses-item_link">
                   <div class="ag-courses-item_bg" 
                   {% if request_lost_Item.color == 'G' %}
                     style=" background-color: rgb(58, 203, 58);"
