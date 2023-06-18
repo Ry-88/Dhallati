@@ -71,6 +71,7 @@
                 <h4 class="mb-80">Contact Form</h4>
                 <form action="{% url 'main_app:home' %}" class="row" method="POST">
                     {% csrf_token %}
+                    <!--{{ form.as_p }}-->
                   <div class="col-md-6">
                     
                     <input type="text" placeholder="First name" name="first_name" class="form-control px-0 mb-4" style="background-color: #e8f6ef4d;">
