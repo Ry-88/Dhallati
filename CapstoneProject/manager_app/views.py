@@ -102,7 +102,7 @@ def add_found_item_page(request:HttpRequest ,category_id):
 #----------------------------------------------------------------
 
 def found_item_page(request:HttpRequest):
-    found_items =FoundItem.objects.all()
+    found_items =FoundItem.objects.filter(status = "T")
     return render(request,"manager_app/found_items.html",{"found_items":found_items})
 
 
@@ -183,7 +183,7 @@ def confirm_item_true_for_found_detail(request:HttpRequest,found_item_id,request
 
 
 def lost_item_page(request:HttpRequest):
-    request_lost_Items=RequestLostItem.objects.filter()
+    request_lost_Items=RequestLostItem.objects.filter(status = "T")
 
     return render(request,'manager_app/lost_item_request_page.html' ,{"request_lost_Items":request_lost_Items})
 
@@ -250,9 +250,19 @@ def discard_confirm_item_for_lost_detail(request:HttpRequest,found_item_id,lost_
 
 def confirm_item_page(request:HttpRequest):
 
+    confirmed_items = ConfirmItem.objects.filter(is_confirm = True)
 
-    
-    return render(request,'manager_app/confirm_item_page.html')
+    return render(request,'manager_app/confirm_item_page.html', {"confirmed_items" : confirmed_items})
+
+  
+
+def match_item_page(request:HttpRequest):
+
+    matched_items = ConfirmItem.objects.filter(is_confirm = False)
+
+    return render(request, "manager_app/match_item_page.html", {"matched_items" : matched_items})
+
+
 
 def send_email_form(request:HttpRequest,lost_item_id,confirm_item_id):
 
@@ -271,4 +281,5 @@ def send_email_form(request:HttpRequest,lost_item_id,confirm_item_id):
 def matched_item_page(request:HttpRequest):
     return render(request,"manager_app/match_page.html")
     
+
 
