@@ -98,3 +98,8 @@ class ContactForm(models.Model):
     email = models.EmailField()
     message = models.TextField()
 
+class EmailSend(models.Model):
+    request_Lost_Item=models.OneToOneField(RequestLostItem,on_delete=models.CASCADE)
+    is_reserved=models.BooleanField(default=False)
+    
+
