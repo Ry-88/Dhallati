@@ -19,8 +19,11 @@
         <div class="ag-format-container">
             <div class="ag-courses_box"  style="display: block;">
               {% for request_lost_Item in request_lost_Items %}
+              {% if not request_lost_Item.is_read %}
+                <div style="background-color:rgb(252, 96, 96); border-radius: 50%; height: 40px; width: 40px; bottom: 2px; position: relative; z-index: 3; box-shadow: 0px 00px 20px rgb(252, 96, 96); display: flex; justify-content: center; align-items: center;">NEW</div>
+                {% endif %}
               <div class="ag-courses_item">
-             
+                
                 <a href="{% url 'manager_app:lost_item_detail_page' request_lost_Item.id %}" class="ag-courses-item_link">
                   <div class="ag-courses-item_bg" 
                   {% if request_lost_Item.color == 'G' %}
