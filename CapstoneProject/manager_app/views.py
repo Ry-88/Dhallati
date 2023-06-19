@@ -162,6 +162,8 @@ def lost_item_detail_page(request:HttpRequest,lost_item_id):
     
     lost_item=RequestLostItem.objects.get(id=lost_item_id)
     found_item=FoundItem.objects.filter(catagory=lost_item.catagory,Sub_catagory=lost_item.Sub_catagory,status="T")
+    lost_item.is_read=True
+    lost_item.save()
     confirm_items=ConfirmItem.objects.filter(request_Lost_Item=lost_item)
     return render(request,'manager_app/lost_item_request_detail.html' ,{"found_item":found_item,"lost_item":lost_item,"confirm_items":confirm_items })
 
@@ -213,3 +215,5 @@ def discard_confirm_item_for_lost_detail(request:HttpRequest,found_item_id,lost_
     confirm_item.delete()
 
     return redirect("manager_app:lost_item_detail_page",lost_item_id)
+
+
