@@ -84,6 +84,19 @@ def add_found_item_page(request:HttpRequest ,category_id):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 #----------------------------------------------------------------
 
 def found_item_page(request:HttpRequest):
@@ -95,7 +108,7 @@ def found_item_page(request:HttpRequest):
 def found_detail_page(request:HttpRequest,found_item_id):
     
     found_item=FoundItem.objects.get(id=found_item_id)
-    lost_item=RequestLostItem.objects.filter(catagory=found_item.catagory,Sub_catagory=found_item.Sub_catagory)
+    lost_item=RequestLostItem.objects.filter(catagory=found_item.catagory,Sub_catagory=found_item.Sub_catagory,status="T")
     confirm_items=ConfirmItem.objects.filter(found_item=found_item)
   
 
@@ -148,6 +161,20 @@ def confirm_item_true_for_found_detail(request:HttpRequest,found_item_id,request
    
 
     return redirect("manager_app:found_detail_page",found_item_id)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #-------------------------------------------------------------------
@@ -216,4 +243,12 @@ def discard_confirm_item_for_lost_detail(request:HttpRequest,found_item_id,lost_
 
     return redirect("manager_app:lost_item_detail_page",lost_item_id)
 
+
+
+
+def confirm_item_page(request:HttpRequest):
+
+
+    
+    return render(request,'manager_app/confirm_item_page.html')
 
