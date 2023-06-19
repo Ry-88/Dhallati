@@ -29,11 +29,11 @@
   
     <!-- tracking -->
 <section class="section bg-primary position-relative testimonial-bg-shapes" style="min-height: 55vh;" id="Tracking">
-    <div class="container d-flex justify-content-center" style="color: #FFE194;">
+    <div class="container d-flex justify-content-center" >
         <div class="  row">
         <div class=" mx-auto text-center ">
         <div class="text-center">
-          <h2 class="section-title mb-5" style="color: #FFE194;">Track your request</h2>
+          <h2 class="section-title mb-5" >Track your request</h2>
         </div>
         
             <form action="{% url 'main_app:home' %}" method="post">
@@ -75,13 +75,39 @@
             <div class="col-lg-8 mx-auto">
               <div class="bg-white rounded text-center p-5 shadow-down">
                 <h4 class="mb-80">Contact Form</h4>
-                <p>{{msg}}</p>
+                
+
+                <!-- begin modal-->
+                {% if msg %}
+
+                <div class="modal show d-block" tabindex="-1" id="modal">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title">Message Sent</h5>
+                      </div>
+                      <div class="modal-body">
+                        <p>{{msg}}</p>
+
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="document.getElementById('modal').classList.remove('show');document.getElementById('modal').classList.remove('d-block');">OK</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+
+                <!-- end modal-->
+
+
+
                 <form action="{% url 'main_app:home' %}" class="row" method="POST">
                     {% csrf_token %}
                     <!--{{ form.as_p }}-->
                   <div class="col-md-6">
                     
-                    <input type="text" placeholder="First name" name="first_name" class="form-control px-0 mb-4" style="background-color: #e8f6ef4d;">
+                    <input type="text" required placeholder="First name" name="first_name" class="form-control px-0 mb-4" style="background-color: #e8f6ef4d;">
                   </div>
                   <div class="col-md-6">
                     
@@ -89,20 +115,23 @@
                   </div>
                   <div class="col-md-6">
                    
-                    <input type="email" placeholder="Email" name="email" class="form-control px-0 mb-4" style="background-color: #e8f6ef4d;">
+                    <input type="email" required placeholder="Email" name="email" class="form-control px-0 mb-4" style="background-color: #e8f6ef4d;">
                   </div>
                   <div class="col-12">
                     
-                    <textarea placeholder="Message" name="message" class="form-control px-0 mb-4" style="background-color: #e8f6ef4d;"></textarea>
+                    <textarea placeholder="Message" required name="message" class="form-control px-0 mb-4" style="background-color: #e8f6ef4d;"></textarea>
                   </div>
 
 
                   <div class="d-flex justify-content-center">
                     <div class=" request_div" style="width: auto;">
-                        <button class="request_btn" type="submit" name="help" style="background-color: #e8f6ef00; border-width: 0;">send</button>
+                        <button class="request_btn "  type="submit" name="help" style="background-color: #e8f6ef00; border-width: 0;">send</button>
                       </div>
-
                   </div>
+
+                  
+
+              
                   
                 </form>
               </div>

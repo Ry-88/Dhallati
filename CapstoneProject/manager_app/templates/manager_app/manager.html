@@ -102,6 +102,7 @@ background: linear-gradient(0deg, #070b34 0%, #141852 50%, #2b2f77 100%);
 <body>
 
     <div id="mySidebar" class="sidebar"  onmouseleave="closeNav()">
+ 
         <div class="">
         <h1 href="javascript:void(0)" class="closebtn"  onclick="closeNav()"  >×</h1>
         
@@ -116,6 +117,15 @@ background: linear-gradient(0deg, #070b34 0%, #141852 50%, #2b2f77 100%);
 
         
         <button class="openbtn" onclick="openNav()">☰</button> 
+       <a href="{% url 'manager_app:lost_item_page' %}"> <div  style="float: right; width: 60px ;  " id="mySidebar" >
+          {% if bell %}
+          <div style="position:absolute; color: #E8F6EF; top: 9px; border-radius: 50%; width: 25px; background-color: rgb(253, 92, 92); box-shadow: 0 0 20px rgb(253, 92, 92); text-align: center;">
+            {{bell|length }}
+          </div>
+          {% endif %}
+          
+          <img src="{% static 'style/icons8-bell-96.png' %}" class="openbtn" style="float: right; width: 50px ; border-radius: 70%; background-color: #141852; " width="100%" alt="" srcset="">
+        </div></a>
         
         {% block main %}
           

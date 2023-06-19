@@ -33,6 +33,9 @@
   <!-- themefy-icon -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
 
+  <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+
+
   <!-- Main Stylesheet -->
   <link href="{% static 'style/style.css' %}" rel="stylesheet">
 
@@ -52,23 +55,23 @@
     <div class="collapse navbar-collapse text-center" id="navigation">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link" style="color: #FFE194;" href="{% url 'main_app:home' %}">Home</a>
+          <a class="nav-link" style="color: #e8f6ef;" href="{% url 'main_app:home' %}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="color: #FFE194;" href="http://127.0.0.1:8000/#description">Description</a>
+          <a class="nav-link" style="color: #e8f6ef;" href="http://127.0.0.1:8000/#description">Description</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="color: #FFE194;" href="{% url 'main_app:category_for_add_request_add' %}">Add request</a>
+          <a class="nav-link" style="color: #e8f6ef;" href="{% url 'main_app:category_for_add_request_add' %}">Add request</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="color: #FFE194;" href="{% url 'main_app:request_detail'}">My requests</a>
+          <a class="nav-link" style="color: #e8f6ef;" href="{% url 'main_app:request_detail'}">My requests</a>
         </li>
         <li class="nav-item">
 
-          <a class="nav-link" style="color: #FFE194;" href="http://127.0.0.1:8000/#Tracking">Tracking</a>
+          <a class="nav-link" style="color: #e8f6ef;" href="http://127.0.0.1:8000/#Tracking">Tracking</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="color: #FFE194;" href="http://127.0.0.1:8000/#contact">Contact</a>
+          <a class="nav-link" style="color: #e8f6ef;" href="http://127.0.0.1:8000/#contact">Contact</a>
 
         </li>
       </ul>
@@ -178,7 +181,12 @@
   
   <!-- Main Script -->
   <script src="{%static 'js/script.js'%}"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.4/umd/popper.min.js" integrity="sha512-7yA/d79yIhHPvcrSiB8S/7TyX0OxlccU8F/kuB8mHYjLlF1MInPbEohpoqfz0AILoq5hoD7lELZAYYHbyeEjag==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   
-  </body>
+</body>
   </html>
   
