@@ -1,6 +1,10 @@
 from django.shortcuts import render, redirect
-from django.http import HttpRequest
-from .models import RequestLostItem, Catagory, SubCatagory
+from django.http import HttpRequest, HttpResponse
+from .models import RequestLostItem, Catagory, SubCatagory,ContactForm
+from django.core.mail import send_mail, BadHeaderError
+#from .forms import ContactForm
+
+
 # Create your views here.
 
 
@@ -23,7 +27,49 @@ def home(request: HttpRequest):
 #                             message=request.POST['message'])
 #            new_help.save()
 #
-    return render(request, 'main_app/home.html', {'track' : track})
+    """     if request.method == "GET":
+        form = ContactForm()
+    else:
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            first_name = form.cleaned_data['first_name']
+            last_name = form.cleaned_data['last_name']
+            from_email = form.cleaned_data["from_email"]
+            message = form.cleaned_data['message']
+            try:
+                send_mail(first_name,last_name, message, from_email, ["DhallatiOfficial@gmail.com"])
+            except BadHeaderError:
+                return HttpResponse("Invalid header found.")
+            return redirect("success")
+    return render(request, "main_app/home.html", {"form": form})
+"""
+    msg=" "
+
+            
+    if request.method == 'POST':
+
+                first_name = request.POST.get('first_name')
+                last_name = request.POST.get('last_name')
+                email = request.POST.get('email')
+                message = request.POST.get('message')
+
+                # Save contact data to the database
+                contact = ContactForm(first_name=first_name, last_name=last_name , email=email, message=message)
+                contact.save()
+
+                # Retrieve all contacts
+                contacts = ContactForm.objects.all()
+                print(contact.email,contact.first_name,contact.last_name,contact.message)
+                # Send email
+                subject = f"Hello my name is {contact.first_name}"
+                content = f"Name: {contact.first_name} {contact.last_name} Email: {contact.email} Messege:{contact.message}"
+                send_mail(subject, content, 'DhallatiOfficial@gmail.com' , ['DhallatiOfficial@gmail.com'],fail_silently=False)
+                msg="thank you for the feedback"
+                # Render success page or redirect
+
+    return render(request, 'main_app/home.html',{"msg":msg})
+
+    
 
 
 

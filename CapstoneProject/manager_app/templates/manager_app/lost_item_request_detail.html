@@ -148,7 +148,7 @@
         </div>
         <div style="display: flex; flex-wrap: wrap; column-gap: 9px; padding-top: 20px; ">
             <div class="ag-courses-item_date-box"> 
-                <a href="" style=" margin: 10px; padding: 10px; border-radius: 8px; text-decoration: none; color:#E8F6EF ;    background-color:  #474bff  ">
+                <a href="{% url 'manager_app:send_email_form' lost_item_id=lost_item.id confirm_item_id=confirm_item.id %}" style=" margin: 10px; padding: 10px; border-radius: 8px; text-decoration: none; color:#E8F6EF ;    background-color:  #474bff  ">
                     send email
                 </a>
                 <a href="{% url 'manager_app:confirm_item_true_for_lost_detail' lost_item_id=lost_item.id found_item_id=confirm_item.found_item.id  %}" style=" margin: 10px; padding: 10px; border-radius: 8px; text-decoration: none; color:#E8F6EF ;    background-color:  #474bff  ">

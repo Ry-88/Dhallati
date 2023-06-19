@@ -1,6 +1,8 @@
 from django.shortcuts import render,redirect
 from django.http import HttpRequest,HttpResponse
 from main_app.models import Catagory,SubCatagory,FoundItem,RequestLostItem,ConfirmItem
+from django.core.mail import send_mail
+
 
 from django.core import serializers
 import json
@@ -251,6 +253,19 @@ def confirm_item_page(request:HttpRequest):
 
     
     return render(request,'manager_app/confirm_item_page.html')
+
+def send_email_form(request:HttpRequest,lost_item_id,confirm_item_id):
+
+    
+    confirm_item=ConfirmItem.objects.get(id=confirm_item_id)
+    
+    subject=f"Hello {confirm_item.request_Lost_Item.name}"
+    content=f"Hello {confirm_item.request_Lost_Item.name} Regarding your request please answer these follow up questions to move forward http://127.0.0.1:8000/{confirm_item.request_Lost_Item.id}"
+    send_mail(subject, content, 'DhallatiOfficial@gmail.com' , [confirm_item.request_Lost_Item.email],fail_silently=False)
+   
+    print(confirm_item.request_Lost_Item.email)
+
+    return redirect("manager_app:lost_item_detail_page",lost_item_id)
 
 
 def matched_item_page(request:HttpRequest):
