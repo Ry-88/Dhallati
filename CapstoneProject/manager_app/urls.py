@@ -32,6 +32,6 @@ urlpatterns = [
     path("lostitem/request/detail/<lost_item_id>/<confirm_item_id>",views.send_email_form,name="send_email_form"),
 
 
-    path("confirm_item", views.confirm_item_page, name="confirm_item_page")
-    
+    path("confirm_item", views.confirm_item_page, name="confirm_item_page"),
+    path("match_item_page", views.match_item_page, name="match_item_page")
 ]
