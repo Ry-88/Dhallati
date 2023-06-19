@@ -11,7 +11,6 @@ urlpatterns = [
     path('request_tracking/<track_id>', views.request_tracking, name='request_tracking'),
     path("category_for_add_request_add",views.category,name="category_for_add_request_add"),
     path('request_add/<category_id>/', views.request_add, name='request_add'),
-    path("success/", views.successView, name="success"),
 
 
     

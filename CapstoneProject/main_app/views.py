@@ -43,9 +43,10 @@ def home(request: HttpRequest):
             return redirect("success")
     return render(request, "main_app/home.html", {"form": form})
 """
-    try:
+    msg=" "
+
             
-            if request.method == 'POST':
+    if request.method == 'POST':
 
                 first_name = request.POST.get('first_name')
                 last_name = request.POST.get('last_name')
@@ -63,17 +64,12 @@ def home(request: HttpRequest):
                 subject = f"Hello my name is {contact.first_name}"
                 content = f"Name: {contact.first_name} {contact.last_name} Email: {contact.email} Messege:{contact.message}"
                 send_mail(subject, content, 'DhallatiOfficial@gmail.com' , ['DhallatiOfficial@gmail.com'],fail_silently=False)
-               
+                msg="thank you for the feedback"
                 # Render success page or redirect
-                return render(request, 'main_app/success.html')
 
-            return render(request, 'main_app/home.html')
-    except Exception as e:
-                print(e)
-                return render(request,"main_app/home.html")
+    return render(request, 'main_app/home.html',{"msg":msg})
+
     
-def successView(request):
-    return HttpResponse("Success! Thank you for your message.") 
 
 
 

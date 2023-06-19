@@ -75,6 +75,7 @@
             <div class="col-lg-8 mx-auto">
               <div class="bg-white rounded text-center p-5 shadow-down">
                 <h4 class="mb-80">Contact Form</h4>
+                <p>{{msg}}</p>
                 <form action="{% url 'main_app:home' %}" class="row" method="POST">
                     {% csrf_token %}
                     <!--{{ form.as_p }}-->
@@ -96,7 +97,7 @@
                   </div>
 
                   <div class="col-lg-6 col-10 mx-auto">
-                    <button class="btn btn-primary w-100" type="submit" name="help" style="padding: 5px;">send</button>
+                    <a href="http://127.0.0.1:8000/#contact"><button class="btn btn-primary w-100" type="submit" name="help" style="padding: 5px;">send</button></a>
                   </div>
                 </form>
               </div>
