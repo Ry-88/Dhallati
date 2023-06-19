@@ -90,15 +90,18 @@ def request_add(request: HttpRequest, category_id):
     return render(request, 'main_app/request_add.html', {"category": category, "sub_category": sub_category})
 
 
-def request_detail(request: HttpRequest, lost_id):
+#def request_detail(request: HttpRequest, lost_id):
 
-    requests = RequestLostItem.objects.get(id=lost_id)
+#    requests = RequestLostItem.objects.get(id=lost_id)
 
-    return render(request, 'main_app/request_detail.html', {'requests': requests})
+#    return render(request, 'main_app/request_detail.html', {'requests': requests})
+
 
 
 def request_tracking(request: HttpRequest, track_id):
 
     tracking = RequestLostItem.objects.get(id=track_id)
 
-    return render(request, 'main_app/request_tracking.html', {'tracking': tracking})
+    
+    return render(request, 'main_app/request_tracking.html', {'tracking' : tracking})
+
