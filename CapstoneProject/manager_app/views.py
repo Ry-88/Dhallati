@@ -252,3 +252,8 @@ def confirm_item_page(request:HttpRequest):
     
     return render(request,'manager_app/confirm_item_page.html')
 
+
+def matched_item_page(request:HttpRequest):
+    return render(request,"manager_app/match_page.html")
+    
+
