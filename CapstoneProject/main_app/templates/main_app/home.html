@@ -36,13 +36,13 @@
           <h2 class="section-title mb-5" style="color: #FFE194;">Track your request</h2>
         </div>
         
-            <form action="{% url 'main_app:home' %}" method="POST">
+            <form action="{% url 'main_app:home' %}" method="post">
                 {% csrf_token %}
                 <label style="font-size: 25px;" >Insert request number</label> <br>
-                <input class="form-control px-0 mb-4 rounded-pill text-center" style="background-color: #e8f6ef; font-size: 25px" type="text" placeholder="Request number" name="request_number">
-                <a class="track_div" type="submit" name="track">
+                <input class="form-control px-0 mb-4 rounded-pill text-center" style="background-color: #e8f6ef; font-size: 25px" type="search" placeholder="Request number" name="request_number">
+                <button class="track_div" type="submit" name="track">
                     <span class="track_btn" >Track</span>
-                </a>
+                </button>
                 
             </form>
         </div>
