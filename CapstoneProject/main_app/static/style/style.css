@@ -17,7 +17,7 @@ body {
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   font-size: 15px;
-  color: #4c4c4c;
+  color: #e8f6ef;
 }
 
 p, .paragraph {
@@ -32,7 +32,7 @@ p-lg, .paragraph-lg {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #000;
+  color: #e8f6ef;
   font-family: "Playfair Display", serif;
   line-height: 1.2;
 }
@@ -187,7 +187,9 @@ a.text-dark:hover {
 }
 
 a:hover {
-  color: #4C4C6D;
+  color: linear-gradient(0deg, #474bff 0%, #bc48ff 100%);
+  color: linear-gradient(0deg, #070b34 0%, #141852 50%, #2b2f77 100%);
+  
 }
 
 .slick-slide {
@@ -233,7 +235,9 @@ a:hover {
 }
 
 .bg-primary {
-  background: #4C4C6D !important;
+  background: linear-gradient(0deg, #070b34 0%, #141852 50%, #2b2f77 100%) !important;
+  background: linear-gradient(0deg, #474bff 0%, #bc48ff 100%) !important;
+  
 }
 
 .bg-gray {
@@ -401,7 +405,9 @@ textarea.form-control {
   transition: 0.3s ease;
 }
 .navigation.nav-bg {
-  background-color: #4C4C6D;
+  
+  background: linear-gradient(0deg, #070b34 0%, #141852 50%, #2b2f77 100%);
+  background: linear-gradient(0deg, #474bff 0%, #bc48ff 100%);
   padding: 15px 100px;
 }
 @media (max-width: 991px) {
@@ -412,7 +418,8 @@ textarea.form-control {
 @media (max-width: 991px) {
   .navigation {
     padding: 20px;
-    background: #4C4C6D;
+    background: linear-gradient(0deg, #070b34 0%, #141852 50%, #2b2f77 100%);
+    background: linear-gradient(0deg, #474bff 0%, #bc48ff 100%);
   }
 }
 
@@ -426,7 +433,7 @@ textarea.form-control {
 }
 
 .navbar-dark .navbar-nav .nav-link {
-  color: #fff;
+  color: #e8f6ef;
 }
 
 .hero-area {
@@ -841,7 +848,7 @@ blockquote {
 
 
 .my_text_color{
-  color: #FFE194;
+  color: #e8f6ef;
 }
 
 .img_h{
@@ -892,6 +899,7 @@ blockquote {
 
 .request_div span{
   color: #E8F6EF;
+  color: linear-gradient(0deg, #474bff 0%, #bc48ff 100%);
   cursor: pointer;
   display: inline-block;
   position: relative;
@@ -935,7 +943,8 @@ blockquote {
 }
 
 .track_div span{
-  color: #525273;
+  color: linear-gradient(0deg, #070b34 0%, #141852 50%, #2b2f77 100%);
+  color: linear-gradient(0deg, #474bff 0%, #bc48ff 100%);
   font-size: 30px;
   cursor: pointer;
   display: inline-block;
@@ -1095,3 +1104,4 @@ blockquote {
   outline: 0;
   box-shadow: 0 0 0 0.4rem rgba(76, 76, 109, 0.50);
 }
+
