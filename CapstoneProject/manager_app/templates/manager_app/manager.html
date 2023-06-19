@@ -47,7 +47,7 @@ background: linear-gradient(0deg, #070b34 0%, #141852 50%, #2b2f77 100%);
           transition: 0.3s;
         }
         
-        .sidebar a:hover {
+        .sidebar  a:hover {
           color: #E8F6EF;
           background: #474bff;
           background: -webkit-linear-gradient(0deg, #474bff 0%, #bc48ff 100%);
@@ -61,29 +61,30 @@ background: linear-gradient(0deg, #070b34 0%, #141852 50%, #2b2f77 100%);
           right: 25px;
           font-size: 36px;
           margin-left: 50px;
-          background-color:#E8F6EF;
+          
           text-align: center;
 
         }
-        .sidebar .closebtn:hover{
-            background-color:#E8F6EF;
-            color: #4C4C6D;
+        .sidebar .closebtn a:hover{
+            
+         background-color: #E8F6EF;
 
         }
         .openbtn {
           font-size: 20px;
           cursor: pointer;
           background-color: #E8F6EF;
-          color: #4C6D4F;
+          color: #070807;
           padding: 10px 15px;
           border: none;
+          
           border-radius: 50%;
         }
         
-        .openbtn:hover {
-          border: none;
-        }
         
+        .openbtn:focus{
+          outline: none;
+        }
         #main {
           transition: margin-left .5s;
           padding: 16px;
@@ -100,18 +101,20 @@ background: linear-gradient(0deg, #070b34 0%, #141852 50%, #2b2f77 100%);
 </head>
 <body>
 
-    <div id="mySidebar" class="sidebar">
-        <div>
-        <a href="javascript:void(0)" class="closebtn" style="" onclick="closeNav()">×</a>
+    <div id="mySidebar" class="sidebar"  onmouseleave="closeNav()">
+        <div class="">
+        <h1 href="javascript:void(0)" class="closebtn"  onclick="closeNav()"  >×</h1>
         
-    </div>
+    </div class="ab">
         <a href="{% url 'manager_app:found_item_page'  %}">home</a>
         <a href="{% url 'manager_app:category_page' %}">add new category</a>
-        <a href="{% url 'manager_app:category_for_add_found' %}">add found item</a>
+        <a href="{% url 'manager_app:category_for_add_found' %}" >add found item</a>
         <a href="#">Contact</a>
       </div>
       
       <main id="main" >
+
+        
         <button class="openbtn" onclick="openNav()">☰</button> 
         
         {% block main %}
@@ -140,10 +143,14 @@ background: linear-gradient(0deg, #070b34 0%, #141852 50%, #2b2f77 100%);
           document.getElementById("main").style.marginLeft = "250px";
         }
         
-        function closeNav() {
+        function closeNav() {setTimeout(function() {
           document.getElementById("mySidebar").style.width = "0";
           document.getElementById("main").style.marginLeft= "0";
+        }, 3000);
         }
+        setTimeout(function() {
+ //your code here
+}, 1000);
         </script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
 </body>

@@ -1,6 +1,8 @@
 from django.shortcuts import render,redirect
 from django.http import HttpRequest,HttpResponse
 from main_app.models import Catagory,SubCatagory,FoundItem,RequestLostItem,ConfirmItem
+from django.core.mail import send_mail
+
 
 from django.core import serializers
 import json
@@ -84,41 +86,200 @@ def add_found_item_page(request:HttpRequest ,category_id):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+#----------------------------------------------------------------
+
 def found_item_page(request:HttpRequest):
-    found_items =FoundItem.objects.all()
+    found_items =FoundItem.objects.filter(status = "T")
     return render(request,"manager_app/found_items.html",{"found_items":found_items})
+
 
 
 def found_detail_page(request:HttpRequest,found_item_id):
     
     found_item=FoundItem.objects.get(id=found_item_id)
-    lost_item=RequestLostItem.objects.filter(catagory=found_item.catagory,Sub_catagory=found_item.Sub_catagory)
+    lost_item=RequestLostItem.objects.filter(catagory=found_item.catagory,Sub_catagory=found_item.Sub_catagory,status="T")
     confirm_items=ConfirmItem.objects.filter(found_item=found_item)
   
 
     return render(request,'manager_app/founditem_detail.html' ,{"found_item":found_item,"request_lost_Items":lost_item,"confirm_items":confirm_items })
 
 
+
 def confirm_item_for_found_detail(request:HttpRequest,found_item_id,request_lost_item_id):
+ 
+
+   found_item=FoundItem.objects.get(id=found_item_id)
+   lost_item=RequestLostItem.objects.get(id=request_lost_item_id)
+   new_confirm =ConfirmItem(found_item=found_item,request_Lost_Item=lost_item)
+   new_confirm.save()
+   found_item.status="M"
+   lost_item.status="M"
+   found_item.save()
+   lost_item.save()   
    
+
     
+
+   return redirect("manager_app:found_detail_page",found_item_id)
+
+
+
+def discard_confirm_item_for_found_detail(request:HttpRequest,found_item_id,request_lost_item_id):
     found_item=FoundItem.objects.get(id=found_item_id)
     lost_item=RequestLostItem.objects.get(id=request_lost_item_id)
-    found_item.status="M"
-    lost_item.status="M"
+    found_item.status="T"
+    lost_item.status="T"
     found_item.save()
     lost_item.save()
-
-    new_confirm =ConfirmItem(found_item=found_item,request_Lost_Item=lost_item)
-    new_confirm.save()
+    confirm_item=ConfirmItem.objects.get(found_item=found_item)
     
+    confirm_item.delete()
+
+    return redirect("manager_app:found_detail_page",found_item_id)
+
+def confirm_item_true_for_found_detail(request:HttpRequest,found_item_id,request_lost_item_id):
+    found_item=FoundItem.objects.get(id=found_item_id)
+    lost_item=RequestLostItem.objects.get(id=request_lost_item_id)
+    confirm_item=ConfirmItem.objects.get(found_item=found_item)
+    confirm_item.is_confirm=True
+    confirm_item.save()
+    found_item.status="F"
+    lost_item.status="F"
+    found_item.save()
+    lost_item.save()
+   
 
     return redirect("manager_app:found_detail_page",found_item_id)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+#-------------------------------------------------------------------
+
+
 def lost_item_page(request:HttpRequest):
-    request_lost_Items=RequestLostItem.objects.all()
+    request_lost_Items=RequestLostItem.objects.filter(status = "T")
 
     return render(request,'manager_app/lost_item_request_page.html' ,{"request_lost_Items":request_lost_Items})
+
+def lost_item_detail_page(request:HttpRequest,lost_item_id):
+    
+    lost_item=RequestLostItem.objects.get(id=lost_item_id)
+    found_item=FoundItem.objects.filter(catagory=lost_item.catagory,Sub_catagory=lost_item.Sub_catagory,status="T")
+    lost_item.is_read=True
+    lost_item.save()
+    confirm_items=ConfirmItem.objects.filter(request_Lost_Item=lost_item)
+    return render(request,'manager_app/lost_item_request_detail.html' ,{"found_item":found_item,"lost_item":lost_item,"confirm_items":confirm_items })
+
+
+
+
+# button to add confirm_item for request
+def confirm_item_for_lost_detail(request:HttpRequest,found_item_id,lost_item_id):
+   
+
+    found_item=FoundItem.objects.get(id=found_item_id)
+    lost_item=RequestLostItem.objects.get(id=lost_item_id)
+    new_confirm =ConfirmItem(found_item=found_item,request_Lost_Item=lost_item)
+    new_confirm.save()
+    found_item.status="M"
+    lost_item.status="M"
+    found_item.save()
+    lost_item.save()
+ 
+    return redirect("manager_app:lost_item_detail_page",lost_item_id)
+
+
+# button to change 'is_confirm'==True  request
+def confirm_item_true_for_lost_detail(request:HttpRequest,found_item_id,lost_item_id):
+    found_item=FoundItem.objects.get(id=found_item_id)
+    lost_item=RequestLostItem.objects.get(id=lost_item_id)
+    found_item.status="F"
+    lost_item.status="F"
+    found_item.save()
+    lost_item.save()
+    confirm_item=ConfirmItem.objects.get(found_item=found_item)
+    confirm_item.is_confirm=True
+    confirm_item.save()
+
+    return redirect("manager_app:lost_item_detail_page",lost_item_id)
+
+
+
+# button to delete  request
+def discard_confirm_item_for_lost_detail(request:HttpRequest,found_item_id,lost_item_id):
+    found_item=FoundItem.objects.get(id=found_item_id)
+    lost_item=RequestLostItem.objects.get(id=lost_item_id)
+    found_item.status="T"
+    lost_item.status="T"
+    found_item.save()
+    lost_item.save()
+    confirm_item=ConfirmItem.objects.get(found_item=found_item)
+    
+    confirm_item.delete()
+
+    return redirect("manager_app:lost_item_detail_page",lost_item_id)
+
+
+
+
+def confirm_item_page(request:HttpRequest):
+
+    confirmed_items = ConfirmItem.objects.filter(is_confirm = True)
+
+    return render(request,'manager_app/confirm_item_page.html', {"confirmed_items" : confirmed_items})
+
+  
+
+def match_item_page(request:HttpRequest):
+
+    matched_items = ConfirmItem.objects.filter(is_confirm = False)
+
+    return render(request, "manager_app/match_item_page.html", {"matched_items" : matched_items})
+
+
+
+def send_email_form(request:HttpRequest,lost_item_id,confirm_item_id):
+
+    
+    confirm_item=ConfirmItem.objects.get(id=confirm_item_id)
+    
+    subject=f"Hello {confirm_item.request_Lost_Item.name}"
+    content=f"Hello {confirm_item.request_Lost_Item.name} Regarding your request please answer these follow up questions to move forward http://127.0.0.1:8000/{confirm_item.request_Lost_Item.id}"
+    send_mail(subject, content, 'DhallatiOfficial@gmail.com' , [confirm_item.request_Lost_Item.email],fail_silently=False)
+   
+    print(confirm_item.request_Lost_Item.email)
+
+    return redirect("manager_app:lost_item_detail_page",lost_item_id)
+
+
+def matched_item_page(request:HttpRequest):
+    return render(request,"manager_app/match_page.html")
+    
+
 

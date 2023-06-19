@@ -99,7 +99,20 @@ text-decoration: none;
     margin: 0 auto;
   }
   
-
+/* width */
+::-webkit-scrollbar {
+  width: 20px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  /* border-radius: 5px; */
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background:rgb(55, 52, 132);
+  /* border-radius: 5px 0 0 5px; */
+  /* box-shadow: inset 5px -5px 5px rgba(58, 114, 60, 1); */
+}
   .ag-courses_box {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -202,7 +215,7 @@ text-decoration: none;
   .ag-courses_item:nth-child(6n) .ag-courses-item_bg {
     background-color: #4c49ea;
   }
-  
+
   
   
   

@@ -1,6 +1,10 @@
 from django.shortcuts import render, redirect
-from django.http import HttpRequest
-from .models import RequestLostItem, Catagory, SubCatagory
+from django.http import HttpRequest, HttpResponse
+from .models import RequestLostItem, Catagory, SubCatagory,ContactForm
+from django.core.mail import send_mail, BadHeaderError
+#from .forms import ContactForm
+
+
 # Create your views here.
 
 
@@ -9,6 +13,7 @@ from .models import RequestLostItem, Catagory, SubCatagory
 def home(request: HttpRequest):
 
     track = RequestLostItem.objects.all()
+    
     if request.method == 'POST':
 
             track_request= RequestLostItem.objects.get(id=request.POST['request_number'])
@@ -16,6 +21,35 @@ def home(request: HttpRequest):
 
 
     return render(request, 'main_app/home.html', {'track' : track})
+
+    msg=" "
+
+            
+    if request.method == 'POST':
+
+                first_name = request.POST.get('first_name')
+                last_name = request.POST.get('last_name')
+                email = request.POST.get('email')
+                message = request.POST.get('message')
+
+                # Save contact data to the database
+                contact = ContactForm(first_name=first_name, last_name=last_name , email=email, message=message)
+                contact.save()
+
+                # Retrieve all contacts
+                contacts = ContactForm.objects.all()
+                print(contact.email,contact.first_name,contact.last_name,contact.message)
+                # Send email
+                subject = f"Hello my name is {contact.first_name}"
+                content = f"Name: {contact.first_name} {contact.last_name} Email: {contact.email} Messege:{contact.message}"
+                send_mail(subject, content, 'DhallatiOfficial@gmail.com' , ['DhallatiOfficial@gmail.com'],fail_silently=False)
+                msg="thank you for the feedback"
+                # Render success page or redirect
+
+    return render(request, 'main_app/home.html',{"msg":msg})
+
+    
+
 
 
 
