@@ -4,18 +4,13 @@ from main_app.models import Catagory,SubCatagory,FoundItem,RequestLostItem,Confi
 from django.core.mail import send_mail
 
 
-from django.core import serializers
-import json
-
 # Create your views here.
 
 #base-file-for-exdends---------------------------
 def  index_page(request:HttpRequest): 
     found_items =FoundItem.objects.all()
-
-
-    
-    return render(request,"manager_app/manager.html" ,{"found_items":found_items})
+    bell =RequestLostItem.objects.filter(is_read=False)
+    return render(request,"manager_app/manager.html" ,{"found_items":found_items,"bell":bell})
 #-------------------------------------
 
 
@@ -30,8 +25,8 @@ def category_page(request:HttpRequest):
         new_category=Catagory(name=request.POST["categoryname"])
         new_category.save()
         return redirect('manager_app:category_page')
-
-    return render(request,"manager_app/category.html",{"Catagorys":Catagorys})
+    bell =RequestLostItem.objects.filter(is_read=False)
+    return render(request,"manager_app/category.html",{"Catagorys":Catagorys,"bell":bell})
 
 
 
@@ -54,7 +49,8 @@ def sub_category(request:HttpRequest,category_id):
 
         return redirect('manager_app:sub_category',category_id)
     sub_category=SubCatagory.objects.filter(category=category)
-    return render(request,"manager_app/sub_category_page.html" ,{"category":category, "sub_category":sub_category})
+    bell =RequestLostItem.objects.filter(is_read=False)
+    return render(request,"manager_app/sub_category_page.html" ,{"category":category, "sub_category":sub_category,"bell":bell})
 
 
 
@@ -72,7 +68,8 @@ def delete_sub_category(request:HttpRequest,category_id,sub_category_id):
 # if the the manager want to add found item , frist well choose category then will go to 'add_found_item_page'
 def category_for_add_found(request:HttpRequest):
     catagorys = Catagory.objects.all()
-    return render(request,'manager_app/category_for_add_fuond.html',{"catagorys":catagorys})
+    bell =RequestLostItem.objects.filter(is_read=False)
+    return render(request,'manager_app/category_for_add_fuond.html',{"catagorys":catagorys,"bell":bell})
 
 
 def add_found_item_page(request:HttpRequest ,category_id):
@@ -82,7 +79,8 @@ def add_found_item_page(request:HttpRequest ,category_id):
         new_found_item=FoundItem(catagory=catagory,Sub_catagory= SubCatagory.objects.get(id=request.POST["sub_category"]) ,color=request.POST["color"],place=request.POST["place"],description=request.POST["description"],image=request.FILES["image"])
         new_found_item.save()
         return redirect("manager_app:index_page")
-    return render(request,"manager_app/add_found_item_page.html",{"catagory":catagory,"sub_category":sub_category})
+    bell =RequestLostItem.objects.filter(is_read=False)
+    return render(request,"manager_app/add_found_item_page.html",{"catagory":catagory,"sub_category":sub_category,"bell":bell})
 
 
 
@@ -103,7 +101,8 @@ def add_found_item_page(request:HttpRequest ,category_id):
 
 def found_item_page(request:HttpRequest):
     found_items =FoundItem.objects.filter(status = "T")
-    return render(request,"manager_app/found_items.html",{"found_items":found_items})
+    bell =RequestLostItem.objects.filter(is_read=False)
+    return render(request,"manager_app/found_items.html",{"found_items":found_items,"bell":bell})
 
 
 
@@ -113,8 +112,8 @@ def found_detail_page(request:HttpRequest,found_item_id):
     lost_item=RequestLostItem.objects.filter(catagory=found_item.catagory,Sub_catagory=found_item.Sub_catagory,status="T")
     confirm_items=ConfirmItem.objects.filter(found_item=found_item)
   
-
-    return render(request,'manager_app/founditem_detail.html' ,{"found_item":found_item,"request_lost_Items":lost_item,"confirm_items":confirm_items })
+    bell =RequestLostItem.objects.filter(is_read=False)
+    return render(request,'manager_app/founditem_detail.html' ,{"found_item":found_item,"request_lost_Items":lost_item,"confirm_items":confirm_items,"bell":bell })
 
 
 
@@ -183,8 +182,8 @@ def confirm_item_true_for_found_detail(request:HttpRequest,found_item_id,request
 
 
 def lost_item_page(request:HttpRequest):
-    request_lost_Items=RequestLostItem.objects.filter(status = "T")
-
+    request_lost_Items=RequestLostItem.objects.filter(status = "T").order_by("is_read","-created_at")
+  
     return render(request,'manager_app/lost_item_request_page.html' ,{"request_lost_Items":request_lost_Items})
 
 def lost_item_detail_page(request:HttpRequest,lost_item_id):
@@ -194,7 +193,8 @@ def lost_item_detail_page(request:HttpRequest,lost_item_id):
     lost_item.is_read=True
     lost_item.save()
     confirm_items=ConfirmItem.objects.filter(request_Lost_Item=lost_item)
-    return render(request,'manager_app/lost_item_request_detail.html' ,{"found_item":found_item,"lost_item":lost_item,"confirm_items":confirm_items })
+    bell =RequestLostItem.objects.filter(is_read=False)
+    return render(request,'manager_app/lost_item_request_detail.html' ,{"found_item":found_item,"lost_item":lost_item,"confirm_items":confirm_items,"bell":bell })
 
 
 
@@ -251,16 +251,16 @@ def discard_confirm_item_for_lost_detail(request:HttpRequest,found_item_id,lost_
 def confirm_item_page(request:HttpRequest):
 
     confirmed_items = ConfirmItem.objects.filter(is_confirm = True)
-
-    return render(request,'manager_app/confirm_item_page.html', {"confirmed_items" : confirmed_items})
+    bell =RequestLostItem.objects.filter(is_read=False)
+    return render(request,'manager_app/confirm_item_page.html', {"confirmed_items" : confirmed_items,"bell":bell })
 
   
 
 def match_item_page(request:HttpRequest):
 
     matched_items = ConfirmItem.objects.filter(is_confirm = False)
-
-    return render(request, "manager_app/match_item_page.html", {"matched_items" : matched_items})
+    bell =RequestLostItem.objects.filter(is_read=False)
+    return render(request, "manager_app/match_item_page.html", {"matched_items" : matched_items,"bell":bell })
 
 
 
@@ -279,6 +279,7 @@ def send_email_form(request:HttpRequest,lost_item_id,confirm_item_id):
 
 
 def matched_item_page(request:HttpRequest):
+    
     return render(request,"manager_app/match_page.html")
     
 

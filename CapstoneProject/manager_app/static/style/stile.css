@@ -54,7 +54,7 @@ text-decoration: none;
 
 .homenav{
     background-color: #E8F6EF;
-    width: 690px;
+    width: 750px;
     height: 90px;
     border-radius: 10px;
     display: flex;
@@ -70,7 +70,8 @@ text-decoration: none;
     border-radius: 4px;
     font-size: 17px;
     font-weight:300;
-    width: 30%;
+    width: 57%;
+    margin: 0 5px;
     text-align: center;
 }
 .homenav a:hover{
