@@ -109,7 +109,7 @@ text-decoration: none;
 }
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background:rgba(58, 114, 60, 1);
+  background:rgb(55, 52, 132);
   /* border-radius: 5px 0 0 5px; */
   /* box-shadow: inset 5px -5px 5px rgba(58, 114, 60, 1); */
 }
