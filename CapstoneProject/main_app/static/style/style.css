@@ -195,7 +195,7 @@ a:hover {
 }
 
 .section {
-  padding-top: 80px;
+  padding-top: 20px;
   padding-bottom: 80px;
 }
 .section-title {
@@ -709,7 +709,7 @@ blockquote {
   display: inline-block;
   padding: 20px 25px;
   background: #eaeaea;
-  border-left: 3px solid #4C4C6D;
+  border-left: 3px solid rgb(76, 76, 109);
   font-style: italic;
   font-size: 22px;
   line-height: 1.7;
@@ -962,11 +962,40 @@ blockquote {
   right: 0;
 }
 
-.category h1{
+.request_div button{
+  color: #E8F6EF;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.request_div button:after{
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+  
+}
+
+.request_div:hover button{
+  padding-right: 25px;
+}
+
+
+.request_div:hover button:after{
+  opacity: 1;
+  right: 0;
+}
+
+
+.category h2{
   color: white;
 }
 
-}
+
 
 -- this is for tracking page
 .hh-grayBox {
@@ -1045,3 +1074,24 @@ blockquote {
 .order-tracking:first-child:before{display: none;}
 .order-tracking.completed:before{background-color: #27aa80;}
 
+.form-label{
+  font-weight: bold;
+}
+
+.color-select{
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+.form-select:focus {
+  border-color: #ff000000;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(76, 76, 109, 0.50);
+}
+
+.form-control:focus {
+  color: #495057;
+  background-color: rgba(128, 128, 128, 0.1);
+  border-color: rgba(76, 76, 109, 0.50);
+  outline: 0;
+  box-shadow: 0 0 0 0.4rem rgba(76, 76, 109, 0.50);
+}
