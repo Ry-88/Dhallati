@@ -59,9 +59,9 @@ def home(request: HttpRequest):
                 contacts = ContactForm.objects.all()
                 print(contact.email,contact.first_name,contact.last_name,contact.message)
                 # Send email
-                subject = f"subject {contact.first_name}"
-                print("dsfds")
-                send_mail(subject, contact.message, 'DhallatiOfficial@gmail.com' , ['DhallatiOfficial@gmail.com'],fail_silently=False)
+                subject = f"Hello my name is {contact.first_name}"
+                content = f"Name: {contact.first_name} {contact.last_name} Email: {contact.email} Messege:{contact.message}"
+                send_mail(subject, content, 'DhallatiOfficial@gmail.com' , ['DhallatiOfficial@gmail.com'],fail_silently=False)
                
                 # Render success page or redirect
                 return render(request, 'main_app/success.html')
