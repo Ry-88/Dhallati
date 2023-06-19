@@ -175,6 +175,9 @@ button,
 select {
   cursor: pointer;
   transition: 0.2s ease;
+  border-width: 0;
+  color: linear-gradient(0deg, #070b34 0%, #141852 50%, #2b2f77 100%) !important;
+  color: linear-gradient(0deg, #474bff 0%, #bc48ff 100%) !important;
 }
 a:focus,
 button:focus,
@@ -187,8 +190,8 @@ a.text-dark:hover {
 }
 
 a:hover {
-  color: linear-gradient(0deg, #474bff 0%, #bc48ff 100%);
-  color: linear-gradient(0deg, #070b34 0%, #141852 50%, #2b2f77 100%);
+  color: linear-gradient(0deg, #474bff 0%, #bc48ff 100%) !important;
+  color: linear-gradient(0deg, #070b34 0%, #141852 50%, #2b2f77 100%) !important;
   
 }
 
@@ -943,8 +946,8 @@ blockquote {
 }
 
 .track_div span{
-  color: linear-gradient(0deg, #070b34 0%, #141852 50%, #2b2f77 100%);
-  color: linear-gradient(0deg, #474bff 0%, #bc48ff 100%);
+  color: linear-gradient(0deg, #070b34 0%, #141852 50%, #2b2f77 100%) !important;
+  color: linear-gradient(0deg, #474bff 0%, #bc48ff 100%) !important;
   font-size: 30px;
   cursor: pointer;
   display: inline-block;
@@ -1109,7 +1112,11 @@ blockquote {
 .div_main_tracking{
   padding: 5px 25px;
   background-color: white;
-   
+  color: black !important;
   border-radius: 1vh;
   min-height: 55vh;
+}
+
+.div_main_tracking h1, h2, h3, h4, h5, h6 {
+  color: black;
 }

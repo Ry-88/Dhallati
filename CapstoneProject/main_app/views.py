@@ -9,14 +9,21 @@ from django.core.mail import send_mail, BadHeaderError
 
 
 def home(request: HttpRequest):
+
     
-    msg=" "
+        
+    msg2=None
+    msg=None
 
     if request.method == 'POST':
 
         if 'track' in request.POST:
-            track_request= RequestLostItem.objects.get(id=request.POST['request_number'])
-            return redirect("main_app:request_tracking",track_request.id)
+            try:
+                track_request= RequestLostItem.objects.get(id=request.POST['request_number'])
+                return redirect("main_app:request_tracking",track_request.id)
+            except:
+                msg2="your request number is wrong "
+                return redirect("main_app:request_tracking")
 
             
 
@@ -44,7 +51,7 @@ def home(request: HttpRequest):
                 # Render success page or redirect
 
 
-    return render(request, 'main_app/home.html', {"msg": msg})
+    return render(request, 'main_app/home.html', {"msg": msg, "msg2":msg2})
 
 
 
