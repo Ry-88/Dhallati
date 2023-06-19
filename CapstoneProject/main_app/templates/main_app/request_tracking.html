@@ -2,15 +2,21 @@
 {% load static %}
 
 
-{% block content %}
-<div class="container">
-    <h2>your request status</h2>
-    <h4>Checked: {{tracking.is_read}}</h4>
-</div>
-<div class="container">
+{% block hero %}
+
+<section class="bg-primary container-fluid" id="parallax" style="min-height: 100vh; padding-top: 200px; padding-bottom: 40px;">
+<div class=" d-flex justify-content-start" style="padding: 5px 25px;
+background-color: white;
+width: 95vh;
+border-radius: 1vh;
+min-height: 55vh;">
     <div class="row">
-        <div class="col-12 col-md-10 hh-grayBox pt45 pb20">
-            <div class="row justify-content-between">
+        <h2>your request status</h2>
+        <h4>Checked: {{tracking.is_read}}</h4>
+
+    
+        <div class="col-12 hh-grayBox pt45 pb20">
+            <div class="row justify-content-start">
                 {% if tracking.status == 'T' %}
                 <div class="order-tracking completed">
                     <span class="is-complete"></span>
@@ -63,4 +69,10 @@
         </div>
     </div>
 </div>
+</section>
+
+{%endblock%}
+
+{% block content %}
+
 {% endblock %}

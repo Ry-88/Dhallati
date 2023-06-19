@@ -13,36 +13,15 @@ from django.core.mail import send_mail, BadHeaderError
 def home(request: HttpRequest):
 
     track = RequestLostItem.objects.all()
-#    if request.method == 'POST':
-#
-#        if 'track' in request.POST:
-#            all_track = RequestLostItem.objects.all()
-#            track_request= RequestLostItem.objects.get(id=request.POST['request_number'])
-#            
-#
-#        if 'help' in request.POST:
-#            new_help = Class(first_name=request.POST['first_name'],
-#                             last_name=request.POST['last_name'],
-#                             email=request.POST['email'],
-#                             message=request.POST['message'])
-#            new_help.save()
-#
-    """     if request.method == "GET":
-        form = ContactForm()
-    else:
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            first_name = form.cleaned_data['first_name']
-            last_name = form.cleaned_data['last_name']
-            from_email = form.cleaned_data["from_email"]
-            message = form.cleaned_data['message']
-            try:
-                send_mail(first_name,last_name, message, from_email, ["DhallatiOfficial@gmail.com"])
-            except BadHeaderError:
-                return HttpResponse("Invalid header found.")
-            return redirect("success")
-    return render(request, "main_app/home.html", {"form": form})
-"""
+    
+    if request.method == 'POST':
+
+            track_request= RequestLostItem.objects.get(id=request.POST['request_number'])
+            return redirect("main_app:request_tracking",track_request.id)
+
+
+    return render(request, 'main_app/home.html', {'track' : track})
+
     msg=" "
 
             
@@ -70,6 +49,7 @@ def home(request: HttpRequest):
     return render(request, 'main_app/home.html',{"msg":msg})
 
     
+
 
 
 
