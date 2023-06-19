@@ -1095,3 +1095,11 @@ blockquote {
   outline: 0;
   box-shadow: 0 0 0 0.4rem rgba(76, 76, 109, 0.50);
 }
+
+.div_main_tracking{
+  padding: 5px 25px;
+  background-color: white;
+   
+  border-radius: 1vh;
+  min-height: 55vh;
+}

@@ -12,21 +12,16 @@ from django.core.mail import send_mail, BadHeaderError
 
 def home(request: HttpRequest):
 
-    track = RequestLostItem.objects.all()
     
+    msg=" "
     if request.method == 'POST':
 
+        if 'track' in request.POST:
             track_request= RequestLostItem.objects.get(id=request.POST['request_number'])
             return redirect("main_app:request_tracking",track_request.id)
-
-
-    return render(request, 'main_app/home.html', {'track' : track})
-
-    msg=" "
-
             
-    if request.method == 'POST':
 
+        if 'help' in request.POST:
                 first_name = request.POST.get('first_name')
                 last_name = request.POST.get('last_name')
                 email = request.POST.get('email')

@@ -5,69 +5,97 @@
 {% block hero %}
 
 <section class="bg-primary container-fluid" id="parallax" style="min-height: 100vh; padding-top: 200px; padding-bottom: 40px;">
-<div class=" d-flex justify-content-start" style="padding: 5px 25px;
-background-color: white;
-width: 95vh;
-border-radius: 1vh;
-min-height: 55vh;">
-    <div class="row">
-        <h2>your request status</h2>
-        <h4>Checked: {{tracking.is_read}}</h4>
-
     
-        <div class="col-12 hh-grayBox pt45 pb20">
-            <div class="row justify-content-start">
-                {% if tracking.status == 'T' %}
-                <div class="order-tracking completed">
-                    <span class="is-complete"></span>
-                    <p>request is under process</p>
-                </div>
-                <div class="order-tracking ">
-                    <span class="is-complete"></span>
-                    <p>item found</p>
-                </div>
-                <div class="order-tracking">
-                    <span class="is-complete"></span>
-                    <p>item is ready to be handed</p>
-                </div>
+
+<div class="div_main_tracking  ">
+
+    <div class="container d-flex justify-content-center">
+
+
+        <div class="row">
+            <h3>your request status</h3>
+
+        
+            <div class="col-12 hh-grayBox pt45 pb20">
+                <div class="row justify-content-start">
+                    {% if tracking.status == 'T' %}
+                    <div class="order-tracking completed">
+                        <span class="is-complete"></span>
+                        <p>request is under process</p>
+                    </div>
+                    <div class="order-tracking ">
+                        <span class="is-complete"></span>
+                        <p>item found</p>
+                    </div>
+                    <div class="order-tracking">
+                        <span class="is-complete"></span>
+                        <p>item is ready to be handed</p>
+                    </div>
 
 
 
-                {% elif tracking.status == 'M' %}
-                <div class="order-tracking completed">
-                    <span class="is-complete"></span>
-                    <p>request is under process</p>
-                </div>
-                <div class="order-tracking completed">
-                    <span class="is-complete"></span>
-                    <p>item found</p>
-                </div>
-                <div class="order-tracking">
-                    <span class="is-complete"></span>
-                    <p>item is ready to be handed</p>
-                </div>
+                    {% elif tracking.status == 'M' %}
+                    <div class="order-tracking completed">
+                        <span class="is-complete"></span>
+                        <p>request is under process</p>
+                    </div>
+                    <div class="order-tracking completed">
+                        <span class="is-complete"></span>
+                        <p>item found</p>
+                    </div>
+                    <div class="order-tracking">
+                        <span class="is-complete"></span>
+                        <p>item is ready to be handed</p>
+                    </div>
 
 
 
-                {% elif tracking.status == 'F' %}
-                <div class="order-tracking completed">
-                    <span class="is-complete"></span>
-                    <p>request is under process</p>
+                    {% elif tracking.status == 'F' %}
+                    <div class="order-tracking completed">
+                        <span class="is-complete"></span>
+                        <p>request is under process</p>
+                    </div>
+                    <div class="order-tracking completed">
+                        <span class="is-complete"></span>
+                        <p>item found</p>
+                    </div>
+                    <div class="order-tracking completed">
+                        <span class="is-complete"></span>
+                        <p>item is ready to be handed</p>
+                    </div>
+                    {% endif %}
                 </div>
-                <div class="order-tracking completed">
-                    <span class="is-complete"></span>
-                    <p>item found</p>
-                </div>
-                <div class="order-tracking completed">
-                    <span class="is-complete"></span>
-                    <p>item is ready to be handed</p>
-                </div>
-                {% endif %}
+
+                
             </div>
-
-            
         </div>
     </div>
+
+    <div class="container">
+        <div class="d-flex ">
+            <div class="row">
+                <div>
+                    <h3>details</h3>
+                </div>
+                
+
+                <h5>
+                category: {{tracking.catagory}}<br>
+                sub-category: {{tracking.Sub_catagory}}<br>
+                item color: {{tracking.color}}<br>
+                lost place: {{tracking.place}}<br>
+                your description: {{tracking.description}}<br>
+                Request status{{tracking.status}}<br>
+                Manager checked it: {{tracking.is_read}}<br>
+                email: {{tracking.email}}<br>
+                name: {{tracking.name}}<br>
+                phone number: {{tracking.phone_number}}<br>
+                {{tracking.}}
+                </h5>
+            </div>
+        </div>
+    </div>
+
 </div>
 </section>
 
