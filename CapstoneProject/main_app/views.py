@@ -12,12 +12,13 @@ from django.core.mail import send_mail, BadHeaderError
 
 def home(request: HttpRequest):
 
-
+    track = RequestLostItem.objects.all()
 #    if request.method == 'POST':
 #
 #        if 'track' in request.POST:
-#            all_track = Class.objects.all()
-#            track_request= Class.objects.get(id=request.POST['request_number'])
+#            all_track = RequestLostItem.objects.all()
+#            track_request= RequestLostItem.objects.get(id=request.POST['request_number'])
+#            
 #
 #        if 'help' in request.POST:
 #            new_help = Class(first_name=request.POST['first_name'],
@@ -75,6 +76,7 @@ def successView(request):
     return HttpResponse("Success! Thank you for your message.") 
 
 
+
 def not_found(request: HttpRequest):
 
     return render(request, 'main_app/not_found.html')
@@ -118,11 +120,15 @@ def request_add(request: HttpRequest,category_id):
 
     
 
-def request_detail(request: HttpRequest):
+def request_detail(request: HttpRequest,lost_id):
 
-    return render(request, 'main_app/request_detail.html')
+    requests = RequestLostItem.objects.get(id=lost_id)
+
+    return render(request, 'main_app/request_detail.html', {'requests' : requests})
 
 
-def request_tracking(request: HttpRequest):
+def request_tracking(request: HttpRequest, track_id):
 
-    return render(request, 'main_app/request_tracking.html')
+    tracking = RequestLostItem.objects.get(id=track_id)
+
+    return render(request, 'main_app/request_tracking.html', {'tracking' : tracking})

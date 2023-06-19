@@ -430,7 +430,8 @@ textarea.form-control {
 }
 
 .hero-area {
-  padding: 300px 0 200px;
+  height: 100vh;
+  padding: 250px 10px 200px;
   position: relative;
 }
 @media (max-width: 767px) {
@@ -883,17 +884,40 @@ blockquote {
   min-width: 15vh;
   min-height: 4vh;
   border-radius: 1vh;
-}
-
-.request_btn{
-  color: #E8F6EF;
-}
-
-.request_btn:hover{
+  text-align: center;
+  transition: all 0.5s;
   cursor: pointer;
-  color: #E8F6EF;
-  font-size: 35px;
+  position: relative;
 }
+
+.request_div span{
+  color: #E8F6EF;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.request_div span:after{
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+  
+}
+
+.request_div:hover span{
+  padding-right: 25px;
+}
+
+
+.request_div:hover span:after{
+  opacity: 1;
+  right: 0;
+}
+
 
 .track_div{
   font-size: 30px;
@@ -903,16 +927,121 @@ blockquote {
   min-width: 15vh;
   min-height: 4vh;
   border-radius: 1vh;
-
-}
-
-.track_btn{
-  color: #525273;
-}
-
-.track_btn:hover{
+  text-align: center;
+  transition: all 0.5s;
   cursor: pointer;
-  color: #525273;
-  font-size: 37px;
+  position: relative;
 
 }
+
+.track_div span{
+  color: #525273;
+  font-size: 30px;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.track_div span:after{
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+  
+}
+
+.track_div:hover span{
+  padding-right: 25px;
+}
+
+.track_div:hover span:after{
+  opacity: 1;
+  right: 0;
+}
+
+.category h1{
+  color: white;
+}
+
+}
+
+-- this is for tracking page
+.hh-grayBox {
+	background-color: #F8F8F8;
+	margin-bottom: 20px;
+	padding: 35px;
+  margin-top: 20px;
+}
+.pt45{padding-top:45px;}
+.order-tracking{
+	text-align: center;
+	width: 33.33%;
+	position: relative;
+	display: block;
+}
+.order-tracking .is-complete{
+	display: block;
+	position: relative;
+	border-radius: 50%;
+	height: 30px;
+	width: 30px;
+	border: 0px solid #AFAFAF;
+	background-color: #f7be16;
+	margin: 0 auto;
+	transition: background 0.25s linear;
+	-webkit-transition: background 0.25s linear;
+	z-index: 2;
+}
+.order-tracking .is-complete:after {
+	display: block;
+	position: absolute;
+	content: '';
+	height: 14px;
+	width: 7px;
+	top: -2px;
+	bottom: 0;
+	left: 5px;
+	margin: auto 0;
+	border: 0px solid #AFAFAF;
+	border-width: 0px 2px 2px 0;
+	transform: rotate(45deg);
+	opacity: 0;
+}
+.order-tracking.completed .is-complete{
+	border-color: #27aa80;
+	border-width: 0px;
+	background-color: #27aa80;
+}
+.order-tracking.completed .is-complete:after {
+	border-color: #fff;
+	border-width: 0px 3px 3px 0;
+	width: 7px;
+	left: 11px;
+	opacity: 1;
+}
+.order-tracking p {
+	color: #A4A4A4;
+	font-size: 16px;
+	margin-top: 8px;
+	margin-bottom: 0;
+	line-height: 20px;
+}
+.order-tracking p span{font-size: 14px;}
+.order-tracking.completed p{color: #000;}
+.order-tracking::before {
+	content: '';
+	display: block;
+	height: 3px;
+	width: calc(100% - 40px);
+	background-color: #f7be16;
+	top: 13px;
+	position: absolute;
+	left: calc(-50% + 20px);
+	z-index: 0;
+}
+.order-tracking:first-child:before{display: none;}
+.order-tracking.completed:before{background-color: #27aa80;}
+

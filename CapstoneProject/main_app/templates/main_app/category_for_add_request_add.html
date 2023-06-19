@@ -2,20 +2,49 @@
 {% load static %}
 
 
-{% block content %}
-<div class="container">
 
-    <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; ">
-        <div>
-            <h1>choose category </h1>
-            <br>
+{% block hero %}
+
+<section class="bg-primary" id="parallax" style="min-height: 100vh; padding-top: 200px;">
+
+<div class="category  d-flex justify-content-center mb-1" style="margin-top: -50px;">
+    <h1>choose category </h1>
+</div>
+=======
+{% block content %}
+<div class="section">
+
+
+
+<div class="container d-flex justify-content-center" style="background-color: #E8F6EF; border-radius: 1vh; padding: 20px 5px; width: fit-content;">
+
+    <div class="row g-2 d-flex justify-content-center ">
             {% for category in categories %}
-            <a class="choose-category" style="text-align: center;"
-                href="{% url 'main_app:request_add' category.id %}">{{category.name}}</a>
+
+
+                <a href="{% url 'main_app:request_add' category.id %}" class="col-3 me-2 p-1 d-flex justify-content-center align-items-center" style="background-color: #525273; height: 20vh; width: 30vh;
+                border-radius: 1vh;
+                font-size: 50px; ">
+                
+                    <span class="choose-category" style="color: white;">
+                        {{category.name}}
+                    </span>   
+            
+
+                </a>
+                
+
             {% endfor %}
         </div>
 
     </div>
 </div>
+
+</section>
+{% endblock %}
+
+
+{% block content %}
+
 
 {% endblock %}
