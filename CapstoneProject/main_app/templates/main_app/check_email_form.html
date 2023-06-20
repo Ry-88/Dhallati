@@ -1,0 +1,56 @@
+{% extends 'main_app/base.html' %}
+{% block title %} check form {% endblock%}
+{% load static %}
+
+
+{% block hero %}
+
+<section class="bg-primary" id="parallax" style="min-height: 100vh; padding-top: 200px; padding-bottom: 40px;">
+
+    <div class="category d-flex justify-content-center mb-1" style="margin-top: -50px;">
+        <h2>form check</h2>
+    </div>
+
+    <div class="col-6 mx-auto d-flex justify-items-center">
+        <div class="bg-white rounded p-5 shadow-down mb-5 row justify-content-center">
+            <div class="mb-3 text-center">
+                    <h3 class="" style="color: black;">form check</h3> 
+                    <h5 style="color: rgba(0, 0, 0, 0.500);"> please fill out this form </h5>
+                
+               
+            </div>
+        
+             
+        
+          <form action="" method="POST" enctype="multipart/form-data" class="row">
+              {% csrf_token %}
+              {% if msg %}
+                <h1 style="color: black;">{{msg}}</h1>
+              {% else %}
+              <div class="card" style="display: flex; justify-content: center; padding: 20px;">
+                <img class="" src="{{confirm_item.found_item.image.url}}" width="100%" height="300px" style="border-radius: 4px;" alt="Card image cap">
+              </div>
+            <div class="col-12 mb-3">
+                <label for="exampleFormControlInput1" style="color: black;" class="form-label"> add Description for this {{confirm_item.found_item.Sub_catagory.name}} item to check this is yours</label>
+                <textarea class="form-control color-select" id="exampleFormControlInput1" placeholder="Discripe the Item"
+                    name="message_form"></textarea>
+            </div>
+            <div class="d-flex justify-content-center">
+                <div class=" request_div" style="width: auto;">
+                    <button class="request_btn" type="submit" name="help" style="background-color: #e8f6ef00; border-width: 0;">submit</button>
+                  </div>
+            </div>
+
+            {% endif %} 
+          </form>
+        </div>
+      </div>
+    
+    
+
+{% endblock %}
+
+{% block content %}
+
+
+{% endblock %}

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpRequest, HttpResponse
-from .models import RequestLostItem, Catagory, SubCatagory, ContactForm
+from .models import RequestLostItem, Catagory, SubCatagory, ContactForm,ConfirmItem
 from django.core.mail import send_mail, BadHeaderError
 # from .forms import ContactForm
 
@@ -11,14 +11,16 @@ from django.core.mail import send_mail, BadHeaderError
 def home(request: HttpRequest):
 
     track = RequestLostItem.objects.all()
-  
+    msg=None
     if request.method == 'POST':
-
+        try:
             track_request= RequestLostItem.objects.get(id=request.POST['request_number'])
             return redirect("main_app:request_tracking",track_request.id)
+        except:
+            msg="your request number is wrong "
 
 
-    return render(request, 'main_app/home.html', {'track' : track})
+    return render(request, 'main_app/home.html', {'track' : track ,"msg":msg})
 
     msg = None
 
@@ -105,3 +107,19 @@ def request_tracking(request: HttpRequest, track_id):
     
     return render(request, 'main_app/request_tracking.html', {'tracking' : tracking})
 
+
+def email_check_form(request: HttpRequest,confirm_item_id):
+    msg=None
+    confirm_item=None
+    try:
+        confirm_item=ConfirmItem.objects.get(id=confirm_item_id)
+        if request.method=="POST":
+            confirm_item.message_form=request.POST["message_form"]
+            confirm_item.is_reserved=True
+            confirm_item.save()
+            return redirect("main_app:home")
+    except:
+        msg="you enter wrong form"
+
+    return render(request,"main_app/check_email_form.html",{"confirm_item":confirm_item ,"msg":msg})
+        

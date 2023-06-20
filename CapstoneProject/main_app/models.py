@@ -92,14 +92,16 @@ class ConfirmItem(models.Model):
     request_Lost_Item=models.OneToOneField(RequestLostItem,on_delete=models.CASCADE)
     is_confirm=models.BooleanField(default=False)
 
+    is_reserved=models.BooleanField(default=False)
+    message_form=models.TextField(default=" ")
+
 class ContactForm(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     email = models.EmailField()
     message = models.TextField()
 
-class EmailSend(models.Model):
-    request_Lost_Item=models.OneToOneField(RequestLostItem,on_delete=models.CASCADE)
-    is_reserved=models.BooleanField(default=False)
+
+
     
 
