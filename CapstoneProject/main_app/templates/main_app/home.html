@@ -35,30 +35,26 @@
     <div class="container d-flex justify-content-center">
       <div class="  row">
         <div class=" mx-auto text-center ">
-          <div class="text-center" id="contactus">
-            <h2 class="section-title mb-5">Track your request</h2>
-          </div>
 
-          <form action="{% url 'main_app:home' %}" method="post">
-            {% csrf_token %}
-            <label style="font-size: 25px;">Insert request number</label> <br>
+        <div class="text-center" id="contactus">
+          <h2 class="section-title mb-5 text-white" >Track your request</h2>
+        </div>
+        
+            <form action="{% url 'main_app:home' %}" method="post">
+                {% csrf_token %}
+                <label class="text-white fs-4" >Insert request number</label> <br>
+                
+                <input required class="form-control px-0 mb-0 rounded-pill text-center" style="background-color: #e8f6ef; font-size: 25px" type="search" placeholder="Request number" name="request_number" id="request_number">
+                {% if request.GET.msg %}
+                <h4 style="color: red;">your request number is wrong !</h4>
+                {% endif %}
+                <button class="track_div mt-2" type="submit" name="track">
+                    <span>Track</span>
+                </button>
+            </form>
 
-            <input class="form-control px-0 mb-1 rounded-pill text-center"
-              style="background-color: #e8f6ef; font-size: 25px" type="search" placeholder="Request number"
-              name="request_number">
-            {% if request.GET.msg %}
-            <h4 style="color: red;">your request number is wrong !</h4>
-            {% endif %}
+        </div>
 
-            <input required class="form-control px-0 mb-4 rounded-pill text-center"
-              style="background-color: #e8f6ef; font-size: 25px" type="search" placeholder="Request number"
-              name="request_number" id="request_number">
-
-            <button class="track_div" type="submit" name="track">
-              <span>Track</span>
-            </button>
-
-          </form>
         </div>
       </div>
     </div>
@@ -124,6 +120,13 @@
 
             <!-- end modal-->
 
+
+
+                  <div class="d-flex justify-content-center">
+                    <div class=" request_div" style="width: auto;">
+                        <button class="request_btn"  type="submit" name="help" style="background-color: #e8f6ef00; border-width: 0;">send</button>
+                      </div>
+                  </div>
 
 
             <form action="{% url 'main_app:home' %}" class="row" method="POST">
