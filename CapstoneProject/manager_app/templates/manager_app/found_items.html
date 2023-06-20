@@ -35,7 +35,7 @@
             <div class="ag-courses_box">
               {% for found_item in found_items %}
               <div class="ag-courses_item">
-                <img src="{{found_item.image.url}}" height="300px" alt="" width="100%">
+                <img src="{{found_item.image.url}}" height="250px" alt="" width="100%">
                 <a href="{% url 'manager_app:found_detail_page' found_item.id %}" class="ag-courses-item_link">
                   <div class="ag-courses-item_bg" 
                   {% if found_item.color == 'G' %}
@@ -87,7 +87,7 @@
                         //show a confirmation and redirect to the delete profile script
                         function deleteProfile() {
                           if (confirm("Do you really want to delete your request ?")) {
-                              location.href = "";
+                              location.href = "{% url 'manager_app:delete_found_item' found_item.id %}";
                           }
                       }
                       </script>

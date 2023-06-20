@@ -4,30 +4,59 @@
 
 {% block title %} Log In {% endblock %}
 
-{% block content %}
+{% block hero %}
+<section class="bg-primary" id="parallax" style="min-height: 100vh; padding-top: 200px;">
 
-{% if msg %}
-<p class="text-danger">{{msg}}</p>
-{% endif %}
-
-<form class="d-flex flex-column gap-3 w-50" action="{% url 'accounts:log_in' %}" method="POST">
-    {% csrf_token %}
+    {% if msg %}
+    <p class="text-danger">{{msg}}</p>
+    {% endif %}
 
 
-    <div class="form-floating">
-        <input type="text" class="form-control" id="floatingInput" placeholder="username" name="username">
-        <label for="floatingInput">User name</label>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="section-title text-white">Log In Page</h2>
+            </div>
+            <div class="col-lg-8 mx-auto">
+                <div class="bg-white rounded text-center p-5 shadow-down">
+                    <h4 class="mb-80">Log In</h4>
+
+
+
+
+
+
+                    <form action="{% url 'accounts:log_in' %}" class="row" method="POST">
+                        {% csrf_token %}
+                        <div class="col-md-6">
+
+                            <input type="text" required placeholder="username" name="username"
+                                class="form-control px-0 mb-4" style="background-color: #e8f6ef4d;">
+                        </div>
+                        <div class="col-md-6">
+
+                            <input type="password" placeholder="password" name="password" class="form-control px-0 mb-4"
+                                style="background-color: #e8f6ef4d;">
+                        </div>
+
+
+
+                        <div class="d-flex justify-content-center">
+                            <div class=" request_div" style="width: auto;">
+                                <button class="request_btn " type="submit" name="help"
+                                    style="background-color: #e8f6ef00; border-width: 0;">Log In</button>
+                            </div>
+                        </div>
+
+
+
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-
-
-    <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
-        <label for="floatingPassword">Password</label>
-    </div>
-
-
-    <button class="btn btn-primary w-100 py-2" type="submit">Sign In</button>
-</form>
-</div>
-
+</section>
 {% endblock %}

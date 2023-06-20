@@ -91,7 +91,7 @@ class ConfirmItem(models.Model):
     found_item=models.OneToOneField(FoundItem,on_delete=models.CASCADE)
     request_Lost_Item=models.OneToOneField(RequestLostItem,on_delete=models.CASCADE)
     is_confirm=models.BooleanField(default=False)
-
+    is_send=models.BooleanField(default=False) 
     is_reserved=models.BooleanField(default=False)
     message_form=models.TextField(default=" ")
 
