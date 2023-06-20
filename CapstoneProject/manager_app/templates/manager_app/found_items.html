@@ -2,7 +2,13 @@
 
 
 {% block main %}
-          
+
+
+<form action="{% url 'manager_app:found_item_page' %}" method="GET" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3"
+  role="search">
+  <input type="search" name="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..."
+    aria-label="Search">
+</form>
         
 <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; ">
     <div>
