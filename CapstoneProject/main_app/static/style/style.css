@@ -33,7 +33,7 @@ p-lg, .paragraph-lg {
 
 h1, h2, h3, h4, h5, h6 {
   color: #e8f6ef;
-  font-family: "Roboto", sans-serif;
+  font-family: "Playfair Display", serif;
   line-height: 1.2;
 }
 
@@ -74,7 +74,7 @@ h6, .h6 {
 /* Button style */
 .btn {
   font-size: 22px;
-  font-family: "Roboto", sans-serif;
+  font-family: "Playfair Display", serif;
   text-transform: capitalize;
   padding: 16px 44px;
   border-radius: 5px;
@@ -108,10 +108,10 @@ h6, .h6 {
   background: #4C4C6D !important;
 }
 .btn-primary:hover {
-  background: #6e6eef;
+  background: #4C4C6D;
 }
 .btn-primary.focus, .btn-primary.active {
-  background: #6e6eef !important;
+  background: #4C4C6D !important;
   box-shadow: none !important;
 }
 
@@ -190,10 +190,8 @@ a.text-dark:hover {
 }
 
 a:hover {
-
   color: linear-gradient(0deg, #474bff 0%, #bc48ff 100%) !important;
   color: linear-gradient(0deg, #070b34 0%, #141852 50%, #2b2f77 100%) !important;
-
   
 }
 
@@ -207,7 +205,7 @@ a:hover {
 }
 .section-title {
   margin-bottom: 80px;
-  font-family: "Roboto", sans-serif;
+  font-family: "Playfair Display", serif;
 }
 
 .bg-cover {
@@ -257,9 +255,7 @@ a:hover {
   color: #4c4c4c;
 }
 
-.text-dark {
-  color: #000 !important;
-}
+
 
 .text-light {
   color: #999999 !important;
@@ -318,11 +314,11 @@ a:hover {
 }
 
 .font-secondary {
-  font-family: "Roboto", sans-serif !important;
+  font-family: "Playfair Display", serif !important;
 }
 
 .font-tertiary {
-  font-family: "Roboto", sans-serif !important;
+  font-family: "Playfair Display", serif !important;
 }
 
 .shadow {
@@ -418,6 +414,8 @@ textarea.form-control {
 @media (max-width: 991px) {
   .navigation.nav-bg {
     padding: 15px 20px;
+    border-radius: 1vh;
+    background: linear-gradient(0deg,#bc48ff 0%, #474bff 100%) !important;
   }
 }
 @media (max-width: 991px) {
@@ -429,7 +427,7 @@ textarea.form-control {
 }
 
 .navbar .nav-item .nav-link {
-  font-family: "Roboto", sans-serif;
+  font-family: "Playfair Display", serif;
   text-transform: uppercase;
   padding: 15px;
 }
@@ -731,7 +729,7 @@ blockquote {
   margin-bottom: 20px;
 }
 .content strong {
-  font-family: "Roboto", sans-serif;
+  font-family: "Playfair Display", serif;
   font-size: 22px;
   font-weight: normal;
   color: #000;
@@ -885,58 +883,14 @@ blockquote {
 }
 
 .custom-shape-divider-bottom-1686935527 .shape-fill {
-  fill:  #bc48ff35  !important;
-  background: linear-gradient(0deg, #474bff 0%, #bc48ff 100%);
-  background: linear-gradient(0deg, #070b34 0%, #141852 50%,  100%);
+  fill: #525273;
 }
 
 .request_div{
   font-size: 30px;
-  background-color: #474bff;
-  display: inline-block;
-  padding: 5px 30px;
-  min-width: 15vh;
-  min-height: 4vh;
-  border-radius: 6px;
-  text-align: center;
-  transition: all 0.5s;
-  cursor: pointer;
-  position: relative;
-}
-
-.request_div span{
-  color: #E8F6EF;
-  color: linear-gradient(0deg, #474bff 0%, #bc48ff 100%);
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
-
-.request_div span:after{
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
+  background: linear-gradient(0deg, #070b34 0%, #141852 50%, #2b2f77 100%) !important;
+  background: linear-gradient(0deg, #474bff 0%, #bc48ff 100%) !important;
   
-}
-
-.request_div:hover span{
-  padding-right: 25px;
-}
-
-
-.request_div:hover span:after{
-  opacity: 1;
-  right: 0;
-}
-
-
-.track_div{
-  font-size: 30px;
-  background-color: #E8F6EF;
   display: inline-block;
   padding: 5px 30px;
   min-width: 15vh;
@@ -946,40 +900,11 @@ blockquote {
   transition: all 0.5s;
   cursor: pointer;
   position: relative;
-
-}
-
-.track_div span{
-  color: linear-gradient(0deg, #070b34 0%, #141852 50%, #2b2f77 100%) !important;
-  color: linear-gradient(0deg, #474bff 0%, #bc48ff 100%) !important;
-  font-size: 30px;
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
-
-.track_div span:after{
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-  
-}
-
-.track_div:hover span{
-  padding-right: 25px;
-}
-
-.track_div:hover span:after{
-  opacity: 1;
-  right: 0;
 }
 
 .request_div button{
   color: #E8F6EF;
+  color: linear-gradient(0deg, #474bff 0%, #bc48ff 100%);
   cursor: pointer;
   display: inline-block;
   position: relative;
@@ -1002,6 +927,90 @@ blockquote {
 
 
 .request_div:hover button:after{
+  opacity: 1;
+  right: 0;
+}
+
+
+.track_div{
+  font-size: 30px;
+  background-color: #E8F6EF;
+  display: inline-block;
+  padding: 5px 30px;
+  min-width: 15vh;
+  min-height: 4vh;
+  border-radius: 1vh;
+  text-align: center;
+  transition: all 0.5s;
+  cursor: pointer;
+  position: relative;
+
+}
+
+
+.track_div span{
+  background: linear-gradient(to left, #474bff 0%, #bc48ff 100%);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 30px;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+  
+}
+
+.track_div span:after{
+  content: '\00bb';
+  background: linear-gradient(to left, #474bff 0%, #bc48ff 100%);
+  -webkit-background-clip: text;
+  color: transparent;
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+  
+}
+
+.track_div:hover span{
+  padding-right: 25px;
+  background: linear-gradient(to left,  #bc48ff 0%, #474bff 100%);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.track_div:hover span:after{
+  opacity: 1;
+  right: 0;
+}
+
+.request_div h2{
+  background: linear-gradient(to left, #474bff 0%, #bc48ff 100%);
+  -webkit-background-clip: text;
+  color: transparent;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.request_div h2:after{
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+  
+}
+
+.request_div:hover h2{
+  padding-right: 25px;
+}
+
+
+.request_div:hover h2:after{
   opacity: 1;
   right: 0;
 }
@@ -1092,6 +1101,7 @@ blockquote {
 
 .form-label{
   font-weight: bold;
+  color: black;
 }
 
 .color-select{
@@ -1116,9 +1126,13 @@ blockquote {
 .div_main_tracking{
   padding: 5px 25px;
   background-color: white;
-  color: black !important;
+  color: black ;
   border-radius: 1vh;
   min-height: 55vh;
 }
 
+
+.div_main_tracking h1, h2 ,h3 ,h4 ,h5,h6 {
+  color: black;
+}
 
