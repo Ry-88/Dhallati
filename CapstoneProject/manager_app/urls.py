@@ -25,6 +25,7 @@ urlpatterns = [
 
 
     path("lostitem/request/",views.lost_item_page,name="lost_item_page"),
+    path("lostitem/delete/<lost_item_id>",views.delete_lost_item,name="delete_lost_item"),
     path("lostitem/request/detail/<lost_item_id>/",views.lost_item_detail_page,name="lost_item_detail_page"),
     path("lostitem/request/detail/<lost_item_id>/confirm/<found_item_id>/",views.confirm_item_for_lost_detail,name="confirm_item_for_lost_detail"),
     path("lostitem/request/detail/<lost_item_id>/confirm/<found_item_id>/discard/", views.discard_confirm_item_for_lost_detail, name="discard_confirm_item_for_lost_detail"),

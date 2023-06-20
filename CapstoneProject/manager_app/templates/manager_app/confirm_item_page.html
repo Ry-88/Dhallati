@@ -3,16 +3,17 @@
 
 {% block main %}
 
-<form action="{% url 'manager_app:confirm_item_page' %}" method="GET" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3"
-  role="search">
-  <input type="search" name="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..."
-    aria-label="Search">
-</form>
+
 
         
 <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; ">
     <div>
-        <div class="homenav">
+      <form action="{% url 'manager_app:confirm_item_page' %}" method="GET" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" style="display: flex; align-items: center; column-gap: 4px; " role="search">
+        <label for="search" style="position: relative; top: 5px;">search</label>
+        <input type="search" name="search" class="form-control form-control-dark text-bg-dark" style="border-radius: 20px; " placeholder="Search..."aria-label="Search">
+      </form>
+  
+        <div class="homenav" style="margin-top: 20px;">
             <a href="{% url 'manager_app:lost_item_page' %}" >requests</a>
             <a href="{% url 'manager_app:found_item_page' %}">found items </a>
             <a href="{% url 'manager_app:match_item_page' %}"> Matched items </a>

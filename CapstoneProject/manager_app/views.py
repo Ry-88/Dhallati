@@ -197,6 +197,12 @@ def lost_item_page(request:HttpRequest):
   
     return render(request,'manager_app/lost_item_request_page.html' ,{"request_lost_Items":request_lost_Items})
 
+def delete_lost_item(request:HttpRequest,lost_item_id):
+    lost_item=RequestLostItem.objects.get(id=lost_item_id)
+    lost_item.delete()
+    return redirect("manager_app:lost_item_page")
+
+
 def lost_item_detail_page(request:HttpRequest,lost_item_id):
     
     lost_item=RequestLostItem.objects.get(id=lost_item_id)
