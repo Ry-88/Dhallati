@@ -270,10 +270,11 @@ def send_email_form(request:HttpRequest,lost_item_id,confirm_item_id):
     confirm_item=ConfirmItem.objects.get(id=confirm_item_id)
     
     subject=f"Hello {confirm_item.request_Lost_Item.name}"
-    content=f"Hello {confirm_item.request_Lost_Item.name} Regarding your request please answer these follow up questions to move forward http://127.0.0.1:8000/{confirm_item.request_Lost_Item.id}"
+    content=f"Hello {confirm_item.request_Lost_Item.name} \n\
+Regarding your request please answer these follow up questions to be sure \n\
+http://127.0.0.1:8000/form/check/{confirm_item.id}"
     send_mail(subject, content, 'DhallatiOfficial@gmail.com' , [confirm_item.request_Lost_Item.email],fail_silently=False)
    
-    print(confirm_item.request_Lost_Item.email)
 
     return redirect("manager_app:lost_item_detail_page",lost_item_id)
 

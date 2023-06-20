@@ -33,7 +33,7 @@ p-lg, .paragraph-lg {
 
 h1, h2, h3, h4, h5, h6 {
   color: #e8f6ef;
-  font-family: "Playfair Display", serif;
+  font-family: "Roboto", sans-serif;
   line-height: 1.2;
 }
 
@@ -74,7 +74,7 @@ h6, .h6 {
 /* Button style */
 .btn {
   font-size: 22px;
-  font-family: "Playfair Display", serif;
+  font-family: "Roboto", sans-serif;
   text-transform: capitalize;
   padding: 16px 44px;
   border-radius: 5px;
@@ -108,10 +108,10 @@ h6, .h6 {
   background: #4C4C6D !important;
 }
 .btn-primary:hover {
-  background: #4C4C6D;
+  background: #6e6eef;
 }
 .btn-primary.focus, .btn-primary.active {
-  background: #4C4C6D !important;
+  background: #6e6eef !important;
   box-shadow: none !important;
 }
 
@@ -190,8 +190,10 @@ a.text-dark:hover {
 }
 
 a:hover {
+
   color: linear-gradient(0deg, #474bff 0%, #bc48ff 100%) !important;
   color: linear-gradient(0deg, #070b34 0%, #141852 50%, #2b2f77 100%) !important;
+
   
 }
 
@@ -205,7 +207,7 @@ a:hover {
 }
 .section-title {
   margin-bottom: 80px;
-  font-family: "Playfair Display", serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .bg-cover {
@@ -316,11 +318,11 @@ a:hover {
 }
 
 .font-secondary {
-  font-family: "Playfair Display", serif !important;
+  font-family: "Roboto", sans-serif !important;
 }
 
 .font-tertiary {
-  font-family: "Playfair Display", serif !important;
+  font-family: "Roboto", sans-serif !important;
 }
 
 .shadow {
@@ -427,7 +429,7 @@ textarea.form-control {
 }
 
 .navbar .nav-item .nav-link {
-  font-family: "Playfair Display", serif;
+  font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   padding: 15px;
 }
@@ -729,7 +731,7 @@ blockquote {
   margin-bottom: 20px;
 }
 .content strong {
-  font-family: "Playfair Display", serif;
+  font-family: "Roboto", sans-serif;
   font-size: 22px;
   font-weight: normal;
   color: #000;
@@ -883,17 +885,19 @@ blockquote {
 }
 
 .custom-shape-divider-bottom-1686935527 .shape-fill {
-  fill: #525273;
+  fill:  #bc48ff35  !important;
+  background: linear-gradient(0deg, #474bff 0%, #bc48ff 100%);
+  background: linear-gradient(0deg, #070b34 0%, #141852 50%,  100%);
 }
 
 .request_div{
   font-size: 30px;
-  background-color: #525273;
+  background-color: #474bff;
   display: inline-block;
   padding: 5px 30px;
   min-width: 15vh;
   min-height: 4vh;
-  border-radius: 1vh;
+  border-radius: 6px;
   text-align: center;
   transition: all 0.5s;
   cursor: pointer;

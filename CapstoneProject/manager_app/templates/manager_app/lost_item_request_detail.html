@@ -146,7 +146,8 @@
 
         </div>
         <div style="display: flex; justify-content:space-evenly;  padding-top: 50px; ">
-            <div class="ag-courses-item_date-box"> 
+            <div class="ag-courses-item_date-box">
+            
                 <a href="{% url 'manager_app:send_email_form' lost_item_id=lost_item.id confirm_item_id=confirm_item.id %}" style="  padding: 10px; border-bottom-left-radius: 8px; text-decoration: none; color:#E8F6EF ;    background-color:  #474bff  ">
                     send email
                 </a>
@@ -249,21 +250,16 @@
                     <span class="ag-courses-item_date">
                         {{found.created_at}}
                     </span>
-                  </div>
-                  
-
-           
-                <div class="ag-courses-item_date-box">
-                
-                    
-                  {% if not confirm_items %}
+                    {% if not confirm_items %}
                   <a href=" {% url 'manager_app:confirm_item_for_lost_detail' found_item_id=found.id lost_item_id=lost_item.id %}" style=" margin: 10px; padding: 10px; border-radius: 8px; text-decoration: none; color:#E8F6EF ;    background-color:  #474bff  ">
                     match
                 </a>
                   {% endif %}
-                  
-           
                   </div>
+                  
+
+           
+            
               
                 </a>
              
