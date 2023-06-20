@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpRequest, HttpResponse
 from .models import RequestLostItem, Catagory, SubCatagory, ContactForm,ConfirmItem
 from django.core.mail import send_mail, BadHeaderError
+import time
 # from .forms import ContactForm
 
 
@@ -9,13 +10,8 @@ from django.core.mail import send_mail, BadHeaderError
 
 
 def home(request: HttpRequest):
-
-
-    
-        
     msg2=None
     msg=None
-
 
     if request.method == 'POST':
 
@@ -24,10 +20,7 @@ def home(request: HttpRequest):
                 track_request= RequestLostItem.objects.get(id=request.POST['request_number'])
                 return redirect("main_app:request_tracking",track_request.id)
             except:
-                msg2="your request number is wrong "
-                return redirect("main_app:request_tracking")
-
-            
+                return redirect("/?msg=true#contactus")
 
         if 'help' in request.POST:
                 first_name = request.POST.get('first_name')
