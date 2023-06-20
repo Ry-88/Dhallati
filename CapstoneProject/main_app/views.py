@@ -25,7 +25,7 @@ def home(request: HttpRequest):
                 return redirect("main_app:request_tracking",track_request.id)
             except:
                 msg2="your request number is wrong "
-                return redirect("main_app:request_tracking")
+                
 
             
 

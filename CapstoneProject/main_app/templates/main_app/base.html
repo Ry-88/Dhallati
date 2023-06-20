@@ -186,7 +186,28 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.4/umd/popper.min.js" integrity="sha512-7yA/d79yIhHPvcrSiB8S/7TyX0OxlccU8F/kuB8mHYjLlF1MInPbEohpoqfz0AILoq5hoD7lELZAYYHbyeEjag==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+  function check () {
+    // (C1) INIT
+    var valid = true, error = "", field = "";
+
   
+    // (C3) NUMBER
+    field = document.getElementById("request_number");
+    
+    if (!field.checkValidity()) {
+      valid = false;
+      field.classList.add("err");
+      error.innerHTML = "Num must be between 1-12\r\n";
+    } else {
+      field.classList.remove("err");
+      error.innerHTML = "";
+    }
+  
+    // (C4) RESULT
+    return valid;
+  }
+  </script>
 </body>
   </html>
   
