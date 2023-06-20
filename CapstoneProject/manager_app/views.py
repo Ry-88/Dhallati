@@ -100,7 +100,7 @@ def add_found_item_page(request:HttpRequest ,category_id):
 #----------------------------------------------------------------
 
 def found_item_page(request:HttpRequest):
-
+    catagory = Catagory.objects.all()
     if not request.user.is_staff:
         return redirect("main_app:not_found")
     
@@ -110,9 +110,11 @@ def found_item_page(request:HttpRequest):
     if "search" in request.GET:
         search_word=request.GET["search"]
         found_items=FoundItem.objects.filter(description__contains=search_word,status = "T")
-
+    if "category"in request.GET:
+        category=request.GET["category"]
+        found_items=FoundItem.objects.filter(catagory__name=category, status="T")
     
-    return render(request,"manager_app/found_items.html",{"found_items":found_items,"bell":bell})
+    return render(request,"manager_app/found_items.html",{"found_items":found_items,"bell":bell, "catagory":catagory})
 
 
 
@@ -193,13 +195,15 @@ def confirm_item_true_for_found_detail(request:HttpRequest,found_item_id,request
 
 def lost_item_page(request:HttpRequest):
     request_lost_Items=RequestLostItem.objects.filter(status = "T").order_by("is_read","-created_at")
-
+    catagory=Catagory.objects.all()
     if "search" in request.GET:
         search_word=request.GET["search"]
         request_lost_Items=RequestLostItem.objects.filter(description__contains=search_word)
-
+    if "category"in request.GET:
+        category=request.GET["category"]
+        request_lost_Items=RequestLostItem.objects.filter(catagory__name=category, status="T")
   
-    return render(request,'manager_app/lost_item_request_page.html' ,{"request_lost_Items":request_lost_Items})
+    return render(request,'manager_app/lost_item_request_page.html' ,{"request_lost_Items":request_lost_Items,"catagory":catagory})
 
 def delete_lost_item(request:HttpRequest,lost_item_id):
     lost_item=RequestLostItem.objects.get(id=lost_item_id)
@@ -282,26 +286,30 @@ def discard_confirm_item_for_lost_detail(request:HttpRequest,found_item_id,lost_
 
 
 def confirm_item_page(request:HttpRequest):
-
+    catagory=Catagory.objects.all()
     confirmed_items = ConfirmItem.objects.filter(is_confirm = True)
     bell =RequestLostItem.objects.filter(is_read=False)
     if "search" in request.GET:
         search_word=request.GET["search"]
-        confirmed_items=ConfirmItem.objects.filter(found_item__description__contains=search_word, is_confirm = False)
-
-    return render(request,'manager_app/confirm_item_page.html', {"confirmed_items" : confirmed_items,"bell":bell })
+        confirmed_items=ConfirmItem.objects.filter(found_item__description__contains=search_word, is_confirm = True)
+    if "category"in request.GET:
+        category=request.GET["category"]
+        confirmed_items=ConfirmItem.objects.filter(found_item__catagory__name=category, is_confirm = True)
+    return render(request,'manager_app/confirm_item_page.html', {"confirmed_items" : confirmed_items,"bell":bell,"catagory":catagory })
 
   
 
 def match_item_page(request:HttpRequest):
-
+    catagory=Catagory.objects.all()
     matched_items = ConfirmItem.objects.filter(is_confirm = False)
     bell =RequestLostItem.objects.filter(is_read=False)
     if "search" in request.GET:
         search_word=request.GET["search"]
         matched_items=ConfirmItem.objects.filter(found_item__description__contains=search_word, is_confirm = False)
-
-    return render(request, "manager_app/match_item_page.html", {"matched_items" : matched_items,"bell":bell})
+    if "category"in request.GET:
+        category=request.GET["category"]
+        matched_items=ConfirmItem.objects.filter(found_item__catagory__name=category, is_confirm = False)
+    return render(request, "manager_app/match_item_page.html", {"matched_items" : matched_items,"bell":bell,"catagory":catagory})
 
 
 

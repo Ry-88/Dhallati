@@ -20,12 +20,6 @@ def home(request: HttpRequest):
                 track_request= RequestLostItem.objects.get(id=request.POST['request_number'])
                 return redirect("main_app:request_tracking",track_request.id)
             except:
-
-            
-                
-
-            
-
                 return redirect("/?msg=true#contactus")
 
 
