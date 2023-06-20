@@ -100,8 +100,18 @@ def add_found_item_page(request:HttpRequest ,category_id):
 #----------------------------------------------------------------
 
 def found_item_page(request:HttpRequest):
+
+    if not request.user.is_staff:
+        return redirect("main_app:not_found")
+    
     found_items =FoundItem.objects.filter(status = "T")
     bell =RequestLostItem.objects.filter(is_read=False)
+
+    if "search" in request.GET:
+        search_word=request.GET["search"]
+        found_items=FoundItem.objects.filter(description__contains=search_word,status = "T")
+
+    
     return render(request,"manager_app/found_items.html",{"found_items":found_items,"bell":bell})
 
 
@@ -183,8 +193,19 @@ def confirm_item_true_for_found_detail(request:HttpRequest,found_item_id,request
 
 def lost_item_page(request:HttpRequest):
     request_lost_Items=RequestLostItem.objects.filter(status = "T").order_by("is_read","-created_at")
+
+    if "search" in request.GET:
+        search_word=request.GET["search"]
+        request_lost_Items=RequestLostItem.objects.filter(description__contains=search_word)
+
   
     return render(request,'manager_app/lost_item_request_page.html' ,{"request_lost_Items":request_lost_Items})
+
+def delete_lost_item(request:HttpRequest,lost_item_id):
+    lost_item=RequestLostItem.objects.get(id=lost_item_id)
+    lost_item.delete()
+    return redirect("manager_app:lost_item_page")
+
 
 def lost_item_detail_page(request:HttpRequest,lost_item_id):
     
@@ -217,16 +238,28 @@ def confirm_item_for_lost_detail(request:HttpRequest,found_item_id,lost_item_id)
 
 # button to change 'is_confirm'==True  request
 def confirm_item_true_for_lost_detail(request:HttpRequest,found_item_id,lost_item_id):
+    
     found_item=FoundItem.objects.get(id=found_item_id)
     lost_item=RequestLostItem.objects.get(id=lost_item_id)
-    found_item.status="F"
-    lost_item.status="F"
-    found_item.save()
-    lost_item.save()
     confirm_item=ConfirmItem.objects.get(found_item=found_item)
-    confirm_item.is_confirm=True
-    confirm_item.save()
+    if not confirm_item.is_confirm==True:
+        confirm_item.is_confirm=True
+        found_item.status="F"
+        lost_item.status="F"
 
+       
+    
+        subject=f"confirm the item"
+        content=f"Hello {confirm_item.request_Lost_Item.name} \n\
+we found you item please vist us to claim your {confirm_item.request_Lost_Item.Sub_catagory.name} {confirm_item.request_Lost_Item.catagory.name}  "
+        send_mail(subject, content, 'DhallatiOfficial@gmail.com' , [confirm_item.request_Lost_Item.email],fail_silently=False)
+        found_item.save()
+        lost_item.save()
+    else :
+        found_item.status="M"
+        lost_item.status="M"
+        confirm_item.is_confirm=False
+    confirm_item.save()
     return redirect("manager_app:lost_item_detail_page",lost_item_id)
 
 
@@ -252,6 +285,10 @@ def confirm_item_page(request:HttpRequest):
 
     confirmed_items = ConfirmItem.objects.filter(is_confirm = True)
     bell =RequestLostItem.objects.filter(is_read=False)
+    if "search" in request.GET:
+        search_word=request.GET["search"]
+        confirmed_items=ConfirmItem.objects.filter(found_item__description__contains=search_word, is_confirm = False)
+
     return render(request,'manager_app/confirm_item_page.html', {"confirmed_items" : confirmed_items,"bell":bell })
 
   
@@ -260,7 +297,11 @@ def match_item_page(request:HttpRequest):
 
     matched_items = ConfirmItem.objects.filter(is_confirm = False)
     bell =RequestLostItem.objects.filter(is_read=False)
-    return render(request, "manager_app/match_item_page.html", {"matched_items" : matched_items,"bell":bell })
+    if "search" in request.GET:
+        search_word=request.GET["search"]
+        matched_items=ConfirmItem.objects.filter(found_item__description__contains=search_word, is_confirm = False)
+
+    return render(request, "manager_app/match_item_page.html", {"matched_items" : matched_items,"bell":bell})
 
 
 
@@ -279,9 +320,7 @@ http://127.0.0.1:8000/form/check/{confirm_item.id}"
     return redirect("manager_app:lost_item_detail_page",lost_item_id)
 
 
-def matched_item_page(request:HttpRequest):
-    
-    return render(request,"manager_app/match_page.html")
+
     
 
 

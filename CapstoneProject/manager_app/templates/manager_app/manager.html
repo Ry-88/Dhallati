@@ -9,6 +9,7 @@
     
     {% block style %}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
 
     {% endblock %}
     <title>Document</title>
@@ -107,10 +108,10 @@ background: linear-gradient(0deg, #070b34 0%, #141852 50%, #2b2f77 100%);
         <h1 href="javascript:void(0)" class="closebtn"  onclick="closeNav()"  >×</h1>
         
     </div class="ab">
-        <a href="{% url 'manager_app:found_item_page'  %}">home</a>
-        <a href="{% url 'manager_app:category_page' %}">add new category</a>
-        <a href="{% url 'manager_app:category_for_add_found' %}" >add found item</a>
-        <a href="#">Contact</a>
+        <a href="{% url 'manager_app:found_item_page'  %}">Home</a>
+        <a href="{% url 'manager_app:category_page' %}">Add New Category</a>
+        <a href="{% url 'manager_app:category_for_add_found' %}" >Add Found Item</a>
+        <a href="{% url 'main_app:home' %}">Main Page</a>
       </div>
       
       <main id="main" >
@@ -162,6 +163,8 @@ background: linear-gradient(0deg, #070b34 0%, #141852 50%, #2b2f77 100%);
  //your code here
 }, 1000);
         </script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+
 </body>
 </html>

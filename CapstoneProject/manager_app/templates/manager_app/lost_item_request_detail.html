@@ -29,7 +29,7 @@
                 {% elif lost_item.color == 'Y' %}
                 style="background-color: rgb(213, 245, 72);"
                 {% elif lost_item.color == 'W' %}
-                style="background-color: rgb(144, 147, 130);"
+                style="background-color: rgb(193, 194, 184);"
                 {% endif %}>
             </div>
               <div class="ag-courses-item_title">
@@ -98,7 +98,7 @@
            
               
             
-        <div class="ag-courses-item_link" style=" border-radius: 5px; height: 555px;   ">
+        <div class="ag-courses-item_link" style=" border-radius: 5px; height: 555px; width: 450px;  ">
           <h2 style="text-align: center; color: #E8F6EF;">match lost items </h2>
           {% if confirm_items %}
             {% for confirm_item in confirm_items %}
@@ -204,7 +204,7 @@
             <div class="ag-courses-item_link" style=" border-radius: 10px;   margin-bottom: 12px;">
 
               <img  src="{{found.image.url}}" width="100%" height="200" alt="">
-              <a class="ag-courses-item_link">
+         
                 <div class="ag-courses-item_bg" 
                 {% if found.color == 'G' %}
                   style=" background-color: rgb(58, 203, 58);"
@@ -217,7 +217,7 @@
                   {% elif found.color == 'Y' %}
                   style="background-color: rgb(213, 245, 72);"
                   {% elif found.color == 'W' %}
-                  style="background-color: rgb(144, 147, 130);"
+                  style="background-color: rgb(193, 194, 184);"
                   {% endif %}>
                   
               </div>
@@ -261,7 +261,7 @@
            
             
               
-                </a>
+  
              
         </div>
    

@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpRequest, HttpResponse
 from .models import RequestLostItem, Catagory, SubCatagory, ContactForm,ConfirmItem
 from django.core.mail import send_mail, BadHeaderError
+import time
 # from .forms import ContactForm
 
 
@@ -9,13 +10,8 @@ from django.core.mail import send_mail, BadHeaderError
 
 
 def home(request: HttpRequest):
-
-
-    
-        
     msg2=None
     msg=None
-
 
     if request.method == 'POST':
 
@@ -24,10 +20,14 @@ def home(request: HttpRequest):
                 track_request= RequestLostItem.objects.get(id=request.POST['request_number'])
                 return redirect("main_app:request_tracking",track_request.id)
             except:
-                msg2="your request number is wrong "
+
+            
                 
 
             
+
+                return redirect("/?msg=true#contactus")
+
 
         if 'help' in request.POST:
                 first_name = request.POST.get('first_name')
@@ -88,11 +88,29 @@ def request_add(request: HttpRequest, category_id):
                                       email=request.POST["email"],
                                       name=request.POST["name"],
                                       phone_number=request.POST["phone_number"])
+        
 
-        new_request.save()
-        return redirect("main_app:home")
+        
+        name= request.POST["name"]
+        email= request.POST["email"]
+
+        track_number =new_request.id
+        subject=f"your request "
+        content=f"Hello {name} \n\
+        Regarding your request  \n\
+        your track number is # {track_number} \n\
+        or link:  http://127.0.0.1:8000/request/tracking/{track_number}"
+        send_mail(subject, content, 'DhallatiOfficial@gmail.com' , [email] ,fail_silently=False)
+   
+
+        
+        return redirect("main_app:email_page")
 
     return render(request, 'main_app/request_add.html', {"category": category, "sub_category": sub_category})
+
+
+def email_page(request:HttpRequest):
+    return render(request,'main_app/email_page.html')
 
 
 #def request_detail(request: HttpRequest, lost_id):
