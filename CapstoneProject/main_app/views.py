@@ -56,7 +56,6 @@ def home(request: HttpRequest):
     return render(request, 'main_app/home.html', {"msg": msg, "msg2":msg2})
 
 
-
 def not_found(request: HttpRequest):
 
     return render(request, 'main_app/not_found.html')
@@ -90,10 +89,10 @@ def request_add(request: HttpRequest, category_id):
                                       phone_number=request.POST["phone_number"])
         
 
-        
+        new_request.save()
         name= request.POST["name"]
         email= request.POST["email"]
-
+        
         track_number =new_request.id
         subject=f"your request "
         content=f"Hello {name} \n\
@@ -101,7 +100,6 @@ def request_add(request: HttpRequest, category_id):
         your track number is # {track_number} \n\
         or link:  http://127.0.0.1:8000/request/tracking/{track_number}"
         send_mail(subject, content, 'DhallatiOfficial@gmail.com' , [email] ,fail_silently=False)
-   
 
         
         return redirect("main_app:email_page")
@@ -113,13 +111,6 @@ def email_page(request:HttpRequest):
     return render(request,'main_app/email_page.html')
 
 
-#def request_detail(request: HttpRequest, lost_id):
-
-#    requests = RequestLostItem.objects.get(id=lost_id)
-
-#    return render(request, 'main_app/request_detail.html', {'requests': requests})
-
-
 
 def request_tracking(request: HttpRequest, track_id):
 
@@ -127,7 +118,6 @@ def request_tracking(request: HttpRequest, track_id):
 
     
     return render(request, 'main_app/request_tracking.html', {'tracking' : tracking})
-
 
 def email_check_form(request: HttpRequest,confirm_item_id):
     msg=None

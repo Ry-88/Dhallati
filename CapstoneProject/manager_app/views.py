@@ -118,7 +118,15 @@ def found_item_page(request:HttpRequest):
     return render(request,"manager_app/found_items.html",{"found_items":found_items,"bell":bell})
 
 
+
 @login_required(login_url="/accounts/log_in")
+def delete_found_item(request:HttpRequest,found_item_id):
+    found_item=FoundItem.objects.get(id=found_item_id)
+    found_item.delete()
+    redirect("manager_app:found_item_page")
+    
+
+
 def found_detail_page(request:HttpRequest,found_item_id):
     
     found_item=FoundItem.objects.get(id=found_item_id)
