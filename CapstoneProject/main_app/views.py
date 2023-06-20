@@ -82,7 +82,7 @@ def request_add(request: HttpRequest, category_id):
                                           name=request.POST["name"],
                                           phone_number=request.POST["phone_number"])
 
-        new_request = RequestLostItem(catagory=category, Sub_catagory=SubCatagory.objects.get(id=request.POST["sub_category"]), color=request.POST["color"],
+        else: new_request = RequestLostItem(catagory=category, Sub_catagory=SubCatagory.objects.get(id=request.POST["sub_category"]), color=request.POST["color"],
 
                                       place=request.POST["place"], description=request.POST["description"],
                                       email=request.POST["email"],
@@ -90,7 +90,7 @@ def request_add(request: HttpRequest, category_id):
                                       phone_number=request.POST["phone_number"])
         
 
-        
+        new_request.save()
         name= request.POST["name"]
         email= request.POST["email"]
 

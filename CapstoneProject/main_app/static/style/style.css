@@ -421,7 +421,6 @@ textarea.form-control {
 @media (max-width: 991px) {
   .navigation {
     padding: 20px;
-    background: linear-gradient(0deg, #070b34 0%, #141852 50%, #2b2f77 100%);
     background: linear-gradient(0deg, #474bff 0%, #bc48ff 100%);
   }
 }
@@ -433,6 +432,11 @@ textarea.form-control {
 }
 .navbar .nav-item.active {
   font-weight: bold;
+}
+
+.nav-item:hover{
+  background-color: #00000061;
+    border-radius: 2vh;
 }
 
 .navbar-dark .navbar-nav .nav-link {
@@ -883,14 +887,12 @@ blockquote {
 }
 
 .custom-shape-divider-bottom-1686935527 .shape-fill {
-  fill: #525273;
+  fill: #474aff6b;
 }
 
 .request_div{
   font-size: 30px;
-  background: linear-gradient(0deg, #070b34 0%, #141852 50%, #2b2f77 100%) !important;
   background: linear-gradient(0deg, #474bff 0%, #bc48ff 100%) !important;
-  
   display: inline-block;
   padding: 5px 30px;
   min-width: 15vh;
@@ -902,7 +904,7 @@ blockquote {
   position: relative;
 }
 
-.request_div button{
+.request_div .request_btn{
   color: #E8F6EF;
   color: linear-gradient(0deg, #474bff 0%, #bc48ff 100%);
   cursor: pointer;
@@ -911,7 +913,7 @@ blockquote {
   transition: 0.5s;
 }
 
-.request_div button:after{
+.request_div .request_btn::after{
   content: '\00bb';
   position: absolute;
   opacity: 0;
@@ -921,12 +923,12 @@ blockquote {
   
 }
 
-.request_div:hover button{
+.request_div:hover .request_btn{
   padding-right: 25px;
 }
 
 
-.request_div:hover button:after{
+.request_div:hover .request_btn::after{
   opacity: 1;
   right: 0;
 }
