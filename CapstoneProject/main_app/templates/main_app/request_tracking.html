@@ -85,10 +85,14 @@
                              category: {{tracking.catagory}} <br>
                              sub-category: {{tracking.Sub_catagory}} <br>
                              item color: {{tracking.get_color_display}} <br>
-                             lost place: {{tracking.place}} <br>
-                             Request status: {{tracking.status}} <br>
-                             Manager checked it: {{tracking.is_read}} <br>
-                             email: {{tracking.email}} <br>
+                             lost place: {{tracking.get_place_display}} <br>
+                             Request status: {{tracking.get_status_display}} <br>
+                             {% if tracking.is_read %}
+                             Manager checked it: Yes <br>
+                             {% else %}
+                             Manager checked it: No <br>
+                             {% endif %}
+                             Email: {{tracking.email}} <br>
                              phone number: {{tracking.phone_number}} <br>
                              <span> description: {{tracking.description}} </span>
                           </p>
