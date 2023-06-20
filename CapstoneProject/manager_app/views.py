@@ -118,7 +118,7 @@ def delete_found_item(request:HttpRequest,found_item_id):
     found_item=FoundItem.objects.get(id=found_item_id)
     found_item.delete()
     redirect("manager_app:found_item_page")
-    
+
 
 def found_detail_page(request:HttpRequest,found_item_id):
     
@@ -226,8 +226,8 @@ def lost_item_detail_page(request:HttpRequest,lost_item_id):
 
 # button to add confirm_item for request
 def confirm_item_for_lost_detail(request:HttpRequest,found_item_id,lost_item_id):
-   
-
+ 
+ 
     found_item=FoundItem.objects.get(id=found_item_id)
     lost_item=RequestLostItem.objects.get(id=lost_item_id)
     new_confirm =ConfirmItem(found_item=found_item,request_Lost_Item=lost_item)
@@ -313,14 +313,17 @@ def send_email_form(request:HttpRequest,lost_item_id,confirm_item_id):
 
     
     confirm_item=ConfirmItem.objects.get(id=confirm_item_id)
-    
-    subject=f"Hello {confirm_item.request_Lost_Item.name}"
-    content=f"Hello {confirm_item.request_Lost_Item.name} \n\
+    if not confirm_item.is_send:
+        confirm_item.is_send=True
+        subject=f"Hello {confirm_item.request_Lost_Item.name}"
+        content=f"Hello {confirm_item.request_Lost_Item.name} \n\
 Regarding your request please answer these follow up questions to be sure \n\
 http://127.0.0.1:8000/form/check/{confirm_item.id}"
-    send_mail(subject, content, 'DhallatiOfficial@gmail.com' , [confirm_item.request_Lost_Item.email],fail_silently=False)
-   
-
+        send_mail(subject, content, 'DhallatiOfficial@gmail.com' , [confirm_item.request_Lost_Item.email],fail_silently=False)
+        confirm_item.save()
+    else:
+        confirm_item.is_send=False
+        confirm_item.save()
     return redirect("manager_app:lost_item_detail_page",lost_item_id)
 
 
