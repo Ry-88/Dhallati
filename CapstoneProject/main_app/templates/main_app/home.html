@@ -7,14 +7,14 @@
 <div>
 
   <!-- about -->
-  <section class="section" style="background-color: #e8f6ef; min-height: 55vh;" id="description">
-    <div class="container ">
+  <section class="container d-flex justify-content-center " style="min-height: 55vh;" id="description">
+    <div class="d-flex align-items-center m-5" >
       <div class="row">
         <div class="col-lg-10 mx-auto text-center">
           <p class="font-secondary paragraph-lg ">
-          <h1 class="text-dark"> Welcome to Dhallati </h1>
+          <h1 class="text-dark"> Dhallati </h1>
           </p>
-          <p class="font-secondary paragraph-lg text-dark">Dhallati is website that can help you find your missing
+          <p class="font-secondary paragraph-lg text-dark"> website that can help you find your missing
             item<br>
             if you lost an item please press</p>
           <a href="{% url 'main_app:category_for_add_request_add' %}" class="request_div">
@@ -57,7 +57,6 @@
 
         </div>
       </div>
-    </div>
     <!-- bg  -->
     <div class="custom-shape-divider-bottom-1686935527">
       <svg style="height: 50vh;" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
@@ -73,13 +72,13 @@
           class="shape-fill"></path>
       </svg>
     </div>
-    <img src="{% static 'images/glasses1.png' %}" alt="bg-shape" class="img-fluid bg-shape-1" style="height: 25vh;">
-    <img src="{% static 'images/phone.png' %}" alt="bg-shape" class="img-fluid bg-shape-2 img_t">
-    <img src="{% static 'images/keys.png' %}" alt="bg-shape" class="img-fluid bg-shape-3 img_t">
-    <img src="{% static 'images/bank-card.png' %}" alt="bg-shape" class="img-fluid bg-shape-4 img_t"
-      style="rotate: 20deg;">
-    <img src="{% static 'images/wallet1.png' %}" alt="bg-shape" class="img-fluid bg-shape-5 img_t"
-      style="rotate: -20deg;">
+      <img src="{% static 'images/glasses1.png' %}" alt="bg-shape" class="img-fluid bg-shape-1" style="height: 25vh;">
+      <img src="{% static 'images/phone.png' %}" alt="bg-shape" class="img-fluid bg-shape-2 img_t">
+      <img src="{% static 'images/keys.png' %}" alt="bg-shape" class="img-fluid bg-shape-3 img_t">
+      <img src="{% static 'images/bank-card.png' %}" alt="bg-shape" class="img-fluid bg-shape-4 img_t"
+        style="rotate: 20deg;">
+      <img src="{% static 'images/wallet1.png' %}" alt="bg-shape" class="img-fluid bg-shape-5 img_t"
+        style="rotate: -20deg;">
   </section>
   <!-- /tracking -->
 
@@ -119,14 +118,6 @@
             {% endif %}
 
             <!-- end modal-->
-
-
-
-                  <div class="d-flex justify-content-center">
-                    <div class=" request_div" style="width: auto;">
-                        <button class="request_btn"  type="submit" name="help" style="background-color: #e8f6ef00; border-width: 0;">send</button>
-                      </div>
-                  </div>
 
 
             <form action="{% url 'main_app:home' %}" class="row" method="POST">
