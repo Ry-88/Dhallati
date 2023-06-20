@@ -100,6 +100,10 @@ def add_found_item_page(request:HttpRequest ,category_id):
 #----------------------------------------------------------------
 
 def found_item_page(request:HttpRequest):
+
+    if not request.user.is_staff:
+        return redirect("main_app:not_found")
+    
     found_items =FoundItem.objects.filter(status = "T")
     bell =RequestLostItem.objects.filter(is_read=False)
 
