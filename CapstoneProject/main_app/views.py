@@ -88,11 +88,29 @@ def request_add(request: HttpRequest, category_id):
                                       email=request.POST["email"],
                                       name=request.POST["name"],
                                       phone_number=request.POST["phone_number"])
+        
 
-        new_request.save()
-        return redirect("main_app:home")
+        
+        name= request.POST["name"]
+        email= request.POST["email"]
+
+        track_number =new_request.id
+        subject=f"your request "
+        content=f"Hello {name} \n\
+        Regarding your request  \n\
+        your track number is # {track_number} \n\
+        or link:  http://127.0.0.1:8000/request/tracking/{track_number}"
+        send_mail(subject, content, 'DhallatiOfficial@gmail.com' , [email] ,fail_silently=False)
+   
+
+        
+        return redirect("main_app:email_page")
 
     return render(request, 'main_app/request_add.html', {"category": category, "sub_category": sub_category})
+
+
+def email_page(request:HttpRequest):
+    return render(request,'main_app/email_page.html')
 
 
 #def request_detail(request: HttpRequest, lost_id):

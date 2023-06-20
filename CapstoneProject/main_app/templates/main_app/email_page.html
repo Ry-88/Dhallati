@@ -1,0 +1,45 @@
+{% extends 'main_app/base.html' %}
+{% block title %} check form {% endblock%}
+{% load static %}
+
+
+{% block hero %}
+
+<section class="bg-primary" id="parallax" style="min-height: 100vh; padding-top: 200px; padding-bottom: 40px;">
+
+    <div class="category d-flex justify-content-center mb-1" style="margin-top: -50px;">
+        <h2>email is send</h2>
+    </div>
+
+    <div class="col-6 mx-auto d-flex justify-items-center">
+        <div class="bg-white rounded p-5 shadow-down mb-5 row justify-content-center">
+            <div class="mb-3 text-center">
+                    <h3 class="" style="color: black;">email</h3> 
+                    <h5 style="color: rgba(0, 0, 0, 0.500);"> please check your email </h5>
+                
+               
+            </div>
+        
+             
+        
+          <form action=""  class="row">
+              {% csrf_token %}
+         
+                <h2 style="color: rgb(38, 38, 38); text-align: center;">your track number is sending in your email</h2>
+                <h4 style="color: rgb(38, 38, 38); text-align: center;">to back click <a href="{% url 'main_app:home' %}">hare</a> </h4>
+           
+             
+
+          
+          </form>
+        </div>
+      </div>
+    
+    
+
+{% endblock %}
+
+{% block content %}
+
+
+{% endblock %}
