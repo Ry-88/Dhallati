@@ -10,47 +10,50 @@ from django.core.mail import send_mail, BadHeaderError
 
 def home(request: HttpRequest):
 
-    track = RequestLostItem.objects.all()
+
+    
+        
+    msg2=None
     msg=None
-    if request.method == 'POST':
-        try:
-            track_request= RequestLostItem.objects.get(id=request.POST['request_number'])
-            return redirect("main_app:request_tracking",track_request.id)
-        except:
-            msg="your request number is wrong "
-
-
-    return render(request, 'main_app/home.html', {'track' : track ,"msg":msg})
-
-    msg = None
 
 
     if request.method == 'POST':
 
-        first_name = request.POST.get('first_name')
-        last_name = request.POST.get('last_name')
-        email = request.POST.get('email')
-        message = request.POST.get('message')
+        if 'track' in request.POST:
+            try:
+                track_request= RequestLostItem.objects.get(id=request.POST['request_number'])
+                return redirect("main_app:request_tracking",track_request.id)
+            except:
+                msg2="your request number is wrong "
+                return redirect("main_app:request_tracking")
 
-        # Save contact data to the database
-        contact = ContactForm(first_name=first_name,
-                              last_name=last_name, email=email, message=message)
-        contact.save()
+            
 
-        # Retrieve all contacts
-        contacts = ContactForm.objects.all()
-        print(contact.email, contact.first_name,
-              contact.last_name, contact.message)
-        # Send email
-        subject = f"Hello my name is {contact.first_name}"
-        content = f"Name: {contact.first_name} {contact.last_name} Email: {contact.email} Messege:{contact.message}"
-        send_mail(subject, content, 'DhallatiOfficial@gmail.com',
-                  ['DhallatiOfficial@gmail.com'], fail_silently=False)
-        msg = "thank you for the feedback"
-        # Render success page or redirect
+        if 'help' in request.POST:
+                first_name = request.POST.get('first_name')
+                last_name = request.POST.get('last_name')
+                email = request.POST.get('email')
+                message = request.POST.get('message')
+
+                # Save contact data to the database
+                contact = ContactForm(first_name=first_name,
+                                      last_name=last_name, email=email, message=message)
+                contact.save()
+
+                # Retrieve all contacts
+                contacts = ContactForm.objects.all()
+                print(contact.email, contact.first_name,
+                      contact.last_name, contact.message)
+                # Send email
+                subject = f"Hello my name is {contact.first_name}"
+                content = f"Name: {contact.first_name} {contact.last_name} Email: {contact.email} Messege:{contact.message}"
+                send_mail(subject, content, 'DhallatiOfficial@gmail.com',
+                          ['DhallatiOfficial@gmail.com'], fail_silently=False)
+                msg = "thank you for the feedback"
+                # Render success page or redirect
 
 
-    return render(request, 'main_app/home.html', {"msg": msg})
+    return render(request, 'main_app/home.html', {"msg": msg, "msg2":msg2})
 
 
 

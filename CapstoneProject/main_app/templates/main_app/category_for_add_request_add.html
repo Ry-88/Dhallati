@@ -25,7 +25,8 @@
             {% for category in categories %}
 
 
-                <a href="{% url 'main_app:request_add' category.id %}" class="col-3 me-2 p-1 d-flex justify-content-center align-items-center" style="background-color: #525273; height: 20vh; width: 30vh;
+                <a href="{% url 'main_app:request_add' category.id %}" class="col-3 me-2 p-1 d-flex justify-content-center align-items-center" style="background-color: #525273; height: 20vh;
+                min-width: 30vh;
                 border-radius: 1vh;
                 font-size: 50px; ">
                 

@@ -7,11 +7,11 @@
 <div >
 
     <!-- about -->
-<section class="section" style="background-color: #e8f6ef; height: 55vh;" id="description">
-    <div class="container">
+<section class="section" style="background-color: #e8f6ef; min-height: 55vh;" id="description">
+    <div class="container ">
       <div class="row">
         <div class="col-lg-10 mx-auto text-center">
-          <p class="font-secondary paragraph-lg text-dark"><h1> Welcome to Dhallati </h1></p>
+          <p class="font-secondary paragraph-lg "><h1 class="text-dark"> Welcome to Dhallati </h1></p>
           <p class="font-secondary paragraph-lg text-dark">Dhallati is website that can help you find your missing item<br>
             if you lost an item please press</p>
           <a href="{% url 'main_app:category_for_add_request_add' %}" class="request_div"  >
@@ -39,6 +39,9 @@
             <form action="{% url 'main_app:home' %}" method="post">
                 {% csrf_token %}
                 <label style="font-size: 25px;" >Insert request number</label> <br>
+                {% if msg2 %}
+                <p>{{msg2}}</p>
+                {% endif %}
                 <input class="form-control px-0 mb-4 rounded-pill text-center" style="background-color: #e8f6ef; font-size: 25px" type="search" placeholder="Request number" name="request_number">
                 <button class="track_div" type="submit" name="track">
                     <span class="track_btn" >Track</span>
@@ -121,6 +124,7 @@
                     
                     <textarea placeholder="Message" required name="message" class="form-control px-0 mb-4" style="background-color: #e8f6ef4d;"></textarea>
                   </div>
+
 
                   <div class="d-flex justify-content-center">
                     <div class=" request_div" style="width: auto;">

@@ -33,7 +33,7 @@
             <div class="col-12 mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Sub Category</label> <br>
                 <select  name="sub_category" class="form-select color-select" required>
-                <option >select sub category</option>
+                <option value="" >select sub category</option>
                 {% for sub in sub_category %}
                 <option value="{{sub.id}}">{{sub.name}}</option>
                 {% endfor %}
@@ -42,7 +42,7 @@
 
             <div class="col-12 mb-3">
                 <label for="exampleFormControlInput1" class="form-label">color</label> <br>
-                <select class="form-select color-select" name="color" id="inputGroupSelect01">
+                <select class="form-select color-select" name="color" id="inputGroupSelect01" required>
                     <option selected>Choose</option>
                     <option value="R">Red</option>
                     <option value="G">Green</option>
@@ -55,7 +55,7 @@
 
             <div class="col-12 mb-3">
                 <label for="exampleFormControlInput1" class="form-label">place</label> <br>
-                <select class="form-select color-select" name="place" id="inputGroupSelect01">
+                <select class="form-select color-select" name="place" id="inputGroupSelect01" required>
                     <option selected>Choose</option>
                     <option value="F">First Floor</option>
                     <option value="S">Second Floor</option>
@@ -66,27 +66,27 @@
             <div class="col-12 mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Description</label>
                 <textarea class="form-control color-select" id="exampleFormControlInput1" placeholder="Discripe the Item"
-                    name="description"></textarea>
+                    name="description" required></textarea>
             </div>
 
             <div class="col-12 mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Choose Image</label>
-                <input type="file" name="image" class="form-control color-select" />
+                <input type="file" name="image" class="form-control color-select" placeholder="Optional" />
             </div>
 
             <div class="col-12 mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Your email</label>
-                <input type="email" name="email" class="form-control color-select" />
+                <input type="email" name="email" class="form-control color-select" required/>
             </div>
 
             <div class="col-12 mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Your name</label>
-                <input type="text" name="name" class="form-control color-select" />
+                <input type="text" name="name" class="form-control color-select" required/>
             </div>
 
             <div class="col-12 mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Your phone</label>
-                <input type="text" name="phone_number" class="form-control color-select" />
+                <input type="text" name="phone_number" class="form-control color-select" placeholder="Optional"/>
             </div>
 
             <div class="d-flex justify-content-center">
