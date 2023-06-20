@@ -25,7 +25,7 @@
             <div class="ag-courses_box">
               {% for found_item in found_items %}
               <div class="ag-courses_item">
-                <img src="{{found_item.image.url}}" height="200px" alt="">
+                <img src="{{found_item.image.url}}" height="300px" alt="" width="100%">
                 <a href="{% url 'manager_app:found_detail_page' found_item.id %}" class="ag-courses-item_link">
                   <div class="ag-courses-item_bg" 
                   {% if found_item.color == 'G' %}
@@ -39,7 +39,7 @@
                     {% elif found_item.color == 'Y' %}
                     style="background-color: rgb(213, 245, 72);"
                     {% elif found_item.color == 'W' %}
-                    style="background-color: rgb(144, 147, 130);"
+                    style="background-color: rgb(193, 194, 184);"
                     {% endif %}>
                 </div>
                   <div class="ag-courses-item_title">
