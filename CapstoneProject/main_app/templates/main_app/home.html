@@ -32,19 +32,20 @@
     <div class="container d-flex justify-content-center" >
         <div class="  row">
         <div class=" mx-auto text-center ">
-        <div class="text-center">
+        <div class="text-center" id="contactus">
           <h2 class="section-title mb-5" >Track your request</h2>
         </div>
         
             <form action="{% url 'main_app:home' %}" method="post">
                 {% csrf_token %}
                 <label style="font-size: 25px;" >Insert request number</label> <br>
-                {% if msg2 %}
-                <p>{{msg2}}</p>
+                
+                <input class="form-control px-0 mb-1 rounded-pill text-center" style="background-color: #e8f6ef; font-size: 25px" type="search" placeholder="Request number" name="request_number">
+                {% if request.GET.msg %}
+                <h4 style="color: red;">your request number is wrong !</h4>
                 {% endif %}
-                <input class="form-control px-0 mb-4 rounded-pill text-center" style="background-color: #e8f6ef; font-size: 25px" type="search" placeholder="Request number" name="request_number">
                 <button class="track_div" type="submit" name="track">
-                    <span class="track_btn" >Track</span>
+                    <span>Track</span>
                 </button>
                 
             </form>
