@@ -2,11 +2,14 @@ from django.shortcuts import render,redirect
 from django.http import HttpRequest,HttpResponse
 from main_app.models import Catagory,SubCatagory,FoundItem,RequestLostItem,ConfirmItem
 from django.core.mail import send_mail
+from django.contrib.auth.decorators import login_required, permission_required
+
 
 
 # Create your views here.
 
 #base-file-for-exdends---------------------------
+@login_required(login_url="/accounts/log_in")
 def  index_page(request:HttpRequest): 
     found_items =FoundItem.objects.all()
     bell =RequestLostItem.objects.filter(is_read=False)
@@ -17,6 +20,7 @@ def  index_page(request:HttpRequest):
 
 
 #--------------category -- views-------------------------------------------------------------------------------------------
+@login_required(login_url="/accounts/log_in")
 def category_page(request:HttpRequest):
     Catagorys=Catagory.objects.all()
     #for add new category
@@ -30,7 +34,7 @@ def category_page(request:HttpRequest):
 
 
 
-
+@login_required(login_url="/accounts/log_in")
 def delete_category(request:HttpRequest,category_id):
  
     category=Catagory.objects.get(id=category_id)
@@ -38,7 +42,7 @@ def delete_category(request:HttpRequest,category_id):
     return redirect("manager_app:category_page")
 
 #add_subcategory
-
+@login_required(login_url="/accounts/log_in")
 def sub_category(request:HttpRequest,category_id):
 
     category=Catagory.objects.get(id=category_id)
@@ -53,7 +57,7 @@ def sub_category(request:HttpRequest,category_id):
     return render(request,"manager_app/sub_category_page.html" ,{"category":category, "sub_category":sub_category,"bell":bell})
 
 
-
+@login_required(login_url="/accounts/log_in")
 def delete_sub_category(request:HttpRequest,category_id,sub_category_id):
    
     sub_category=SubCatagory.objects.get(id=sub_category_id)
@@ -66,12 +70,13 @@ def delete_sub_category(request:HttpRequest,category_id,sub_category_id):
 
 
 # if the the manager want to add found item , frist well choose category then will go to 'add_found_item_page'
+@login_required(login_url="/accounts/log_in")
 def category_for_add_found(request:HttpRequest):
     catagorys = Catagory.objects.all()
     bell =RequestLostItem.objects.filter(is_read=False)
     return render(request,'manager_app/category_for_add_fuond.html',{"catagorys":catagorys,"bell":bell})
 
-
+@login_required(login_url="/accounts/log_in")
 def add_found_item_page(request:HttpRequest ,category_id):
     catagory=Catagory.objects.get(id=category_id)
     sub_category=SubCatagory.objects.filter(category=catagory)
@@ -98,12 +103,10 @@ def add_found_item_page(request:HttpRequest ,category_id):
 
 
 #----------------------------------------------------------------
-
+@login_required(login_url="/accounts/log_in")
 def found_item_page(request:HttpRequest):
 
-    if not request.user.is_staff:
-        return redirect("main_app:not_found")
-    
+
     found_items =FoundItem.objects.filter(status = "T")
     bell =RequestLostItem.objects.filter(is_read=False)
 
@@ -114,11 +117,15 @@ def found_item_page(request:HttpRequest):
     
     return render(request,"manager_app/found_items.html",{"found_items":found_items,"bell":bell})
 
+
+
+@login_required(login_url="/accounts/log_in")
 def delete_found_item(request:HttpRequest,found_item_id):
     found_item=FoundItem.objects.get(id=found_item_id)
     found_item.delete()
     redirect("manager_app:found_item_page")
     
+
 
 def found_detail_page(request:HttpRequest,found_item_id):
     
@@ -130,7 +137,7 @@ def found_detail_page(request:HttpRequest,found_item_id):
     return render(request,'manager_app/founditem_detail.html' ,{"found_item":found_item,"request_lost_Items":lost_item,"confirm_items":confirm_items,"bell":bell })
 
 
-
+@login_required(login_url="/accounts/log_in")
 def confirm_item_for_found_detail(request:HttpRequest,found_item_id,request_lost_item_id):
  
 
@@ -149,7 +156,7 @@ def confirm_item_for_found_detail(request:HttpRequest,found_item_id,request_lost
    return redirect("manager_app:found_detail_page",found_item_id)
 
 
-
+@login_required(login_url="/accounts/log_in")
 def discard_confirm_item_for_found_detail(request:HttpRequest,found_item_id,request_lost_item_id):
     found_item=FoundItem.objects.get(id=found_item_id)
     lost_item=RequestLostItem.objects.get(id=request_lost_item_id)
@@ -163,6 +170,7 @@ def discard_confirm_item_for_found_detail(request:HttpRequest,found_item_id,requ
 
     return redirect("manager_app:found_detail_page",found_item_id)
 
+@login_required(login_url="/accounts/log_in")
 def confirm_item_true_for_found_detail(request:HttpRequest,found_item_id,request_lost_item_id):
     found_item=FoundItem.objects.get(id=found_item_id)
     lost_item=RequestLostItem.objects.get(id=request_lost_item_id)
@@ -194,7 +202,7 @@ def confirm_item_true_for_found_detail(request:HttpRequest,found_item_id,request
 
 #-------------------------------------------------------------------
 
-
+@login_required(login_url="/accounts/log_in")
 def lost_item_page(request:HttpRequest):
     request_lost_Items=RequestLostItem.objects.filter(status = "T").order_by("is_read","-created_at")
 
@@ -205,12 +213,13 @@ def lost_item_page(request:HttpRequest):
   
     return render(request,'manager_app/lost_item_request_page.html' ,{"request_lost_Items":request_lost_Items})
 
+@login_required(login_url="/accounts/log_in")
 def delete_lost_item(request:HttpRequest,lost_item_id):
     lost_item=RequestLostItem.objects.get(id=lost_item_id)
     lost_item.delete()
     return redirect("manager_app:lost_item_page")
 
-
+@login_required(login_url="/accounts/log_in")
 def lost_item_detail_page(request:HttpRequest,lost_item_id):
     
     lost_item=RequestLostItem.objects.get(id=lost_item_id)
@@ -225,6 +234,7 @@ def lost_item_detail_page(request:HttpRequest,lost_item_id):
 
 
 # button to add confirm_item for request
+@login_required(login_url="/accounts/log_in")
 def confirm_item_for_lost_detail(request:HttpRequest,found_item_id,lost_item_id):
    
 
@@ -241,6 +251,7 @@ def confirm_item_for_lost_detail(request:HttpRequest,found_item_id,lost_item_id)
 
 
 # button to change 'is_confirm'==True  request
+@login_required(login_url="/accounts/log_in")
 def confirm_item_true_for_lost_detail(request:HttpRequest,found_item_id,lost_item_id):
     
     found_item=FoundItem.objects.get(id=found_item_id)
@@ -255,7 +266,7 @@ def confirm_item_true_for_lost_detail(request:HttpRequest,found_item_id,lost_ite
     
         subject=f"confirm the item"
         content=f"Hello {confirm_item.request_Lost_Item.name} \n\
-we found you item please vist us to claim your {confirm_item.request_Lost_Item.Sub_catagory.name} {confirm_item.request_Lost_Item.catagory.name}  "
+        we found you item please vist us to claim your {confirm_item.request_Lost_Item.Sub_catagory.name} {confirm_item.request_Lost_Item.catagory.name}  "
         send_mail(subject, content, 'DhallatiOfficial@gmail.com' , [confirm_item.request_Lost_Item.email],fail_silently=False)
         found_item.save()
         lost_item.save()
@@ -269,6 +280,7 @@ we found you item please vist us to claim your {confirm_item.request_Lost_Item.S
 
 
 # button to delete  request
+@login_required(login_url="/accounts/log_in")
 def discard_confirm_item_for_lost_detail(request:HttpRequest,found_item_id,lost_item_id):
     found_item=FoundItem.objects.get(id=found_item_id)
     lost_item=RequestLostItem.objects.get(id=lost_item_id)
@@ -284,7 +296,7 @@ def discard_confirm_item_for_lost_detail(request:HttpRequest,found_item_id,lost_
 
 
 
-
+@login_required(login_url="/accounts/log_in")
 def confirm_item_page(request:HttpRequest):
 
     confirmed_items = ConfirmItem.objects.filter(is_confirm = True)
@@ -296,7 +308,7 @@ def confirm_item_page(request:HttpRequest):
     return render(request,'manager_app/confirm_item_page.html', {"confirmed_items" : confirmed_items,"bell":bell })
 
   
-
+@login_required(login_url="/accounts/log_in")
 def match_item_page(request:HttpRequest):
 
     matched_items = ConfirmItem.objects.filter(is_confirm = False)
@@ -308,7 +320,7 @@ def match_item_page(request:HttpRequest):
     return render(request, "manager_app/match_item_page.html", {"matched_items" : matched_items,"bell":bell})
 
 
-
+@login_required(login_url="/accounts/log_in")
 def send_email_form(request:HttpRequest,lost_item_id,confirm_item_id):
 
     
