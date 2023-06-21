@@ -891,8 +891,7 @@ blockquote {
 
 .request_div{
   font-size: 30px;
-  background: linear-gradient(0deg, #141852 50%, #bc48ff 100%) !important;
-  background: linear-gradient(0deg, #070b34 0%, #141852 50%, #2b2f77 100%);
+  background: linear-gradient(0deg, #474bff 0%, #bc48ff 100%) !important;
   display: inline-block;
   padding: 5px 30px;
   min-width: 15vh;

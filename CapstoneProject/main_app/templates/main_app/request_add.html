@@ -33,7 +33,7 @@
             <div class="col-12 mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Sub Category</label> <br>
                 <select  name="sub_category" class="form-select color-select" required>
-                <option value="" >select sub category</option>
+                <option value="" selected="selected">select sub category</option>
                 {% for sub in sub_category %}
                 <option value="{{sub.id}}">{{sub.name}}</option>
                 {% endfor %}

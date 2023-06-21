@@ -10,7 +10,7 @@ class Catagory(models.Model):
 
 class SubCatagory(models.Model):
     category = models.ForeignKey(Catagory,on_delete=models.CASCADE)
-    name=models.CharField(max_length=100)
+    name=models.CharField(max_length=100, default="Other")
     def __str__(self) -> str:
         return f"{self.name}"
 

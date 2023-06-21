@@ -5,7 +5,7 @@
 
 {% block hero %}
 
-<section class="bg-primary" id="parallax" style="min-height: 100vh; padding-top: 200px;">
+<section class="bg-primary pb-5" id="parallax" style="min-height: 100vh; padding-top: 200px;">
 
 <div class="category  d-flex justify-content-center" style="margin-top: -50px;">
     <h2>choose category </h2>
@@ -14,7 +14,7 @@
 
 
 
-<div class="container div_main_tracking ps-1 pe-1" style="min-width: 150vh;">
+<div class="container div_main_tracking ps-1 pe-1 pb-3" style="max-width: 130vh;">
 
     <div class=" d-flex justify-content-center w-100">
 
@@ -22,7 +22,7 @@
             {% for category in categories %}
 
 
-                <a href="{% url 'main_app:request_add' category.id %}" class="col-3 me-5 d-flex justify-content-center align-items-center category-item">
+                <a href="{% url 'main_app:request_add' category.id %}" class="col-4 me-3 ms-3 d-flex justify-content-center align-items-center category-item">
                 
                     <span class="choose-category" style="color: white;">
                         {{category.name}}
