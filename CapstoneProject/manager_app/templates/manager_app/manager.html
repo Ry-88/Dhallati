@@ -174,7 +174,23 @@ background: linear-gradient(0deg, #070b34 0%, #141852 50%, #2b2f77 100%);
           </div>
           {% endif %}
           
-          <img src="{% static 'style/icons8-bell-96.png' %}" class="openbtn" style="float: right; width: 50px ; border-radius: 70%; background-color: #141852; " width="100%" alt="" srcset="">
+          <img src="{% static 'style/icons8-bell-96.png' %}" class="openbtn" style="float: right; width: 50px ; height: 45px; border-radius: 70%; background-color: #141852; " width="100%" alt="" srcset="">
+        </div></a>
+         
+        <a href="{% url 'manager_app:match_item_page' %}"> <div  style="float: right; width: 60px ;  " id="mySidebar" >
+          {% if message %}
+          <div style="position:absolute;  color: #E8F6EF; top: 9px; width: 25px; border-radius: 50%;  background-color: rgb(253, 92, 92); box-shadow: 0 0 20px rgb(253, 92, 92); text-align: center;">
+            {{message|length }}
+          </div>
+          {% endif %}
+          
+          <img src="{% static 'style/icons8-message-100.png' %}" class="openbtn" style="float: right; width: 50px ; height: 45px; border-radius: 70%; background-color: #141852; " width="100%" alt="" srcset="">
+        </div></a>
+        
+        <a href="{% url 'accounts:log_out'%}"> <div  style="float: right; width: 60px ;  " id="mySidebar" >
+          
+          <img src="{% static 'style/icons8-log-out-90.png' %}" class="openbtn" style="float: right; width: 50px ; height: 45px; border-radius: 70%; background-color: #FF3838; " width="100%" alt="" srcset="">
+       
         </div></a>
         
         {% block main %}
