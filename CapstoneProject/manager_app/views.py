@@ -9,12 +9,12 @@ from django.contrib.auth.decorators import login_required, permission_required
 # Create your views here.
 
 #base-file-for-exdends---------------------------
-@login_required(login_url="/accounts/log_in")
-def  index_page(request:HttpRequest): 
-    found_items =FoundItem.objects.all()
-    bell =RequestLostItem.objects.filter(is_read=False)
-    message =ConfirmItem.objects.filter(is_reserved=True)
-    return render(request,"manager_app/manager.html" ,{"found_items":found_items,"bell":bell,"message":message})
+#@login_required(login_url="/accounts/log_in")
+#def  index_page(request:HttpRequest): 
+#    found_items =FoundItem.objects.all()
+#    bell =RequestLostItem.objects.filter(is_read=False)
+#    message =ConfirmItem.objects.filter(is_reserved=True)
+#    return render(request,"manager_app/manager.html" ,{"found_items":found_items,"bell":bell,"message":message})
 #-------------------------------------
 
 
