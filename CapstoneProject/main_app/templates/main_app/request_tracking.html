@@ -7,7 +7,7 @@
 <section class="bg-primary container-fluid" id="parallax" style="min-height: 100vh; padding-top: 200px; padding-bottom: 40px;">
     
 
-    <div class="container div_main_tracking ps-1 pe-1" style="min-width: 175vh;">
+    <div class="container div_main_tracking ps-1 pe-0 pt-3" style="min-width: 175vh;">
 
         <div class=" d-flex justify-content-center w-100">
 
@@ -94,18 +94,24 @@
                              {% endif %}
                              Email: {{tracking.email}} <br>
                              phone number: {{tracking.phone_number}} <br>
-                             <span> description: {{tracking.description}} </span>
+                             <span> description: {{tracking.description}} </span> <br>
+                             Requset date: {{tracking.created_at}}
                           </p>
                         </div>
                       </div>
-                      
-                      <div class="col-6 p-0" >
-                        <img class="rounded-1 bd-placeholder-img img-fluid" width="100%" height="250%" src="{{tracking.image.url}}" alt="">
+
+                      <div class="col-6 p-0" width="100%" height="250%">
+                        <img class="rounded-1 bd-placeholder-img img-fluid"  src="{{tracking.image.url}}" alt="">
                       </div>
+
                     </div>
+
                   </div>
 
                 <!--  <div class="">
+
+
+                    
                     <div>
                         <h3>details</h3>
                     </div>

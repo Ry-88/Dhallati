@@ -5,30 +5,26 @@
 {% block title %} Log In {% endblock %}
 
 {% block hero %}
-<section class="bg-primary" id="parallax" style="min-height: 100vh; padding-top: 200px;">
-
-    {% if msg %}
-    <p class="text-danger">{{msg}}</p>
-    {% endif %}
+<section class="bg-primary" id="parallax" style="min-height: 100vh; padding-top: 150px;">
 
 
 
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <h2 class="section-title text-white">Log In Page</h2>
+                <h2 class="section-title text-white">Log In</h2>
             </div>
             <div class="col-lg-8 mx-auto">
                 <div class="bg-white rounded text-center p-5 shadow-down">
-                    <h4 class="mb-80">Log In</h4>
-
-
-
-
-
+                    <h4 class="mb-30">Log In</h4>
 
                     <form action="{% url 'accounts:log_in' %}" class="row" method="POST">
                         {% csrf_token %}
+
+                        {% if msg %}
+                        <p class="text-danger">{{msg}}</p>
+                        {% endif %}   
+
                         <div class="col-md-6">
 
                             <input type="text" required placeholder="username" name="username"
@@ -48,9 +44,6 @@
                                     style="background-color: #e8f6ef00; border-width: 0;">Log In</button>
                             </div>
                         </div>
-
-
-
 
 
                     </form>
