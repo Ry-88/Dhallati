@@ -414,13 +414,13 @@ textarea.form-control {
   .navigation.nav-bg {
     padding: 15px 20px;
     border-radius: 1vh;
-    background: linear-gradient(0deg,#bc48ff 0%, #474bff 100%) !important;
+    background: linear-gradient(0deg, #070b34 0%, #141852 50%, #2b2f77 100%) !important;
   }
 }
 @media (max-width: 991px) {
   .navigation {
     padding: 20px;
-    background: linear-gradient(0deg, #474bff 0%, #bc48ff 100%);
+    background: linear-gradient(0deg, #070b34 0%, #141852 50%, #2b2f77 100%);
   }
 }
 
