@@ -73,12 +73,14 @@
         </li>
 
         {% if request.user.is_authenticated %}
-        <li class="nav-item">
-          <a class="nav-link" style="color: #e8f6ef;" href="{% url 'accounts:log_out'%}">Log Out</a>
+        <li class="nav-item login-header">
+          <a class="nav-link" style="color: #e8f6ef;" href="{% url 'manager_app:found_item_page' %}">Manager Page</a>
+
         </li>
     {% else %}
-    <li class="nav-item">
+    <li class="nav-item login-header">
       <a class="nav-link" style="color: #e8f6ef;" href="{% url 'accounts:log_in'%}">Log In</a>
+      </div></a>
     </li>
     {% endif %}
 
