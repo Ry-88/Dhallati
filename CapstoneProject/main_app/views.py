@@ -91,8 +91,8 @@ def request_add(request: HttpRequest, category_id):
         content=f"Hello {name} \n\
         Regarding your request  \n\
         your track number is # {track_number} \n\
-        or link:  http://127.0.0.1:8000/request/tracking/{track_number}"
-        send_mail(subject, content, 'DhallatiOfficial@gmail.com' , [email] ,fail_silently=False)
+        or <a href=' http://127.0.0.1:8000/request/tracking/{track_number}'> click hare view your track</a>"
+        send_mail(subject, content, 'DhallatiOfficial@gmail.com' , [email] ,fail_silently=False,html_message=content)
 
         
         return redirect("main_app:email_page")

@@ -37,6 +37,9 @@
 <div class="ag-format-container">
   <div class="ag-courses_box" style="display: block;">
     {% for matched_item in matched_items %}
+    {% if matched_item.is_reserved %}
+                <div style="background-color:rgb(252, 96, 96); border-radius: 50%; height: 40px; width: 40px; bottom: 2px; position: relative; z-index: 3; box-shadow: 0px 00px 20px rgb(252, 96, 96); display: flex; justify-content: center; align-items: center;">MSG</div>
+                {% endif %}
     <div class="ag-courses_item">
 
       <a href="{% url 'manager_app:lost_item_detail_page' matched_item.request_Lost_Item.id %}"
@@ -130,8 +133,8 @@
           </div>
           <div>
             <div class="ag-courses-item_date-box">
-              <img src="{{matched_item.found_item.image.url}}" width="100%"
-                style="border-radius: 20px; " height="250" alt="">
+              <img src="{{matched_item.found_item.image.url}}"  
+                style="border-radius: 20px; width: 260px; height: 230px; " height="250" alt="">
             </div>
           </div>
         </div>
