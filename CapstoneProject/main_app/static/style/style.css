@@ -436,7 +436,7 @@ textarea.form-control {
 
 .nav-item:hover{
   background-color: #00000061;
-    border-radius: 2vh;
+    border-radius: 0.5vh;
 }
 
 .navbar-dark .navbar-nav .nav-link {

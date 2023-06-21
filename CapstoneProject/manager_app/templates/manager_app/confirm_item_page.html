@@ -1,5 +1,5 @@
 {% extends "manager_app/manager.html" %}
-
+  {% load static %}
 
 {% block main %}
 
@@ -19,16 +19,17 @@
             <a href="{% url 'manager_app:match_item_page' %}"> Matched items </a>
             <a href="{% url 'manager_app:confirm_item_page' %}" style=" background: linear-gradient(0deg, #474bff 0%, #bc48ff 100%); color: aliceblue;"> confirm items </a>
         </div>
-        <form action="{% url 'manager_app:confirm_item_page' %}" method="GET" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" style="display: flex; align-items: center; column-gap: 4px; " role="search">
-          <label for="category" style="position: relative; top: 5px;">search</label>
-          <select  name="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <form action="{% url 'manager_app:confirm_item_page' %}" method="GET" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" style="display: flex; align-items: center; column-gap: 4px; justify-content: center; margin-top: 10px;" role="search">
+          <img src="{% static 'style/icons8-filter-100.png' %}" height="25px" alt="">
+          <label for="category" style="position: relative; top: 5px; color: aliceblue;"> filter </label>
+          <select  name="category" style="width: 190px;" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
        
             {% for catagor in catagory %}
-            <option  value="{{catagor.name}}">{{catagor.name}}</option>
+            <option style="" value="{{catagor.name}}">{{catagor.name}}</option>
             {% endfor %}
             
           </select>
-          <button type="submit">go</button>
+          <button type="submit" style="background: linear-gradient(0deg, #474bff 0%, #bc48ff 100%); color: aliceblue; border: none; outline: none; padding: 10px 13px; border-radius: 48%">go</button>
         </form>
     </div>
 </div>
@@ -60,24 +61,7 @@
                         <h3>description </h3><h4>{{confirmed_item.request_Lost_Item.description}}</h4>
                     
                       </div>
-                      <div class="ag-courses-item_date-box">
-                        found id :
-                        <span class="ag-courses-item_date">
-                            {{confirmed_item.request_Lost_Item.id}}
-                        </span>
-                      </div>
-                      <div class="ag-courses-item_date-box">
-                        category :
-                        <span class="ag-courses-item_date">
-                            {{confirmed_item.request_Lost_Item.catagory.name}}
-                        </span>
-                      </div>
-                      <div class="ag-courses-item_date-box">
-                        sub category:
-                        <span class="ag-courses-item_date">
-                            {{confirmed_item.request_Lost_Item.Sub_catagory.name}}
-                        </span>
-                      </div>
+                   
                     
                       <div class="ag-courses-item_date-box">
                         place:
@@ -91,28 +75,23 @@
                             {{confirmed_item.request_Lost_Item.get_status_display}}
                         </span>
                       </div>
-                      <div class="ag-courses-item_date-box">
-                        created at :
-                        <span class="ag-courses-item_date">
-                            {{confirmed_item.request_Lost_Item.created_at}}
-                        </span>
-                      </div>
+                   
 
-                      <div style="display: flex; column-gap: 20px;">
+                      <div style="display: flex; column-gap: 30px;  padding: 20px;">
                         <div class="ag-courses-item_date-box">
-                            name of this request :
+                            onwerName:
                             <span class="ag-courses-item_date">
                                 {{confirmed_item.request_Lost_Item.name}}
                             </span>
                           </div>
                           <div class="ag-courses-item_date-box">
-                            phone number :
+                            phoneNumber:
                             <span class="ag-courses-item_date">
                                 {{confirmed_item.request_Lost_Item.phone_number}}
                             </span>
                           </div>
                           <div class="ag-courses-item_date-box">
-                            email of this user :
+                            email of this user:
                             <span class="ag-courses-item_date">
                                 {{confirmed_item.request_Lost_Item.email}}
                             </span>
@@ -156,7 +135,7 @@
                   </div>
                   <div>
                     <div class="ag-courses-item_date-box">
-                      <img  src="{{confirmed_item.found_item.image.url}}" width="100%" style="border-radius: 20px; position: relative; top: 20px;" height="250" alt="">
+                      <img  src="{{confirmed_item.found_item.image.url}}" width="100%"  style="border-radius: 20px;  " height="250" alt="">
                     </div>
                   </div>
                 </div>

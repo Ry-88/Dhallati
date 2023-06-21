@@ -19,8 +19,6 @@ urlpatterns = [
     path("founditem",views.found_item_page,name="found_item_page"),
     path("founditem/detail/<found_item_id>",views.found_detail_page,name="found_detail_page"),
     path("founditem/detail/<found_item_id>/confirm/<request_lost_item_id>/",views.confirm_item_for_found_detail,name="confirm_item_for_found_detail"),
-    path("founditem/detail/<found_item_id>/confirm/<request_lost_item_id>/discard/", views.discard_confirm_item_for_found_detail, name="discard_confirm_item_for_found_detail"),
-    path("founditem/detail/<found_item_id>/confirm/<request_lost_item_id>/confrirm/", views.confirm_item_true_for_found_detail, name="confirm_item_true_for_found_detail"),
     path("founditem/delete/<found_item_id>",views.delete_found_item,name="delete_found_item"),
     
 
