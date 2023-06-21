@@ -176,6 +176,16 @@ background: linear-gradient(0deg, #070b34 0%, #141852 50%, #2b2f77 100%);
           
           <img src="{% static 'style/icons8-bell-96.png' %}" class="openbtn" style="float: right; width: 50px ; border-radius: 70%; background-color: #141852; " width="100%" alt="" srcset="">
         </div></a>
+         
+        <a href="{% url 'manager_app:lost_item_page' %}"> <div  style="float: right; width: 60px ;  " id="mySidebar" >
+          {% if bell %}
+          <div style="position:absolute; right: 120px; color: #E8F6EF; top: 9px; border-radius: 50%;  background-color: rgb(253, 92, 92); box-shadow: 0 0 20px rgb(253, 92, 92); text-align: center;">
+            {{bell|length }}
+          </div>
+          {% endif %}
+          
+          <img src="{% static 'style/icons8-message-100.png' %}" class="openbtn" style="float: right; width: 50px ; border-radius: 70%; background-color: #141852; " width="100%" alt="" srcset="">
+        </div></a>
         
         {% block main %}
           
