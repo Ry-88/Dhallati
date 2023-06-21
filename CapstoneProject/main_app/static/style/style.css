@@ -428,6 +428,7 @@ textarea.form-control {
   font-family: "Playfair Display", serif;
   text-transform: uppercase;
   padding: 15px;
+  
 }
 .navbar .nav-item.active {
   font-weight: bold;
@@ -435,7 +436,9 @@ textarea.form-control {
 
 .nav-item:hover{
   background-color: #00000061;
-    border-radius: 0.5vh;
+  border-radius: 0.5vh;
+  margin: 0px 2px 0px 2px;
+  transition: 0.3s ;
 }
 
 .navbar-dark .navbar-nav .nav-link {
@@ -1157,5 +1160,10 @@ blockquote {
 }
 
 .category-item:hover{
-  margin-top: 10px;
+  margin-top: 27px;
+}
+
+.login-header{
+  background-color: #00000061;
+    border-radius: 0.5vh;
 }

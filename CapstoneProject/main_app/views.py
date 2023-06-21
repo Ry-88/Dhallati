@@ -95,13 +95,16 @@ def request_add(request: HttpRequest, category_id):
         send_mail(subject, content, 'DhallatiOfficial@gmail.com' , [email] ,fail_silently=False)
 
         
-        return redirect("main_app:email_page")
+        return redirect("main_app:email_page",new_request.id)
 
     return render(request, 'main_app/request_add.html', {"category": category, "sub_category": sub_category})
 
 
-def email_page(request:HttpRequest):
-    return render(request,'main_app/email_page.html')
+def email_page(request:HttpRequest, track_id):
+
+    track_id = RequestLostItem.objects.get(id=track_id)
+    
+    return render(request,'main_app/email_page.html', {"track_id":track_id})
 
 
 

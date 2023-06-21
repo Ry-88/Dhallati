@@ -13,7 +13,6 @@
     
     <div>
       <form action="{% url 'manager_app:lost_item_page' %}" method="GET" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" style="display: flex; align-items: center; column-gap: 4px; " role="search">
-        <label for="search" style="position: relative; top: 5px;">search</label>
         <input type="search" name="search" class="form-control form-control-dark text-bg-dark" style="border-radius: 20px; " placeholder="Search..."aria-label="Search">
       </form>
       <div class="homenav" style="margin-top: 20px;">
@@ -27,13 +26,14 @@
           <img src="{% static 'style/icons8-filter-100.png' %}" height="25px" alt="">
           <label for="category" style="position: relative; top: 5px; color: aliceblue;"> filter </label>
           <select  name="category" style="width: 190px;" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-       
+            <option value="">select</option>
             {% for catagor in catagory %}
             <option style="" value="{{catagor.name}}">{{catagor.name}}</option>
             {% endfor %}
             
           </select>
           <button type="submit" style="background: linear-gradient(0deg, #474bff 0%, #bc48ff 100%); color: aliceblue; border: none; outline: none; padding: 10px 13px; border-radius: 48%">go</button>
+          <a href="{% url 'manager_app:lost_item_page' %}" style="text-decoration: none; background: linear-gradient(0deg, #474bff 0%, #bc48ff 100%); color: aliceblue; border: none; outline: none; padding: 10px 5px; border-radius: 48%">reset</a>
         </form>
       </div>
     </div>
