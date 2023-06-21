@@ -11,7 +11,7 @@
       <input type="text" class="form-control" name="categoryname" aria-describedby="emailHelp" placeholder="Enter category">
       
     </div>
-    <a href="{% url 'manager_app:sub_category' category.id %}" style="position: relative; top: 8px;" type="submit" ><button  class="btn" style="background-color: #7b4e9d; color: aliceblue;">add</button></a>
+    <a href="{% url 'manager_app:sub_category' category.id %}" style="position: relative; top: 8px;" type="submit" ><button  class="btn" style="background-color: #3546E4; margin-left: 10px; color: aliceblue;">add</button></a>
 
   </form>
 
@@ -19,9 +19,9 @@
     
     <div style="display: grid; place-items: center; ">
     {% for sub in sub_category %}
-      <div style="padding: 10px; margin: 10px; background-color: #7b4e9d; border-radius: 8px; width: 300px;">
+      <div style="padding: 10px; margin: 10px; background: linear-gradient(0deg, #474bff 0%, #bc48ff 100%); border-radius: 8px; width: 300px;">
       <h2 >{{sub.name}}</h2>
-      <a href="{% url 'manager_app:delete_sub_category' category_id=category.id sub_category_id=sub.id  %}">delete </a>
+      <a href="{% url 'manager_app:delete_sub_category' category_id=category.id sub_category_id=sub.id  %}" style="text-decoration: none; color: aliceblue;">delete </a>
     </div>
 
    

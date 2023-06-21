@@ -13,7 +13,8 @@ from django.contrib.auth.decorators import login_required, permission_required
 def  index_page(request:HttpRequest): 
     found_items =FoundItem.objects.all()
     bell =RequestLostItem.objects.filter(is_read=False)
-    return render(request,"manager_app/manager.html" ,{"found_items":found_items,"bell":bell})
+    message =ConfirmItem.objects.filter(is_reserved=True)
+    return render(request,"manager_app/manager.html" ,{"found_items":found_items,"bell":bell,"message":message})
 #-------------------------------------
 
 
@@ -30,7 +31,8 @@ def category_page(request:HttpRequest):
         new_category.save()
         return redirect('manager_app:category_page')
     bell =RequestLostItem.objects.filter(is_read=False)
-    return render(request,"manager_app/category.html",{"Catagorys":Catagorys,"bell":bell})
+    message =ConfirmItem.objects.filter(is_reserved=True)
+    return render(request,"manager_app/category.html",{"Catagorys":Catagorys,"bell":bell,"message":message})
 
 
 
@@ -54,6 +56,7 @@ def sub_category(request:HttpRequest,category_id):
         return redirect('manager_app:sub_category',category_id)
     sub_category=SubCatagory.objects.filter(category=category)
     bell =RequestLostItem.objects.filter(is_read=False)
+    message =ConfirmItem.objects.filter(is_reserved=True)
     return render(request,"manager_app/sub_category_page.html" ,{"category":category, "sub_category":sub_category,"bell":bell})
 
 
@@ -74,7 +77,8 @@ def delete_sub_category(request:HttpRequest,category_id,sub_category_id):
 def category_for_add_found(request:HttpRequest):
     catagorys = Catagory.objects.all()
     bell =RequestLostItem.objects.filter(is_read=False)
-    return render(request,'manager_app/category_for_add_fuond.html',{"catagorys":catagorys,"bell":bell})
+    message =ConfirmItem.objects.filter(is_reserved=True)
+    return render(request,'manager_app/category_for_add_fuond.html',{"catagorys":catagorys,"bell":bell,"message":message})
 
 
 @login_required(login_url="/accounts/log_in")
@@ -86,7 +90,9 @@ def add_found_item_page(request:HttpRequest ,category_id):
         new_found_item.save()
         return redirect("manager_app:found_item_page")
     bell =RequestLostItem.objects.filter(is_read=False)
-    return render(request,"manager_app/add_found_item_page.html",{"catagory":catagory,"sub_category":sub_category,"bell":bell})
+    message =ConfirmItem.objects.filter(is_reserved=True)
+    
+    return render(request,"manager_app/add_found_item_page.html",{"catagory":catagory,"sub_category":sub_category,"bell":bell,"message":message})
 
 
 
@@ -114,6 +120,7 @@ def found_item_page(request:HttpRequest):
 
     found_items =FoundItem.objects.filter(status = "T")
     bell =RequestLostItem.objects.filter(is_read=False)
+    message =ConfirmItem.objects.filter(is_reserved=True)
 
     if "search" in request.GET:
         search_word=request.GET["search"]
@@ -122,7 +129,7 @@ def found_item_page(request:HttpRequest):
         category=request.GET["category"]
         found_items=FoundItem.objects.filter(catagory__name=category, status="T")
     
-    return render(request,"manager_app/found_items.html",{"found_items":found_items,"bell":bell, "catagory":catagory})
+    return render(request,"manager_app/found_items.html",{"found_items":found_items,"bell":bell, "catagory":catagory,"message":message})
 
 
 
@@ -141,7 +148,8 @@ def found_detail_page(request:HttpRequest,found_item_id):
     confirm_items=ConfirmItem.objects.filter(found_item=found_item)
   
     bell =RequestLostItem.objects.filter(is_read=False)
-    return render(request,'manager_app/founditem_detail.html' ,{"found_item":found_item,"request_lost_Items":lost_item,"confirm_items":confirm_items,"bell":bell })
+    message =ConfirmItem.objects.filter(is_reserved=True)
+    return render(request,'manager_app/founditem_detail.html' ,{"found_item":found_item,"request_lost_Items":lost_item,"confirm_items":confirm_items,"bell":bell,"message":message })
 
 
 @login_required(login_url="/accounts/log_in")
@@ -177,8 +185,9 @@ def lost_item_page(request:HttpRequest):
     if "category"in request.GET:
         category=request.GET["category"]
         request_lost_Items=RequestLostItem.objects.filter(catagory__name=category, status="T")
-  
-    return render(request,'manager_app/lost_item_request_page.html' ,{"request_lost_Items":request_lost_Items,"catagory":catagory})
+    message =ConfirmItem.objects.filter(is_reserved=True)
+    
+    return render(request,'manager_app/lost_item_request_page.html' ,{"request_lost_Items":request_lost_Items,"catagory":catagory,"message":message})
 
 @login_required(login_url="/accounts/log_in")
 def delete_lost_item(request:HttpRequest,lost_item_id):
@@ -195,7 +204,8 @@ def lost_item_detail_page(request:HttpRequest,lost_item_id):
     lost_item.save()
     confirm_items=ConfirmItem.objects.filter(request_Lost_Item=lost_item)
     bell =RequestLostItem.objects.filter(is_read=False)
-    return render(request,'manager_app/lost_item_request_detail.html' ,{"found_item":found_item,"lost_item":lost_item,"confirm_items":confirm_items,"bell":bell })
+    message =ConfirmItem.objects.filter(is_reserved=True)
+    return render(request,'manager_app/lost_item_request_detail.html' ,{"found_item":found_item,"lost_item":lost_item,"confirm_items":confirm_items,"bell":bell,"message":message })
 
 
 
@@ -228,6 +238,8 @@ def confirm_item_true_for_lost_detail(request:HttpRequest,found_item_id,lost_ite
         confirm_item.is_confirm=True
         found_item.status="F"
         lost_item.status="F"
+        confirm_item.is_reserved=False
+
 
        
     
@@ -238,12 +250,15 @@ def confirm_item_true_for_lost_detail(request:HttpRequest,found_item_id,lost_ite
         send_mail(subject, content, 'DhallatiOfficial@gmail.com' , [confirm_item.request_Lost_Item.email],fail_silently=False)
         found_item.save()
         lost_item.save()
+        confirm_item.save()
         return redirect("manager_app:confirm_item_page")
     else :
         found_item.status="M"
         lost_item.status="M"
         confirm_item.is_confirm=False
-    confirm_item.save()
+        found_item.save()
+        lost_item.save()
+        confirm_item.save()
     return redirect("manager_app:lost_item_detail_page",lost_item_id)
 
 
@@ -276,13 +291,15 @@ def confirm_item_page(request:HttpRequest):
     if "category"in request.GET:
         category=request.GET["category"]
         confirmed_items=ConfirmItem.objects.filter(found_item__catagory__name=category, is_confirm = True)
-    return render(request,'manager_app/confirm_item_page.html', {"confirmed_items" : confirmed_items,"bell":bell,"catagory":catagory })
+    message =ConfirmItem.objects.filter(is_reserved=True)
+    return render(request,'manager_app/confirm_item_page.html', {"confirmed_items" : confirmed_items,"bell":bell,"catagory":catagory ,'message':message})
 
   
 @login_required(login_url="/accounts/log_in")
 def match_item_page(request:HttpRequest):
     catagory=Catagory.objects.all()
-    matched_items = ConfirmItem.objects.filter(is_confirm = False)
+    matched_items = ConfirmItem.objects.filter(is_confirm= False)
+
     bell =RequestLostItem.objects.filter(is_read=False)
     if "search" in request.GET:
         search_word=request.GET["search"]
@@ -290,21 +307,22 @@ def match_item_page(request:HttpRequest):
     if "category"in request.GET:
         category=request.GET["category"]
         matched_items=ConfirmItem.objects.filter(found_item__catagory__name=category, is_confirm = False)
-    return render(request, "manager_app/match_item_page.html", {"matched_items" : matched_items,"bell":bell,"catagory":catagory})
+    message =ConfirmItem.objects.filter(is_reserved=True)
+    
+    return render(request, "manager_app/match_item_page.html", {"matched_items" : matched_items,"bell":bell,"catagory":catagory,"message":message})
 
-
+#it is for sending form for user 
 @login_required(login_url="/accounts/log_in")
 def send_email_form(request:HttpRequest,lost_item_id,confirm_item_id):
 
-    
     confirm_item=ConfirmItem.objects.get(id=confirm_item_id)
     if not confirm_item.is_send:
         confirm_item.is_send=True
         subject=f"Hello {confirm_item.request_Lost_Item.name}"
         content=f"Hello {confirm_item.request_Lost_Item.name} \n\
 Regarding your request please answer these follow up questions to be sure \n\
-http://127.0.0.1:8000/form/check/{confirm_item.id}"
-        send_mail(subject, content, 'DhallatiOfficial@gmail.com' , [confirm_item.request_Lost_Item.email],fail_silently=False)
+<a href='http://127.0.0.1:8000/form/check/{confirm_item.id}'>Click here to answer</a>"
+        send_mail(subject, content, 'DhallatiOfficial@gmail.com' , [confirm_item.request_Lost_Item.email],fail_silently=False, html_message=content)
         confirm_item.save()
     else:
         confirm_item.is_send=False
