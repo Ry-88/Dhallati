@@ -94,7 +94,7 @@ class ConfirmItem(models.Model):
     is_send=models.BooleanField(default=False) 
     is_reserved=models.BooleanField(default=False)
     message_form=models.TextField(default=" ")
-
+    from_ai=models.BooleanField(default=False)
 class ContactForm(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)

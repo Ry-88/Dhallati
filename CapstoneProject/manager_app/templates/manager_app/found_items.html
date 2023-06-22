@@ -54,7 +54,7 @@
                     {% endif %}>
                 </div>
                   <div class="ag-courses-item_title">
-                    <h3>{{found_item.description}}</h3>
+                    <h3>{{found_item.description|slice:"0:20" }}..</h3>
              
                   </div>
                 
@@ -81,17 +81,10 @@
                   </div>
                 </a>
                 <div class="ag-courses-item_date-box">
-                  <div style="position: absolute; ">
-                    <a href="" onclick="deleteProfile()" style=" position: relative; bottom: 54px; left: 299px;  padding: 9px; text-decoration: none; border-radius: 50%; color: aliceblue; margin-bottom: 10px; background-color: rgb(254, 102, 102);">
+                  <div style="position: absolute; background-color: rgb(254, 102, 102); border-radius: 50%; padding: 10px; width: 20px; height: 20px;">
+                    <a href="{% url 'manager_app:delete_found_item' found_item.id %}" onclick="deleteProfile()" style=" position: relative; bottom: 44px; left: 299px; font-size: large; font-weight: 900; border-radius: 50%; padding: 25px;  text-decoration: none;  color: aliceblue; margin-bottom: 10px; background-color: rgb(254, 102, 102);">
                       x</a>
-                      <script>
-                        //show a confirmation and redirect to the delete profile script
-                        function deleteProfile() {
-                          if (confirm("Do you really want to delete your request ?")) {
-                              location.href = "{% url 'manager_app:delete_found_item' found_item.id %}";
-                          }
-                      }
-                      </script>
+                 
                   </div>
                 </div>
               </div>

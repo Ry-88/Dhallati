@@ -15,16 +15,17 @@
   
        
 
-        <div class="ag-courses_item" style="width: 95%;  border-radius: 10px;">
+        <div class="ag-courses_item" style="min-height: 555px; width: 450px; border-radius: 5px; padding-top: 13px;">
            <a class="ag-courses-item_link" style="height: 560px;">
             <div class="ag-courses-item_date-box">
-              {% if lost_item.image.url == '/media/image/default.jpg' %}
-
+              {% if lost_item.image.url == '/media/images/default.jpg' %}
+                  <div style="margin-top: 50px;"></div>
                 {% else %}
                 <img src="{{lost_item.image.url}}" width="90%" height="150" alt="" srcset="">
+              
               {% endif %}
             
-      
+              
             </div>
               <div class="ag-courses-item_bg" 
               {% if lost_item.color == 'G' %}
@@ -59,7 +60,7 @@
               </div>
         
               <div class="ag-courses-item_date-box">
-                where :
+                lost in  :
                 <span class="ag-courses-item_date">
                     {{lost_item.get_place_display}}
                 </span>
@@ -95,15 +96,13 @@
               </div>
               <div class="ag-courses-item_date-box" style=" margin-bottom: 10px; min-height: 200px;   border-radius: 5px; padding: 13px;">
                
-                <h2 style="text-align: center;">User description </h2>
+                <h2 style="text-align: center;">lost description </h2>
               
                 <h5>{{lost_item.description}}</h5> 
             </div>
             </a>
           </div>
     
-        
-
         
 
 
@@ -149,6 +148,10 @@
                 the item is<span class="ag-courses-item_date"> {{confirm_item.found_item.get_color_display}} </span> color 
                
               </div>
+              <div class="ag-courses-item_date-box">
+                the item fuond in <span class="ag-courses-item_date"> {{confirm_item.found_item.get_place_display}} </span> 
+               
+              </div>
             
          
               
@@ -161,7 +164,7 @@
               </a>  
               {% else %}
               <a href="{% url 'manager_app:send_email_form' lost_item_id=lost_item.id confirm_item_id=confirm_item.id %}" style=" margin-right: 4px;  padding: 10px; border-bottom-left-radius: 8px; text-decoration: none; color:#E8F6EF ;    background-color:  #3C7AD7  ">
-              email sended
+              email is sended
             </a>  
                 {% endif %}
                 {% endif %}
@@ -190,12 +193,12 @@
         </div>
         <p>
     
-        {% if  confirm_item.is_reserved %}
+        {% if  confirm_item.is_reserved or confirm_item.from_ai %}
         <div class="wrap-collabsible" > 
           <input id="collapsible" class="toggle" type="checkbox"> 
           <label for="collapsible" class="lbl-toggle">see the additional description</label>
           <div class="collapsible-content"><div class="content-inner">
-            <p> {{confirm_item.message_form}}</p></div></div></div>
+            <p style="color: #E8F6EF;"> {{confirm_item.message_form}}</p></div></div></div>
           
         {% endif %}
         
@@ -232,9 +235,9 @@
                 
             <div class="ag-courses-item_link" style=" border-radius: 10px;  margin-bottom: 12px; display: flex; ">
               <div style="margin-right: 20px; border-radius: 20px; overflow: hidden;">
-              <img  src="{{found.image.url}}" width="100%" height="200" alt="">
+              <img  src="{{found.image.url}}" width="220" height="170" alt="">
             </div>
-            <div>
+            <div style="width: 340px;">
                 <div class="ag-courses-item_bg" 
                 {% if found.color == 'G' %}
                   style=" background-color: rgb(58, 203, 58);"
@@ -262,6 +265,7 @@
                   <div class="ag-courses-item_date-box">
                      request lost Item id : {{found.id}}
                   </div>
+                  
                   <div class="ag-courses-item_date-box">
                     category :<span class="ag-courses-item_date"> {{found.catagory.name}} </span> sub category: <span class="ag-courses-item_date"> {{found.Sub_catagory.name}} </span>
                    
@@ -290,14 +294,15 @@
   
              
         </div>
-        <div class="ag-courses-item_date-box" style="float: right; ">
-          {% if not confirm_items %}
-          <a href=" {% url 'manager_app:confirm_item_for_lost_detail' found_item_id=found.id lost_item_id=lost_item.id %}" style=" margin: 10px;  padding: 10px; border-radius: 8px; text-decoration: none; color:#E8F6EF ;    background-color:  #474bff  ">
-            match
-        </a>
-        
-          {% endif %}
-        </div>
+
+      </div>
+      <div class="ag-courses-item_date-box" style="float: right; ">
+        {% if not confirm_items %}
+        <a href=" {% url 'manager_app:confirm_item_for_lost_detail' found_item_id=found.id lost_item_id=lost_item.id %}" style=" position: relative; top: 160px; padding: 10px; border-radius: 8px; text-decoration: none; color:#E8F6EF ;    background-color:  #474bff  ">
+          match
+      </a>
+      
+        {% endif %}
       </div>
             </div>
         {% endfor %}

@@ -8,14 +8,14 @@
 <section class="bg-primary" id="parallax" style="min-height: 100vh; padding-top: 200px; padding-bottom: 40px;">
 
     <div class="category d-flex justify-content-center mb-1" style="margin-top: -50px;">
-        <h2>form check</h2>
+
     </div>
 
     <div class="col-6 mx-auto d-flex justify-items-center">
         <div class="bg-white rounded p-5 shadow-down mb-5 row justify-content-center">
             <div class="mb-3 text-center">
-                    <h3 class="" style="color: black;">form check</h3> 
-                    <h5 style="color: rgba(0, 0, 0, 0.500);"> please fill out this form </h5>
+                    <h3 class="" style="color: black;">Question Check</h3> 
+                    <h5 style="color: rgba(0, 0, 0, 0.500);"> Please fill out this form </h5>
                 
                
             </div>
@@ -27,11 +27,17 @@
               {% if msg %}
                 <h1 style="color: black;">{{msg}}</h1>
               {% else %}
-              <div class="card" style="display: flex; justify-content: center; padding: 20px;">
-                <img class="" src="{{confirm_item.found_item.image.url}}" width="100%" height="300px" style="border-radius: 4px;" alt="Card image cap">
-              </div>
+        
             <div class="col-12 mb-3">
-                <label for="exampleFormControlInput1"  class="form-label"> add Description for this {{confirm_item.found_item.Sub_catagory.name}} item to check this is yours</label>
+                <label for="exampleFormControlInput1" style="font-size: 19px; padding: 4px; margin-bottom: 3px;" class="form-label"> 
+                  Add Description for this
+                   {{confirm_item.found_item.Sub_catagory.name}}
+                    item to check is yours
+                   <label for="exampleFormControlInput1" style="font-size: 15px;"> e.g : item name, color of the item , Fractures in  item , a distinguishing mark your item or
+                    Where was the last time you saw your item? firstfloor </label>
+
+
+                </label>
                 <textarea class="form-control color-select" id="exampleFormControlInput1" placeholder="Discripe the Item"
                     name="message_form"></textarea>
             </div>
