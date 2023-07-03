@@ -41,7 +41,7 @@
     {% if matched_item.is_reserved %}
                 <div style="background-color:rgb(252, 96, 96); border-radius: 50%; height: 40px; width: 40px; bottom: 2px; position: relative; z-index: 3; box-shadow: 0px 00px 20px rgb(252, 96, 96); display: flex; justify-content: center; align-items: center;">MSG</div>
                 {% endif %}
-    <div class="ag-courses_item">
+    <div class="ag-courses_item" style="">
 
       <a href="{% url 'manager_app:lost_item_detail_page' matched_item.request_Lost_Item.id %}"
         class="ag-courses-item_link">
@@ -141,11 +141,13 @@
         </div>
       </a>
     </div>
-    </a>
-  </div>
+    
+
   {% endfor %}
 </div>
 </div>
+
+
 
 
 {% endblock main %}

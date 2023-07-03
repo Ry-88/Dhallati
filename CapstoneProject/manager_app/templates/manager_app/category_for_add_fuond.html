@@ -5,7 +5,7 @@
 
 <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; ">
     <div>
-        <h1>choose category </h1>
+        <h1>Choose category </h1>
         <br>
         {% for catagory in catagorys %}
           <a class="choose-category" style="text-align: center;" href="{% url 'manager_app:add_found_item_page' catagory.id %}">{{catagory.name}}</a>

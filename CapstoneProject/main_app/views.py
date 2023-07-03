@@ -1,8 +1,13 @@
 from django.shortcuts import render, redirect
 from django.http import HttpRequest, HttpResponse
-from .models import RequestLostItem, Catagory, SubCatagory, ContactForm,ConfirmItem
+from .models import RequestLostItem, Catagory, SubCatagory, ContactForm,ConfirmItem,FoundItem
 from django.core.mail import send_mail, BadHeaderError
 import time
+
+from dotenv  import load_dotenv
+import os
+import openai
+load_dotenv()
 # from .forms import ContactForm
 
 
@@ -115,18 +120,60 @@ def request_tracking(request: HttpRequest, track_id):
     
     return render(request, 'main_app/request_tracking.html', {'tracking' : tracking})
 
+
 def email_check_form(request: HttpRequest,confirm_item_id):
     msg=None
     confirm_item=None
     try:
         confirm_item=ConfirmItem.objects.get(id=confirm_item_id)
+        lost_item=RequestLostItem.objects.get(id=confirm_item.request_Lost_Item.id)
+        Found_item=FoundItem.objects.get(id=confirm_item.found_item.id)
+        description1 = f"{confirm_item.found_item.description} \
+                {confirm_item.found_item.get_color_display()} \
+                {confirm_item.found_item.Sub_catagory.name} \
+                {confirm_item.found_item.get_place_display()} \
+                "
         if request.method=="POST":
             confirm_item.message_form=request.POST["message_form"]
             confirm_item.is_reserved=True
-            confirm_item.save()
-            return redirect("main_app:home")
+            
+
+            openai.api_key = os.getenv("OPENAI_API_KEY")
+            print(f"decide wehter the followin tow description are similar , give a rating of 10 , where 10 is identical :\n\ndescription 1:\n\"{description1}\"\ndescription 2:\n\"{confirm_item.message_form}\"\nrating:\n")
+            response = openai.Completion.create(
+            model="text-davinci-003",
+            prompt=f"decide wehter the followin tow description are similar , give a rating of 10 , where 10 is identical :\n\ndescription 1:\n\"{description1}\"\ndescription 2:\n\"{confirm_item.message_form}\"\nrating:\n",
+            temperature=1,
+            max_tokens=256,
+            top_p=1,
+            frequency_penalty=0,
+            presence_penalty=0
+            )
+
+            similarity = int(response.choices[0].text)
+            print(similarity)
+            if similarity > 6:
+                confirm_item.is_confirm = True
+                confirm_item.is_reserved=False
+                #to know--is--confirming-for-ai--
+                confirm_item.from_ai=True
+                confirm_item.save()
+                #-----------------------------
+                Found_item.status="F"
+                lost_item.status="F"
+                Found_item.save()
+                lost_item.save()
+                subject=f"confirm the item"
+                content=f"Hello {confirm_item.request_Lost_Item.name} \n\
+                we found you item please vist us to claim your {confirm_item.request_Lost_Item.Sub_catagory.name} {confirm_item.request_Lost_Item.catagory.name} \n\
+                    thank you for trusting us"
+                send_mail(subject, content, 'DhallatiOfficial@gmail.com' , [confirm_item.request_Lost_Item.email],fail_silently=False)
+            confirm_item.save()  
+            
+            
+            return redirect("main_app:request_tracking",confirm_item.request_Lost_Item.id)
+    
     except:
         msg="you enter wrong form"
 
     return render(request,"main_app/check_email_form.html",{"confirm_item":confirm_item ,"msg":msg})
-        

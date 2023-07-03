@@ -22,7 +22,7 @@
             {% for category in categories %}
 
 
-                <a href="{% url 'main_app:request_add' category.id %}" class="col-4 me-3 ms-3 d-flex justify-content-center align-items-center category-item">
+                <a href="{% url 'main_app:request_add' category.id %}" class="col-4 me-3 ms-3 d-flex justify-content-center align-items-center category-item" style="width:550px; height:150px;">
                 
                     <span class="choose-category" style="color: white;">
                         {{category.name}}

@@ -64,7 +64,7 @@
                 </div>
                  
                 <div class="ag-courses-item_title">
-                    <h3>description </h3><h4>{{request_lost_Item.description}}</h4>
+                    <h3>Lost item</h3><h4>{{request_lost_Item.description}}</h4>
              
                   </div>
                   <div class="ag-courses-item_date-box">
@@ -80,6 +80,7 @@
                         {{request_lost_Item.id}}
                     </span>
                   </div>
+           
                   <div class="ag-courses-item_date-box">
                     category :
                     <span class="ag-courses-item_date">
@@ -92,19 +93,7 @@
                         {{request_lost_Item.Sub_catagory.name}}
                     </span>
                   </div>
-            
-                  <div class="ag-courses-item_date-box">
-                    place:
-                    <span class="ag-courses-item_date">
-                        {{request_lost_Item.get_place_display}}
-                    </span>
-                  </div>
-                  <div class="ag-courses-item_date-box">
-                    status:
-                    <span class="ag-courses-item_date">
-                        {{request_lost_Item.get_status_display}}
-                    </span>
-                  </div>
+        
                   <div class="ag-courses-item_date-box">
                     created at :
                     <span class="ag-courses-item_date">
