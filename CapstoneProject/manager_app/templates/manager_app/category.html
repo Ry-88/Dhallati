@@ -32,7 +32,10 @@
         {% for Catagory in Catagorys %}
         <div class="category-edit">
         <a style=" text-align: center;" href="{% url 'manager_app:sub_category' Catagory.id %}">{{Catagory.name}}</a>
-        <a href="{% url 'manager_app:delete_category'  Catagory.id %}" style="background-color: rgb(186, 93, 93); float: right; padding: 10px; border-radius: 10px;">delete</a>
+        <a href="{% url 'manager_app:delete_category'  Catagory.id %}" class="request_div" style="float: right; padding: 10px; border-radius: 10px;">
+          <span class="request_btn">Delete</span>
+  
+        </a>
         
       </div>
         {% endfor %}

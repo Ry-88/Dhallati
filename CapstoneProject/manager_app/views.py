@@ -245,7 +245,7 @@ def confirm_item_true_for_lost_detail(request:HttpRequest,found_item_id,lost_ite
     
         subject=f"confirm the item"
         content=f"Hello {confirm_item.request_Lost_Item.name} \n\
-        we found you item please vist us to claim your {confirm_item.request_Lost_Item.Sub_catagory.name} {confirm_item.request_Lost_Item.catagory.name} \n\
+        we found your item please vist us to claim your {confirm_item.request_Lost_Item.Sub_catagory.name} {confirm_item.request_Lost_Item.catagory.name} \n\
              thank you for trusting us"
         send_mail(subject, content, 'DhallatiOfficial@gmail.com' , [confirm_item.request_Lost_Item.email],fail_silently=False)
         found_item.save()

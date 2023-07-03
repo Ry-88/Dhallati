@@ -257,7 +257,7 @@ text-decoration: none;
   }
 .request_div{
   font-size: 15px;
-  background: linear-gradient(0deg, #474bff 0%, #ff0000 100%) !important;
+  background: white;
   display: inline-block;
   padding: 5px 20px;
   min-width: 10vh;
@@ -270,7 +270,7 @@ text-decoration: none;
 }
 
 .request_div .request_btn{
-  color: #E8F6EF;
+  color: red;
   cursor: pointer;
   display: inline-block;
   position: relative;
